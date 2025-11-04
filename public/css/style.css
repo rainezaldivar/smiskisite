@@ -1,22 +1,15 @@
-/* =========================================================
-   GOOGLE FONT
-========================================================= */
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
 
-/* =========================================================
-   GLOBAL BODY SETTINGS
-========================================================= */
+/* GLOBAL */
 body {
-  background-color: #9ac952; /* Celery green */
+  background-color: #9ac952; 
   font-family: "Winky Rough", sans-serif;
   color: #fff;
   margin: 0;
-  padding-top: 100px; /* space for fixed navbar */
+  padding-top: 100px; 
 }
 
-/* =========================================================
-   NAVBAR STYLES
-========================================================= */
+/* NAVBAR STYLES */
 .custom-navbar {
   background: linear-gradient(90deg, #2d7a1f, #4a9e32);
   padding: 18px 0;
@@ -24,45 +17,22 @@ body {
   z-index: 1030;
 }
 
-.custom-navbar .nav-link {
-  color: #ffffff !important;
-  font-weight: 600;
-}
-
-.custom-navbar .nav-link:hover {
-  color: #ffd166 !important; /* warm yellow hover */
-  transform: translateY(-1px);
-}
-
-/* Scroll effect — slightly darker green when scrolling */
 .custom-navbar.scrolled {
-  background: linear-gradient(90deg, #4e7531, #8ac342);
+  background: rgba(26, 26, 26, 0.95);
+  backdrop-filter: blur(6px);
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
 }
 
-
-/* fixed position on top */
-.fixed-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1050;
-}
-
-/* brand (logo) styling */
 .custom-navbar .navbar-brand img {
-  height: 50px; /* slightly larger logo */
-  width: auto;
+  height: 50px;
   object-fit: contain;
 }
 
-/* navbar links */
 .custom-navbar .nav-link {
   color: #f8f9fa !important;
   font-weight: 500;
   font-size: 1rem;
-  margin: 0 12px; /* spacing between links */
+  margin: 0 12px;
   transition: color 0.25s ease, transform 0.25s ease;
 }
 
@@ -71,41 +41,34 @@ body {
   transform: translateY(-1px);
 }
 
-/* logout button (if styled separately) */
+/* LOGOUT BUTTON */
 .custom-navbar .btn-outline-danger {
   border: 1.5px solid #dc3545;
   color: #f8f9fa;
   background: transparent;
   transition: all 0.25s ease;
 }
+
 .custom-navbar .btn-outline-danger:hover {
   background-color: #dc3545;
   color: #fff;
   transform: translateY(-2px);
 }
 
-/* scroll effect (blurry background) */
-.custom-navbar.scrolled {
-  background: rgba(26, 26, 26, 0.95);
-  backdrop-filter: blur(6px);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* mobile toggler */
+/* NAVBAR TOGGLER */
 .navbar-toggler {
   border: none;
   outline: none;
 }
+
 .navbar-toggler-icon {
   filter: invert(1);
 }
 
-/* =========================================================
-   CAROUSEL STYLES
-========================================================= */
+/* CAROUSEL */
 #manualCarousel {
-  max-width: 900px;      
-  margin: 40px auto 3rem auto; /* top margin adds space below navbar */
+  max-width: 900px;
+  margin: 40px auto 3rem auto;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -113,35 +76,38 @@ body {
 
 #manualCarousel img {
   width: 100%;
-  height: auto; /* maintain natural ratio */
+  height: auto;
   display: block;
 }
 
-/* carousel arrows */
+/* CAROUSEL ARROWS */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(1); /* white arrows */
-  opacity: 0.9;
+  background-image: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  opacity: 1;
 }
+
+.carousel-control-prev-icon::after,
+.carousel-control-next-icon::after {
+  content: '';
+  display: inline-block;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-top: 0.25rem solid #fff;
+  border-right: 0.25rem solid #fff;
+}
+
+.carousel-control-prev-icon::after { transform: rotate(-135deg); }
+.carousel-control-next-icon::after { transform: rotate(45deg); }
+
 .carousel-control-prev,
 .carousel-control-next {
-  width: 5%;
-}
-.carousel-control-prev:hover .carousel-control-prev-icon,
-.carousel-control-next:hover .carousel-control-next-icon {
-  transform: scale(1.2);
-  transition: all 0.2s ease;
+  width: 10%;
 }
 
-/* optional hover glow */
-.carousel-control-prev-icon.bg-dark,
-.carousel-control-next-icon.bg-dark {
-  background-color: rgba(0, 0, 0, 0.6) !important;
-}
-
-/* =========================================================
-   PRODUCT CARD STYLES
-========================================================= */
+/* PRODUCT CARD */
 .product-card {
   background-color: #fff;
   border-radius: 18px;
@@ -156,9 +122,9 @@ body {
 .product-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.15);
+
 }
 
-/* product image container */
 .product-img-wrapper {
   position: relative;
   background-color: #f8f9fa;
@@ -169,55 +135,31 @@ body {
   overflow: hidden;
 }
 
-/* product image */
 .product-img {
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
   transition: transform 0.3s ease;
 }
+
 .product-card:hover .product-img {
   transform: scale(1.05);
 }
 
-/* favorite (heart) button */
-.favorite-btn {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  background-color: rgba(255, 255, 255, 0.9);
-  border: none;
-  border-radius: 50%;
-  width: 36px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #dc3545;
-  box-shadow: 0 2px 8px rgba(220, 53, 69, 0.3);
-  transition: all 0.25s ease;
-}
-.favorite-btn:hover {
-  background-color: #dc3545;
-  color: #fff;
-  transform: scale(1.1);
-}
-.favorite-btn i {
-  font-size: 1.2rem;
-}
-
-/* =========================================================
-   PRODUCT SECTION HEADINGS + SPACING
-========================================================= */
+/* PRODUCT SECTION STYLES */
 #smiski-products {
   margin-bottom: 3rem;
 }
 
 #others {
-  margin-top: 1rem; /* tighter spacing, no line above */
+  margin-top: 1rem;
 }
 
-/* "View More" link style */
+#smiski-products h3 {
+  color: #ffffff !important;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 .view-more-link {
   background-color: rgba(255, 255, 255, 0.3);
   color: #fff !important;
@@ -225,85 +167,51 @@ body {
   border-radius: 20px;
   transition: all 0.25s ease;
 }
+
 .view-more-link:hover {
   background-color: #fff;
   color: #2596be !important;
 }
 
-/* =========================================================
-   CARD STYLING (Optional)
-========================================================= */
-.card {
-  border-radius: 12px;
-  overflow: hidden;
-  background-color: rgba(255, 255, 255, 0.9);
-  color: #000;
-}
-.card .card-body {
-  font-family: "Winky Rough", sans-serif;
+/* CONTAINER  */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
-/* =========================================================
-   CONTAINER SPACING
-========================================================= */
+#smiski-products,
+#others {
+  padding: 0 10rem;
+}
+
 .container.mt-4 {
-  margin-top: 2.5rem !important; /* space under header area */
-}
-
-/* === CAROUSEL ARROWS === */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-image: none; /* remove default Bootstrap arrow */
-  width: 2.5rem;
-  height: 2.5rem;
-  opacity: 1;
-  color: #fff;
-  filter: none;
-}
-
-/* Add white arrow shapes manually using borders */
-.carousel-control-prev-icon::after,
-.carousel-control-next-icon::after {
-  content: '';
-  display: inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
-  border-top: 0.25rem solid #fff;
-  border-right: 0.25rem solid #fff;
-}
-
-/* Rotate them to form left/right arrows */
-.carousel-control-prev-icon::after {
-  transform: rotate(-135deg);
-}
-.carousel-control-next-icon::after {
-  transform: rotate(45deg);
+  margin-top: 2.5rem !important;
 }
 
 
-/* Make sure arrow buttons are clickable area */
-.carousel-control-prev,
-.carousel-control-next {
-  width: 10%;
-}
-
-
-/* =========================================================
-   SMISKI MODAL
-========================================================= */
+/* MODAL */
 .modal {
-  z-index: 1050;
+  z-index: 1055;
+}
+
+.modal-dialog {
+  border-radius: 20px;
+  overflow: hidden; 
+  margin: 1.75rem auto;
+  max-width: 800px; 
 }
 
 .modal-content {
-  border-radius: 20px;
-  overflow: hidden;
+  border-radius: 20px !important;
   border: none;
   background: #ffffff;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+  z-index: 1060;
   animation: modalPop 0.25s ease;
+  overflow: hidden; 
+  position: relative;
 }
-
 
 .modal-header {
   background-color: #eafbe3;
@@ -315,6 +223,11 @@ body {
 .modal-body {
   background-color: #fff;
   padding: 1.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
 }
 
 .modal-img-wrapper {
@@ -327,13 +240,17 @@ body {
 
 .modal-img-wrapper img {
   width: 100%;
-  height: auto;
   border-radius: 12px;
   object-fit: contain;
   box-shadow: 0 0 15px rgba(140, 200, 120, 0.4);
 }
 
-/* Responsive modal */
+.modal-backdrop.show {
+  opacity: 0.45 !important; 
+  background-color: #000 !important; 
+  z-index: 1050 !important; 
+}
+
 @media (max-width: 768px) {
   .modal-body {
     flex-direction: column !important;
@@ -345,37 +262,20 @@ body {
   }
 }
 
-/* Dimmed backdrop */
-.modal-backdrop.show {
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(4px);
-  z-index: 1040;
-}
-
-/* Details text */
-.modal-details p {
-  margin-bottom: 0.75rem;
-}
-
-
-/* Modal stock color classes */
+/* STOCK TEXTS */
 .text-stock-green {
-  color: #00c851 !important; /* bright green */
+  color: #00c851 !important;
   font-weight: 700;
 }
 
 .text-stock-red {
-  color: #e63946 !important; /* bright red */
+  color: #e63946 !important;
   font-weight: 700;
 }
 
-/* === SMISKI FIGURINES HEADING FIX === */
-#smiski-products h3 {
-  color: #ffffff !important; /* make heading white */
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2); /* soft shadow for contrast */
-}
-
-/* === SIMPLE FOOTER === */
+/* =========================================================
+   FOOTER
+========================================================= */
 .custom-footer {
   width: 100vw;
   margin-left: calc(50% - 50vw);
@@ -383,7 +283,8 @@ body {
   color: #fff;
   text-align: center;
   padding: 1.2rem 1rem;
-  margin-top: 2rem;
+  margin-top: 47px;
+  margin-bottom: auto;
   font-family: inherit;
 }
 

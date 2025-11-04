@@ -159,12 +159,12 @@ productModal.addEventListener('show.bs.modal', function (event) {
   const stockEl = document.getElementById('productModalStock');
   stockEl.textContent = stockText;
 
-  // ✅ Color logic for stock
+  // Color logic for stock
   if (stockText.toLowerCase().includes('out of stock')) {
-    stockEl.style.color = '#e63946'; // bright red
+    stockEl.style.color = '#e63946'; 
     stockEl.style.fontWeight = '700';
   } else {
-    stockEl.style.color = '#00c851'; // bright green
+    stockEl.style.color = '#00c851';
     stockEl.style.fontWeight = '700';
   }
 });

@@ -1,13 +1,14 @@
 <?php namespace App\Controllers;
 
 use App\Models\ProductModel;
+use App\Models\UserModel;
 use CodeIgniter\Controller;
 
 class Customer extends Controller
 {
     public function index()
     {
-        // Check login session
+        // Require login
         if (!session()->get('isLoggedIn')) {
             return redirect()->to('/login');
         }
@@ -26,20 +27,27 @@ class Customer extends Controller
             ->orderBy('id', 'DESC')
             ->findAll();
 
-        // Load the view
+        // Load homepage
         return view('customer_home', $data);
     }
 
-    public function profile() {
-    $data['user'] = [
-        'name' => 'John Doe',
-        'email' => 'john@example.com',
-        'address' => '123 Main Street, Manila',
-        'phone' => '09123456789',
-        'created_at' => 'March 2024'
-    ];
+    public function profile()
+    {
+        // Require login
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/login');
+        }
 
-    return view('customer/profile', $data);
-}
+        // Load user info from database
+        $userModel = new UserModel();
+        $userId = session()->get('id'); // Session should contain this
+        $userData = $userModel->find($userId);
 
+        if (!$userData) {
+            return redirect()->to('/logout');
+        }
+
+        $data['user'] = $userData;
+        return view('profile', $data);
+    }
 }
