@@ -18,15 +18,28 @@ class Customer extends Controller
         $data['products'] = $model
             ->where('category', 'Figurines')
             ->orderBy('id', 'DESC')
-            ->findAll(16);
+            ->findAll();
 
         // === Other Products ===
         $data['others'] = $model
             ->where('category', 'Others')
             ->orderBy('id', 'DESC')
-            ->findAll(16);
+            ->findAll();
 
         // Load the view
         return view('customer_home', $data);
     }
+
+    public function profile() {
+    $data['user'] = [
+        'name' => 'John Doe',
+        'email' => 'john@example.com',
+        'address' => '123 Main Street, Manila',
+        'phone' => '09123456789',
+        'created_at' => 'March 2024'
+    ];
+
+    return view('customer/profile', $data);
+}
+
 }
