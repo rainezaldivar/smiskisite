@@ -80,10 +80,5 @@
     });
   });
 </script>
-
-<div class="container mt-4">
-  <!-- Your page content goes here -->
-</div>
-
 </body>
 </html>

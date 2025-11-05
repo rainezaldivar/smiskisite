@@ -273,9 +273,7 @@ body {
   font-weight: 700;
 }
 
-/* =========================================================
-   FOOTER
-========================================================= */
+/*  FOOTER  */
 html, body {
   height: 100%;
 }
@@ -283,11 +281,11 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full height of the screen */
+  min-height: 100vh; 
 }
 
 main {
-  flex: 1; /* Pushes footer to the bottom */
+  flex: 1; 
 }
 
 .custom-footer {
@@ -297,5 +295,5 @@ main {
   text-align: center;
   padding: 1.2rem 1rem;
   font-family: inherit;
-  margin-top: auto; /* Key: makes it stay at bottom */
+  margin-top: auto; 
 }
