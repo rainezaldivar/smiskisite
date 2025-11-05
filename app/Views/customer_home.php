@@ -1,5 +1,6 @@
 <?= $this->include('templates/header') ?>
 
+<main>
 <!-- === HERO CAROUSEL === -->
 <div id="manualCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
   <div class="carousel-inner rounded-4 shadow-sm overflow-hidden">
@@ -132,6 +133,7 @@
     </div>
   </div>
 </div>
+</main>
 
 <?= $this->include('templates/footer') ?>
 

@@ -68,7 +68,7 @@ body {
 /* CAROUSEL */
 #manualCarousel {
   max-width: 900px;
-  margin: 40px auto 3rem auto;
+  margin: 10px auto 3rem auto;
   border-radius: 15px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
@@ -276,34 +276,26 @@ body {
 /* =========================================================
    FOOTER
 ========================================================= */
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full height of the screen */
+}
+
+main {
+  flex: 1; /* Pushes footer to the bottom */
+}
+
 .custom-footer {
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
+  width: 100%;
   background: linear-gradient(90deg, #2d7a1f, #4a9e32);
   color: #fff;
   text-align: center;
   padding: 1.2rem 1rem;
-  margin-top: 47px;
-  margin-bottom: auto;
   font-family: inherit;
+  margin-top: auto; /* Key: makes it stay at bottom */
 }
-
-.custom-footer p {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-.custom-footer small {
-  display: block;
-  margin-top: 0.3rem;
-  font-size: 0.8rem;
-  opacity: 0.9;
-}
-
-.custom-footer .disclaimer {
-  margin-top: 0.5rem;
-  font-size: 1rem;
-  opacity: 1;
-  margin-bottom: 1rem;
-}
-

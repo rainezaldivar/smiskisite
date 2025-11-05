@@ -15,8 +15,8 @@ $routes->get('/logout', 'Auth::logout');
 
 // Customer routes
 $routes->get('/customer', 'Customer::index');
-$routes->get('/customer/home', 'Customer::index'); // For logo reload and Products scroll
-$routes->get('/customer/profile', 'Customer::profile'); // For Profile link
+$routes->get('/customer/home', 'Customer::index'); 
+$routes->get('/customer/profile', 'Customer::profile');
 
 // Admin routes
 $routes->get('/admin', 'Admin::index');
