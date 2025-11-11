@@ -1,35 +1,47 @@
 <?= $this->include('templates/header') ?>
+
+<!-- CUSTOM CSS -->
 <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
 
+<!-- === PROFILE PAGE CONTAINER === -->
 <div class="container py-5">
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card shadow-lg border-0">
-        <div class="card-body text-center">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
 
-          <?php 
-            $profileImg = (session()->get('role') === 'admin') ? 'adprofile.png' : 'profile.png';
-          ?>
-          <img src="<?= base_url('uploads/' . $profileImg) ?>" 
-               alt="Profile Picture" 
-               class="rounded-circle mb-3" 
-               style="width: 120px; height: 120px; object-fit: cover;">
+            <!-- === PROFILE CARD === -->
+            <div class="card shadow-lg border-0">
+                <div class="card-body text-center">
 
-          <h4 class="fw-bold mb-0 text-dark"><?= esc($user['name'] ?? 'Customer Name') ?></h4>
-          <p class="text-muted mb-3"><?= esc($user['email'] ?? 'email@example.com') ?></p>
-          <hr>
-          <p class="mb-2"><strong>Member Since:</strong> <?= esc($user['created_at'] ?? '2025') ?></p>
+                    <!-- PROFILE IMAGE -->
+                    <?php 
+                        $profileImg = (session()->get('role') === 'admin') ? 'adprofile.png' : 'profile.png';
+                    ?>
+                    <img src="<?= base_url('uploads/' . $profileImg) ?>" 
+                         alt="Profile Picture" 
+                         class="rounded-circle mb-3" 
+                         style="width: 120px; height: 120px; object-fit: cover;">
 
-          <div class="mt-4">
-            <?php if(session()->get('role') !== 'admin'): ?>
-              <a href="<?= base_url('store') ?>" class="btn btn-secondary">Back to Store</a>
-            <?php endif; ?>
-          </div>
+                    <!-- USER NAME -->
+                    <h4 class="fw-bold mb-0 text-dark"><?= esc($user['name'] ?? 'Customer Name') ?></h4>
 
+                    <!-- USER EMAIL -->
+                    <p class="text-muted mb-3"><?= esc($user['email'] ?? 'email@example.com') ?></p>
+
+                    <hr>
+
+                    <!-- MEMBER SINCE -->
+                    <p class="mb-2"><strong>Member Since:</strong> <?= esc($user['created_at'] ?? '2025') ?></p>
+
+                    <!-- BACK TO STORE BUTTON (NON-ADMIN) -->
+                    <div class="mt-4">
+                        <?php if(session()->get('role') !== 'admin'): ?>
+                            <a href="<?= base_url('store') ?>" class="btn btn-secondary">Back to Store</a>
+                        <?php endif; ?>
+                    </div>
+
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>  
-
+</div>
 <?= $this->include('templates/footer') ?>

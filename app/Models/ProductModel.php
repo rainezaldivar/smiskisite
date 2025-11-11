@@ -4,6 +4,16 @@ use CodeIgniter\Model;
 
 class ProductModel extends Model
 {
+    // DATABASE TABLE NAME
     protected $table = 'products';
-    protected $allowedFields = ['name', 'price', 'description', 'image', 'category', 'stock'];
+
+    // FIELDS ALLOWED FOR MASS ASSIGNMENT
+    protected $allowedFields = [
+        'name',
+        'price',
+        'description',
+        'image',
+        'category',
+        'stock'
+    ];
 }

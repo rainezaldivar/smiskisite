@@ -1,51 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title> Register </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>  REGISTER </title>
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
 
-  <!-- Shared Auth Styles -->
-  <link rel="stylesheet" href="<?= base_url('css/login.css') ?>">
+    <!-- SHARED AUTH STYLES -->
+    <link rel="stylesheet" href="<?= base_url('css/login.css') ?>">
 </head>
 
 <body class="register-body">
 
-  <div class="auth-container">
-    <h2> Smiski Shop </h2>
-    <p class="subtitle">Create your account below to join the Smiski family!</p>
+    <!-- === REGISTER CONTAINER === -->
+    <div class="auth-container">
+        <!-- SITE TITLE -->
+        <h2> SMISKI SHOP </h2>
 
-    <!-- Validation Errors -->
-    <?= isset($validation) ? '<div class="alert alert-danger text-start">'.$validation->listErrors().'</div>' : '' ?>
+        <!-- SUBTITLE -->
+        <p class="subtitle">Create your account below to join the Smiski family!</p>
 
-    <form method="post" action="/save">
-      <div class="mb-3 text-start">
-        <label class="form-label">Name</label>
-        <input type="text" name="name" class="form-control" required>
-      </div>
+        <!-- VALIDATION ERRORS -->
+        <?= isset($validation) ? '<div class="alert alert-danger text-start">'.$validation->listErrors().'</div>' : '' ?>
 
-      <div class="mb-3 text-start">
-        <label class="form-label">Email</label>
-        <input type="email" name="email" class="form-control" required>
-      </div>
+        <!-- REGISTER FORM -->
+        <form method="post" action="/save">
+            <!-- NAME FIELD -->
+            <div class="mb-3 text-start">
+                <label class="form-label">Name</label>
+                <input type="text" name="name" class="form-control" required>
+            </div>
 
-      <div class="mb-3 text-start">
-        <label class="form-label">Password</label>
-        <input type="password" name="password" class="form-control" required>
-      </div>
+            <!-- EMAIL FIELD -->
+            <div class="mb-3 text-start">
+                <label class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
 
-      <button type="submit" class="btn-auth">Register</button>
-    </form>
+            <!-- PASSWORD FIELD -->
+            <div class="mb-3 text-start">
+                <label class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
 
-    <p class="footer-text">
-      Already have an account?
-      <a href="<?= base_url('login') ?>">Login here</a>
-    </p>
-  </div>
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="btn-auth">Register</button>
+        </form>
 
+        <!-- FOOTER TEXT -->
+        <p class="footer-text">
+            Already have an account?
+            <a href="<?= base_url('login') ?>">Login here</a>
+        </p>
+    </div>
+    <!-- END REGISTER CONTAINER -->
 
 </body>
 </html>

@@ -10,17 +10,27 @@ body {
 }
 
 main {
-  flex: 1; 
-  padding: 20px 0 40px;
+  flex: 1;
+  padding: 80px 0 40px; /* top padding for navbar */
 }
 
-
+/* --- PAGE INDICATOR --- */
+.page-indicator {
+  width: 90%;
+  max-width: 1100px;
+  margin: 20px auto 0;
+  font-size: 0.95rem;
+  color: #507a2a;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 
 /* --- ADMIN CONTAINER --- */
 .admin-container {
   width: 90%;
   max-width: 1100px;
-  margin: 50px auto 0;
+  margin: 20px auto 0;
   background: #ffffff;
   border-radius: 20px;
   padding: 40px 50px;
@@ -53,7 +63,7 @@ main {
   z-index: 1;
 }
 
-/* --- HEADER TITLE --- */
+/* header inside container */
 .admin-container h3 {
   text-align: center;
   font-size: 2.2rem;
@@ -64,7 +74,7 @@ main {
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
-/* --- TABLE DESIGN --- */
+/* --- TABLE --- */
 .table {
   width: 100%;
   border-collapse: separate;
@@ -90,9 +100,24 @@ main {
   text-align: center;
 }
 
+.table tbody {
+  font-size: 0.95rem;
+  line-height: 1.4rem;
+}
+
 .table tbody tr {
+  height: 50px;
+  min-height: 50px;
   transition: all 0.25s ease;
   cursor: default;
+}
+
+.table tbody tr td {
+  padding: 0 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .table tbody tr:nth-child(even) {
@@ -164,22 +189,5 @@ main {
   cursor: not-allowed;
 }
 
-/* --- TABLE BODY FIX --- */
-.table tbody {
-  font-size: 0.95rem;      /* consistent font size */
-  line-height: 1.4rem;     /* consistent line height */
-}
 
-.table tbody tr {
-  height: 50px;             /* fixed row height */
-  min-height: 50px;
-}
-
-.table tbody tr td {
-  padding: 0 12px;          /* smaller consistent padding */
-  vertical-align: middle;
-  white-space: nowrap;      /* prevent wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 

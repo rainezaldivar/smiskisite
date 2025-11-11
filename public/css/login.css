@@ -1,110 +1,117 @@
-
+/* === GOOGLE FONT IMPORT === */
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough:wght@400;600;700&display=swap');
 
-
+/* === BODY STYLES === */
 body.login-body,
 body.register-body {
-  background: url('../uploads/smiski.jpg') no-repeat center center fixed;
-  background-size:cover;
-  font-family: "Winky Rough", sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  margin: 0;
-  overflow: hidden;
-  position: relative;
+    background: url('../uploads/smiski.jpg') no-repeat center center fixed;
+    background-size: cover;
+    font-family: "Winky Rough", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
 }
 
+/* OVERLAY TINT */
 body.login-body::before,
 body.register-body::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(154, 201, 82, 0.25); /* soft green tint */
-  backdrop-filter: blur(2px);
-  z-index: 1;
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(154, 201, 82, 0.25); 
+    backdrop-filter: blur(2px);
+    z-index: 1;
 }
 
-/* CONTAINER */
+/* === AUTH CONTAINER === */
 .auth-container {
-  background: rgba(255, 255, 255, 0.96);
-  border-radius: 18px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  width: 100%;
-  max-width: 400px;
-  padding: 2.5rem;
-  text-align: center;
-  animation: fadeIn 0.4s ease;
-  z-index: 2;
-  position: relative;
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 18px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    animation: fadeIn 0.4s ease;
 }
 
-/* HEADINGS & TEXT */
+/* === HEADINGS & SUBTITLE === */
 .auth-container h2 {
-  color: #2d7a1f;
-  font-weight: 800;
-  margin-bottom: 0.25rem;
+    color: #2d7a1f;
+    font-weight: 800;
+    margin-bottom: 0.25rem;
 }
 
 .auth-container p.subtitle {
-  color: #5b8853;
-  font-weight: 500;
-  margin-bottom: 2rem;
+    color: #5b8853;
+    font-weight: 500;
+    margin-bottom: 2rem;
 }
 
-/* FORM ELEMENTS */
+/* === FORM ELEMENTS === */
 .auth-container .form-label {
-  font-weight: 600;
-  color: #3f6538;
-  text-align: left;
-  display: block;
+    font-weight: 600;
+    color: #3f6538;
+    text-align: left;
+    display: block;
 }
 
 .auth-container .form-control {
-  border-radius: 10px;
-  border: 1.6px solid #c9e7ac;
-  padding: 0.7rem 0.9rem;
-  margin-bottom: 1.2rem;
-  transition: 0.3s;
+    border-radius: 10px;
+    border: 1.6px solid #c9e7ac;
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 1.2rem;
+    transition: 0.3s;
 }
 
 .auth-container .form-control:focus {
-  border-color: #69b43a;
-  box-shadow: 0 0 5px rgba(105, 180, 58, 0.3);
+    border-color: #69b43a;
+    box-shadow: 0 0 5px rgba(105, 180, 58, 0.3);
 }
 
-/* BUTTON */
+/* === BUTTON STYLES === */
 .btn-auth {
-  width: 100%;
-  background: linear-gradient(90deg, #4a9e32, #6fbe3b);
-  border: none;
-  color: #fff;
-  font-weight: 700;
-  border-radius: 10px;
-  padding: 0.8rem;
-  margin-top: 0.5rem;
-  transition: 0.25s ease;
+    width: 100%;
+    background: linear-gradient(90deg, #4a9e32, #6fbe3b);
+    border: none;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 10px;
+    padding: 0.8rem;
+    margin-top: 0.5rem;
+    transition: 0.25s ease;
 }
 
 .btn-auth:hover {
-  background: linear-gradient(90deg, #6fbe3b, #9cd94c);
-  transform: translateY(-2px);
+    background: linear-gradient(90deg, #6fbe3b, #9cd94c);
+    transform: translateY(-2px);
 }
 
-/* FOOTER */
+/* === FOOTER TEXT === */
 .auth-container p.footer-text {
-  margin-top: 1rem;
-  color: #4a9e32;
-  font-weight: 500;
+    margin-top: 1rem;
+    color: #4a9e32;
+    font-weight: 500;
 }
 
 .auth-container p.footer-text a {
-  color: #2d7a1f;
-  text-decoration: none;
-  font-weight: 700;
+    color: #2d7a1f;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 .auth-container p.footer-text a:hover {
-  text-decoration: underline;
+    text-decoration: underline;
+}
+
+/* === ANIMATION === */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
 }

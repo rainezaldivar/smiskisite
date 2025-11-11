@@ -1,37 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title> Login </title>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="<?= base_url('css/login.css') ?>">
+    <meta charset="UTF-8">
+    <title>LOGIN</title>
 
+    <!-- BOOTSTRAP CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+
+    <!-- CUSTOM CSS -->
+    <link rel="stylesheet" href="<?= base_url('css/login.css') ?>">
 </head>
+
 <body class="login-body">
 
-  <div class="auth-container">
-    <h2> Smiski Shop </h2>
-    <p class="subtitle">Welcome back! Please log in.</p>
+    <!-- === LOGIN CONTAINER === -->
+    <div class="auth-container">
+        <!-- SITE TITLE -->
+        <h2>SMISKI SHOP</h2>
 
-    <?php if(session()->getFlashdata('error')): ?>
-      <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
-    <?php endif; ?>
+        <!-- SUBTITLE -->
+        <p class="subtitle">Welcome back! Please log in.</p>
 
-    <form method="post" action="/loginAuth">
-      <label class="form-label">Email</label>
-      <input type="email" name="email" class="form-control" required>
+        <!-- ERROR MESSAGE -->
+        <?php if(session()->getFlashdata('error')): ?>
+            <div class="alert alert-danger"><?= session()->getFlashdata('error') ?></div>
+        <?php endif; ?>
 
-      <label class="form-label">Password</label>
-      <input type="password" name="password" class="form-control" required>
+        <!-- LOGIN FORM -->
+        <form method="post" action="/loginAuth">
+            <!-- EMAIL FIELD -->
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-control" required>
 
-      <button type="submit" class="btn btn-auth">Login</button>
-    </form>
+            <!-- PASSWORD FIELD -->
+            <label class="form-label">Password</label>
+            <input type="password" name="password" class="form-control" required>
 
-    <p class="footer-text">
-      No account? <a href="/register">Register here</a>
-    </p>
-  </div>
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="btn btn-auth">Login</button>
+        </form>
 
+        <!-- FOOTER TEXT -->
+        <p class="footer-text">
+            No account? <a href="/register">Register here</a>
+        </p>
+    </div>
 
 </body>
 </html>

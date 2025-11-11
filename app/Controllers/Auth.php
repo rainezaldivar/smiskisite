@@ -5,21 +5,25 @@ use CodeIgniter\Controller;
 
 class Auth extends Controller
 {
+    // LOGIN PAGE
     public function login()
     {
         helper(['form']);
         echo view('login');
     }
 
+    // LOGIN AUTHENTICATION
     public function loginAuth()
     {
         helper(['form']);
 
+        // VALIDATION RULES
         $rules = [
             'email'    => 'required',
             'password' => 'required'
         ];
 
+        // CHECK VALIDATION
         if (!$this->validate($rules)) {
             return view('login', ['validation' => $this->validator]);
         }
@@ -30,7 +34,7 @@ class Auth extends Controller
         $email    = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        // Accept email OR username
+        // FETCH USER BY EMAIL OR USERNAME
         $data = $userModel
             ->groupStart()
             ->where('email', $email)
@@ -39,15 +43,16 @@ class Auth extends Controller
             ->first();
 
         if (!$data) {
-            // No account found
+            // NO ACCOUNT FOUND
             return redirect()->back()->with('error', 'Account not found. Please register first.');
         }
 
         $hashedPassword = $data['password'];
 
+        // CHECK PASSWORD
         if (password_verify($password, $hashedPassword) || $password === $hashedPassword) {
 
-            // Save session
+            // SET SESSION
             $session->set([
                 'id'         => $data['id'],
                 'name'       => $data['name'],
@@ -56,38 +61,43 @@ class Auth extends Controller
                 'isLoggedIn' => true
             ]);
 
-            // Redirect based on role
+            // REDIRECT BASED ON ROLE
             return $data['role'] === 'admin'
                 ? redirect()->to('/admin')->with('success', 'Welcome back, Admin!')
                 : redirect()->to('/customer')->with('success', 'Login successful! Welcome back.');
         }
 
-        // Wrong password
+        // WRONG PASSWORD
         return redirect()->back()->with('error', 'Incorrect password. Please try again.');
     }
 
+    // REGISTER PAGE
     public function register()
     {
         helper(['form']);
         echo view('register');
     }
 
+    // SAVE NEW USER
     public function save()
     {
         helper(['form']);
 
+        // VALIDATION RULES
         $rules = [
             'name'     => 'required|min_length[3]|max_length[50]',
             'email'    => 'required|valid_email|is_unique[users.email]',
             'password' => 'required|min_length[5]'
         ];
 
+        // CHECK VALIDATION
         if (!$this->validate($rules)) {
             return view('register', ['validation' => $this->validator]);
         }
 
         $userModel = new UserModel();
 
+        // CREATE USER DATA
         $data = [
             'name'     => $this->request->getVar('name'),
             'email'    => $this->request->getVar('email'),
@@ -97,7 +107,7 @@ class Auth extends Controller
 
         $userModel->insert($data);
 
-        // Auto-login new user
+        // AUTO-LOGIN NEW USER
         $session = session();
         $session->set([
             'id'         => $userModel->insertID(),
@@ -110,6 +120,7 @@ class Auth extends Controller
         return redirect()->to('/customer')->with('success', 'Registration successful! Welcome to your dashboard.');
     }
 
+    // LOGOUT USER
     public function logout()
     {
         session()->destroy();
