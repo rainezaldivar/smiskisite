@@ -48,94 +48,90 @@
 
     <!-- === SMISKI FIGURINES SECTION === -->
     <section id="smiski-products" class="py-4">
-        <!-- SECTION HEADER -->
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3 class="fw-bold mb-0 text-primary">Smiski Figurines</h3>
-            <a href="#others" class="view-more-link text-decoration-none fw-semibold">View Other Products →</a>
-        </div>
+        <div class="container">
+            <!-- SECTION HEADER -->
+            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+                <h3 class="fw-bold mb-0 text-primary">Smiski Figurines</h3>
+                <a href="#others" class="view-more-link text-decoration-none fw-semibold mt-2 mt-md-0">View Other Products →</a>
+            </div>
 
-        <!-- PRODUCTS GRID -->
-        <div class="row g-4">
-            <?php if (!empty($products)): ?>
-                <?php foreach ($products as $item): ?>
-                    <div class="col-md-3 col-sm-6">
-                        <!-- PRODUCT CARD -->
-                        <div class="product-card h-100 border-0 shadow-sm"
-                             data-bs-toggle="modal"
-                             data-bs-target="#productModal"
-                             data-name="<?= esc($item['name']) ?>"
-                             data-price="<?= number_format($item['price'], 2) ?>"
-                             data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
-                             data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                             data-description="<?= esc($item['description'] ?? 'No description available') ?>">
+            <!-- PRODUCTS GRID -->
+            <div class="row g-4">
+                <?php if (!empty($products)): ?>
+                    <?php foreach ($products as $item): ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="product-card h-100 border-0 shadow-sm"
+                                 data-bs-toggle="modal"
+                                 data-bs-target="#productModal"
+                                 data-name="<?= esc($item['name']) ?>"
+                                 data-price="<?= number_format($item['price'], 2) ?>"
+                                 data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
+                                 data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
+                                 data-description="<?= esc($item['description'] ?? 'No description available') ?>">
 
-                            <!-- PRODUCT IMAGE -->
-                            <div class="product-img-wrapper">
-                                <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
-                                     alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
-                            </div>
+                                <div class="product-img-wrapper">
+                                    <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
+                                         alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
+                                </div>
 
-                            <!-- PRODUCT DETAILS -->
-                            <div class="card-body text-center p-3">
-                                <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
-                                <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
-                                <?php if ($item['stock'] > 0): ?>
-                                    <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
-                                <?php else: ?>
-                                    <small class="text-danger fw-bold">Out of Stock</small>
-                                <?php endif; ?>
+                                <div class="card-body text-center p-3">
+                                    <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
+                                    <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
+                                    <?php if ($item['stock'] > 0): ?>
+                                        <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
+                                    <?php else: ?>
+                                        <small class="text-danger fw-bold">Out of Stock</small>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="text-muted">No Smiski products available.</p>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-muted">No Smiski products available.</p>
+                <?php endif; ?>
+            </div>
         </div>
     </section>
 
     <!-- === OTHER PRODUCTS SECTION === -->
     <section id="others" class="py-4 mt-5">
-        <!-- SECTION HEADER -->
-        <h3 class="fw-bold mb-4 smiski-text">Other Products</h3>
+        <div class="container">
+            <h3 class="fw-bold mb-4 smiski-text">Other Products</h3>
 
-        <!-- PRODUCTS GRID -->
-        <div class="row g-4">
-            <?php if (!empty($others)): ?>
-                <?php foreach ($others as $item): ?>
-                    <div class="col-md-3 col-sm-6">
-                        <!-- PRODUCT CARD -->
-                        <div class="product-card h-100 border-0 shadow-sm"
-                             data-bs-toggle="modal"
-                             data-bs-target="#productModal"
-                             data-name="<?= esc($item['name']) ?>"
-                             data-price="<?= number_format($item['price'], 2) ?>"
-                             data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
-                             data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                             data-description="<?= esc($item['description'] ?? 'No description available') ?>">
+            <div class="row g-4">
+                <?php if (!empty($others)): ?>
+                    <?php foreach ($others as $item): ?>
+                        <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="product-card h-100 border-0 shadow-sm"
+                                 data-bs-toggle="modal"
+                                 data-bs-target="#productModal"
+                                 data-name="<?= esc($item['name']) ?>"
+                                 data-price="<?= number_format($item['price'], 2) ?>"
+                                 data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
+                                 data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
+                                 data-description="<?= esc($item['description'] ?? 'No description available') ?>">
 
-                            <!-- PRODUCT IMAGE -->
-                            <div class="product-img-wrapper">
-                                <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
-                                     alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
-                            </div>
+                                <div class="product-img-wrapper">
+                                    <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
+                                         alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
+                                </div>
 
-                            <!-- PRODUCT DETAILS -->
-                            <div class="card-body text-center p-3">
-                                <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
-                                <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
-                                <?php if ($item['stock'] > 0): ?>
-                                    <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
-                                <?php else: ?>
-                                    <small class="text-danger fw-bold">Out of Stock</small>
-                                <?php endif; ?>
+                                <div class="card-body text-center p-3">
+                                    <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
+                                    <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
+                                    <?php if ($item['stock'] > 0): ?>
+                                        <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
+                                    <?php else: ?>
+                                        <small class="text-danger fw-bold">Out of Stock</small>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                <?php endforeach; ?>
-            <?php else: ?>
-                <p class="text-muted">No other products available.</p>
-            <?php endif; ?>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <p class="text-muted">No other products available.</p>
+                <?php endif; ?>
+            </div>
         </div>
     </section>
 
@@ -144,13 +140,11 @@
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
 
-                <!-- MODAL HEADER -->
                 <div class="modal-header border-0 bg-light">
                     <h5 class="modal-title fw-bold text-success" id="productModalTitle"></h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
 
-                <!-- MODAL BODY -->
                 <div class="modal-body d-flex flex-column flex-md-row align-items-start gap-4">
                     <div class="modal-img-wrapper flex-shrink-0">
                         <img id="productModalImage" src="" alt="" class="img-fluid rounded-3 shadow-sm">
@@ -165,42 +159,32 @@
             </div>
         </div>
     </div>
-
 </main>
 
 <?= $this->include('templates/footer') ?>
 
-<!-- === BOOTSTRAP ICONS & JS === -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- === JS FOR PRODUCT MODAL === -->
 <script>
-const productModal = document.getElementById('productModal');
-productModal.addEventListener('show.bs.modal', function (event) {
-    const card = event.relatedTarget;
+    const productModal = document.getElementById('productModal');
+    productModal.addEventListener('show.bs.modal', function (event) {
+        const card = event.relatedTarget;
 
-    const name = card.getAttribute('data-name');
-    const price = card.getAttribute('data-price');
-    const stockText = card.getAttribute('data-stock');
-    const image = card.getAttribute('data-image');
-    const desc = card.getAttribute('data-description');
+        const name = card.getAttribute('data-name');
+        const price = card.getAttribute('data-price');
+        const stockText = card.getAttribute('data-stock');
+        const image = card.getAttribute('data-image');
+        const desc = card.getAttribute('data-description');
 
-    document.getElementById('productModalTitle').textContent = name;
-    document.getElementById('productModalPrice').textContent = '₱' + price;
-    document.getElementById('productModalImage').src = image;
-    document.getElementById('productModalDescription').textContent = desc;
+        document.getElementById('productModalTitle').textContent = name;
+        document.getElementById('productModalPrice').textContent = '₱' + price;
+        document.getElementById('productModalImage').src = image;
+        document.getElementById('productModalDescription').textContent = desc;
 
-    const stockEl = document.getElementById('productModalStock');
-    stockEl.textContent = stockText;
-
-    // STOCK COLOR LOGIC
-    if (stockText.toLowerCase().includes('out of stock')) {
-        stockEl.style.color = '#e63946';
+        const stockEl = document.getElementById('productModalStock');
+        stockEl.textContent = stockText;
+        stockEl.style.color = stockText.toLowerCase().includes('out of stock') ? '#e63946' : '#00c851';
         stockEl.style.fontWeight = '700';
-    } else {
-        stockEl.style.color = '#00c851';
-        stockEl.style.fontWeight = '700';
-    }
-});
+    });
 </script>

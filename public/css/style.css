@@ -103,8 +103,15 @@ body {
 }
 
 /* POSITION ARROWS */
-.carousel-control-prev { left: 335px; top: 430px; }
-.carousel-control-next { right: 335px; top: 430px; }
+.carousel-control-prev {
+    left: 30px;
+    top: 300px;
+}
+
+.carousel-control-next {
+    right: 30px;
+    top: 300px;
+}
 
 /* HOVER EFFECT */
 .carousel-control-prev:hover,
