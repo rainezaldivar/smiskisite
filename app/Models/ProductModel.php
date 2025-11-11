@@ -5,5 +5,5 @@ use CodeIgniter\Model;
 class ProductModel extends Model
 {
     protected $table = 'products';
-    protected $allowedFields = ['name', 'price', 'description', 'image', 'category'];
+    protected $allowedFields = ['name', 'price', 'description', 'image', 'category', 'stock'];
 }

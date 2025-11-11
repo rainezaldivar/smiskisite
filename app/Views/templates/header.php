@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smiski Store</title>
+  <title>Smiski</title>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,38 +12,27 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
   <!-- Custom CSS -->
-  <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
-
-  <style>
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      padding-top: 80px;
-    }
-
-    .custom-navbar {
-      background-color: #198754;
-    }
-
-    .navbar .nav-link.active {
-      color: #ffc107 !important;
-      font-weight: 600;
-    }
-  </style>
+  <link rel="stylesheet" href="<?= base_url('css/header.css') ?>">
 </head>
 <body>
 
 <!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
-  <div class="container">
+  <div class="container-fluid px-4">
 
     <!-- LOGO -->
-    <a class="navbar-brand d-flex align-items-center" href="<?= base_url('/customer/home') ?>">
-      <img src="<?= base_url('uploads/top_logo.png') ?>" alt="Smiski Store Logo"
-           style="height: 45px; width: auto; object-fit: contain; margin-right: 8px;">
-    </a>
+    <a class="navbar-brand d-flex align-items-center" href="<?php
+    $role = session()->get('role');
+    if ($role === 'admin') {
+        echo base_url('/admin');
+    } elseif ($role === 'customer') {
+        echo base_url('/customer');
+    } else {
+        echo base_url('/');
+    }
+?>">
+    <img src="<?= base_url('uploads/top_logo.png') ?>" alt="Smiski Store Logo">
+</a>
 
     <!-- TOGGLER -->
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -60,7 +49,7 @@
           <a class="nav-link" href="<?= base_url('/customer/profile') ?>">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-danger" href="<?= base_url('/logout') ?>">Logout</a>
+          <a class="nav-link logout-btn" href="<?= base_url('/logout') ?>">Logout</a>
         </li>
       </ul>
     </div>

@@ -68,9 +68,10 @@ body {
 /* CAROUSEL */
 #manualCarousel {
   max-width: 900px;
-  margin: 10px auto 3rem auto;
+  margin: 20px auto 3rem auto;
   border-radius: 15px;
-  margin-top: 50px;
+  position: relative;
+  margin-top: 30px;
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 }
@@ -81,32 +82,79 @@ body {
   display: block;
 }
 
-/* CAROUSEL ARROWS */
+/* Center carousel arrows vertically inside carousel */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+/* Keep arrows inside image area */
+.carousel-control-prev {
+  left: 335px;
+  top: 430px;
+}
+
+.carousel-control-next {
+  right: 335px;
+  top: 430px;
+}
+
+/* Hover effect */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.45);
+  transform: translateY(-50%) scale(1.1);
+}
+
+/* Arrow icons */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
   background-image: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: relative;
   opacity: 1;
 }
 
 .carousel-control-prev-icon::after,
 .carousel-control-next-icon::after {
   content: '';
-  display: inline-block;
-  width: 0.7rem;
-  height: 0.7rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.6rem;
+  height: 0.6rem;
   border-top: 0.25rem solid #fff;
   border-right: 0.25rem solid #fff;
+  transform: translate(-50%, -50%);
 }
 
-.carousel-control-prev-icon::after { transform: rotate(-135deg); }
-.carousel-control-next-icon::after { transform: rotate(45deg); }
+.carousel-control-prev-icon::after {
+  transform: translate(-50%, -50%) rotate(-135deg);
+}
+
+.carousel-control-next-icon::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
 
 .carousel-control-prev,
 .carousel-control-next {
-  width: 10%;
+  width: 45px !important;
+  height: 45px !important;
 }
+
 
 /* PRODUCT CARD */
 .product-card {
@@ -274,27 +322,74 @@ body {
   font-weight: 700;
 }
 
-/*  FOOTER  */
-html, body {
-  height: 100%;
+/* PROFILE SECTION */
+
+/* Container */
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 20px;
 }
 
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; 
+/* Card Styling */
+.card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-main {
-  flex: 1; 
+
+.card-body {
+    padding: 30px;
 }
 
-.custom-footer {
-  width: 100%;
-  background: linear-gradient(90deg, #2d7a1f, #4a9e32);
-  color: #fff;
-  text-align: center;
-  padding: 1.2rem 1rem;
-  font-family: inherit;
-  margin-top: auto; 
+/* Profile Image */
+.card img.rounded-circle {
+    border: 4px solid #4a9e32;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+}
+
+/* Text Styling */
+.card h4 {
+    font-size: 1.6rem;
+    margin-top: 10px;
+}
+
+.card p {
+    font-size: 0.95rem;
+}
+
+/* Divider */
+.card hr {
+    margin: 20px 0;
+    border-color: #ddd;
+}
+
+/* Back to Store Button */
+.card .btn-secondary {
+    background-color: #4a9e32;
+    border-color: #4a9e32;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 50px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.card .btn-secondary:hover {
+    background-color: #2d7a1f;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .card-body {
+        padding: 20px;
+    }
+
+    .card img.rounded-circle {
+        width: 100px !important;
+        height: 100px !important;
+    }
 }

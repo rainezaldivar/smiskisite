@@ -1,0 +1,75 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #9ac952;
+  font-family: "Winky Rough", sans-serif;
+  color: #fff;
+  margin: 0;
+  padding-top: 80px;
+}
+
+/* HEADER / NAVBAR */
+.custom-navbar {
+  width: 100%;
+  background: linear-gradient(90deg, #2d7a1f, #4a9e32);
+  padding: 18px 0;
+  margin: 0;
+  border: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1030;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-navbar .container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin: 0 auto;
+  max-width: 1450px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.custom-navbar .navbar-brand {
+  margin-right: 2rem;
+}
+
+.custom-navbar .navbar-brand img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.custom-navbar .nav-link {
+  color: #f8f9fa !important;
+  font-weight: 500;
+  font-size: 1rem;
+  margin: 0 15px;
+  transition: color 0.25s ease, transform 0.25s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #ffd166 !important;
+  transform: translateY(-1px);
+}
+
+.navbar .nav-link.active {
+  color: #ffc107 !important;
+  font-weight: 600;
+}
+
+.navbar-toggler {
+  border: none;
+  outline: none;
+}
+
+.navbar-toggler-icon {
+  filter: invert(1);
+}

@@ -1,42 +1,57 @@
 <?= $this->include('templates/header') ?>
+<link rel="stylesheet" href="<?= base_url('css/admin.css') ?>">
 
-<div class="container mt-5">
-  <h3 class="mb-4">Admin Dashboard</h3>
+<main>
+  <div class="admin-container">
+      <h3>Registered Users</h3>
 
-  <div class="card mb-4">
-    <div class="card-body">
-      <h5 class="card-title">Registered Users</h5>
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php foreach($users as $user): ?>
-          <tr>
-            <td><?= $user['id'] ?></td>
-            <td><?= $user['name'] ?></td>
-            <td><?= $user['email'] ?></td>
-            <td><?= ucfirst($user['role']) ?></td>
-            <td>
-              <?php if($user['role'] != 'admin'): ?>
-                <a href="/admin/delete/<?= $user['id'] ?>" class="btn btn-sm btn-danger"
-                  onclick="return confirm('Are you sure you want to delete this user?')">Delete</a>
+      <?php if(session()->getFlashdata('success')): ?>
+          <div class="alert alert-success text-center">
+              <?= session()->getFlashdata('success') ?>
+          </div>
+      <?php endif; ?>
+
+      <table class="table table-striped table-hover table-bordered">
+          <thead>
+              <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th width="120">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <?php if (!empty($users) && is_array($users)): ?>
+                  <?php foreach ($users as $u): ?>
+                      <tr>
+                          <td><?= esc($u['id']) ?></td>
+                          <td><?= esc($u['name']) ?></td>
+                          <td><?= esc($u['email']) ?></td>
+                          <td><?= esc($u['role']) ?></td>
+                          <td>
+                              <?php if ($u['role'] !== 'admin'): ?>
+                                  <a href="<?= base_url('admin/delete/'.$u['id']) ?>"
+                                     class="btn btn-danger btn-sm"
+                                     onclick="return confirm('Delete this user?')">Delete</a>
+                              <?php else: ?>
+                                  <span class="text-muted">—</span>
+                              <?php endif; ?>
+                          </td>
+                      </tr>
+                  <?php endforeach; ?>
               <?php else: ?>
-                <span class="text-muted">Admin</span>
+                  <tr>
+                      <td colspan="5" class="text-center text-muted">No users found.</td>
+                  </tr>
               <?php endif; ?>
-            </td>
-          </tr>
-          <?php endforeach; ?>
-        </tbody>
+          </tbody>
       </table>
-    </div>
+
+      <div class="d-flex justify-content-center">
+          <?= $pager->links('users', 'bootstrap_full') ?>
+      </div>
   </div>
-</div>
+</main>
 
 <?= $this->include('templates/footer') ?>

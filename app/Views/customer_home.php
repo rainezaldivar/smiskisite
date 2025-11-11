@@ -1,10 +1,13 @@
 <?= $this->include('templates/header') ?>
 
 <main>
+    <!-- Custom CSS -->
+  <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+
 <!-- === HERO CAROUSEL === -->
 <div id="manualCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
   <div class="carousel-inner rounded-4 shadow-sm overflow-hidden">
-    <div class="carousel-item active">
+    <div class="carousel-item">
       <a href="https://smiski.com/e/products/strap-accessories-series2/" target="_blank">
         <img src="<?= base_url('uploads/smiski1.png') ?>" class="d-block w-100" alt="Smiski 1" style="object-fit:contain;">
       </a>
@@ -23,6 +26,12 @@
       <a href="https://www.facebook.com/share/p/1C3NPs7cxz/" target="_blank">
         <img src="<?= base_url('uploads/smiski4.webp') ?>" class="d-block w-100" alt="Smiski 4" style="object-fit:contain;">
       </a>
+    </div>
+     <div class="carousel-item active">
+      <a href="https://smiski.com/e/products/plush/" target="_blank">
+        <img src="<?= base_url('uploads/smiski5.png') ?>" class="d-block w-100" alt="Smiski 4" style="object-fit:contain;">
+      </a>
+    </div>
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#manualCarousel" data-bs-slide="prev">
