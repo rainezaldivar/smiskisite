@@ -17,8 +17,8 @@
                         $profileImg = (session()->get('role') === 'admin') ? 'adprofile.png' : 'profile.png';
                     ?>
                     <img src="<?= base_url('uploads/' . $profileImg) ?>" 
-                         alt="Profile Picture" 
-                         class="rounded-circle mb-3" 
+                         alt="Profile Picture"
+                         class="rounded-circle mb-3"
                          style="width: 120px; height: 120px; object-fit: cover;">
 
                     <!-- USER NAME -->
@@ -35,7 +35,7 @@
                     <!-- BACK TO STORE BUTTON (NON-ADMIN) -->
                     <div class="mt-4">
                         <?php if(session()->get('role') !== 'admin'): ?>
-                            <a href="<?= base_url('store') ?>" class="btn btn-secondary">Back to Store</a>
+                            <a href="<?= base_url('customer') ?>" class="btn btn-secondary">Back to Store</a>
                         <?php endif; ?>
                     </div>
 

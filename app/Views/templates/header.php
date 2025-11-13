@@ -42,9 +42,13 @@
         <!-- NAVIGATION LINKS -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#smiski-products">Products</a>
-                </li>
+
+                <?php if (session()->get('role') === 'customer'): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#smiski-products">Products</a>
+                    </li>
+                <?php endif; ?>
+
                 <li class="nav-item">
                     <a class="nav-link" href="<?= base_url('/customer/profile') ?>">Profile</a>
                 </li>
@@ -54,8 +58,8 @@
             </ul>
         </div>
 
-    </div>
-</nav>
+            </div>
+        </nav>
 
 <!-- BOOTSTRAP JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

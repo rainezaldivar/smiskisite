@@ -29,9 +29,14 @@
                     <img src="<?= base_url('uploads/smiski4.webp') ?>" class="d-block w-100" alt="Smiski 4" style="object-fit:contain;">
                 </a>
             </div>
-            <div class="carousel-item active">
+            <div class="carousel-item">
                 <a href="https://smiski.com/e/products/plush/" target="_blank">
                     <img src="<?= base_url('uploads/smiski5.png') ?>" class="d-block w-100" alt="Smiski 5" style="object-fit:contain;">
+                </a>
+            </div>
+            <div class="carousel-item active">
+                <a href="https://smiski.com/e/products/touch-light-vol2/" target="_blank">
+                    <img src="<?= base_url('uploads/smiski6.png') ?>" class="d-block w-100" alt="Smiski 5" style="object-fit:contain;">
                 </a>
             </div>
 

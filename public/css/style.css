@@ -282,8 +282,10 @@ body {
 
 /* === PROFILE CARD STYLES === */
 .card {
+    margin-top: 26px;
     border-radius: 12px;
     overflow: hidden;
+    
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
