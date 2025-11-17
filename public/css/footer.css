@@ -16,7 +16,7 @@ main {
 
 .custom-footer {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 0px;
   background: linear-gradient(90deg, #2d7a1f, #4a9e32);
   color: #fff;
   text-align: center;

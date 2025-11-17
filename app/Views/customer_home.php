@@ -51,120 +51,105 @@
         </button>
     </div>
 
-    <!-- === SMISKI FIGURINES SECTION === -->
-    <section id="smiski-products" class="py-4">
+    <!-- === PRODUCT SECTION === -->
+    <section id="all-products" class="py-5">
         <div class="container">
-            <!-- SECTION HEADER -->
-            <div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
-                <h3 class="fw-bold mb-0 text-primary">Smiski Figurines</h3>
-                <a href="#others" class="view-more-link text-decoration-none fw-semibold mt-2 mt-md-0">View Other Products →</a>
+
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white display-6 mb-5">LATEST PRODUCTS</h2>
             </div>
 
-            <!-- PRODUCTS GRID -->
-            <div class="row g-4">
-                <?php if (!empty($products)): ?>
-                    <?php foreach ($products as $item): ?>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="product-card h-100 border-0 shadow-sm"
-                                 data-bs-toggle="modal"
-                                 data-bs-target="#productModal"
-                                 data-name="<?= esc($item['name']) ?>"
-                                 data-price="<?= number_format($item['price'], 2) ?>"
-                                 data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
-                                 data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                                 data-description="<?= esc($item['description'] ?? 'No description available') ?>">
+            <?php
+                $allProducts = array_merge($products ?? [], $others ?? []);
+                usort($allProducts, fn($a, $b) => $b['id'] <=> $a['id']);
+                $latestProducts = array_slice($allProducts, 0, 9);
+            ?>
 
-                                <div class="product-img-wrapper">
-                                    <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
-                                         alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
-                                </div>
+            <div class="product-slider-wrapper">
+                <button class="slide-btn left" onclick="slideProducts(-300)">
+                    <i class="bi bi-chevron-left"></i>
+                </button>
 
-                                <div class="card-body text-center p-3">
-                                    <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
-                                    <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
-                                    <?php if ($item['stock'] > 0): ?>
-                                        <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
-                                    <?php else: ?>
-                                        <small class="text-danger fw-bold">Out of Stock</small>
-                                    <?php endif; ?>
-                                </div>
+                <div id="productSlider" class="product-slider">
+                    <?php foreach ($latestProducts as $item): ?>
+                        <div class="product-card-slide"
+                             role="button"
+                             data-bs-toggle="modal"
+                             data-bs-target="#productModal"
+                             data-name="<?= esc($item['name']) ?>"
+                             data-price="<?= number_format($item['price'], 2) ?>"
+                             data-stock="<?= esc($item['stock'] ?? 'In Stock') ?>"
+                             data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
+                             data-description="<?= esc($item['description'] ?? 'No description available.') ?>">
+
+                            <div class="product-img-wrapper">
+                                <img src="<?= base_url('uploads/' . esc($item['image'])) ?>"
+                                     alt="<?= esc($item['name']) ?>"
+                                     class="product-img">
                             </div>
+
+                            <div class="text-center mt-2">
+                                <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
+                                </p>
+                            </div>
+
                         </div>
                     <?php endforeach; ?>
-                <?php else: ?>
-                    <p class="text-muted">No Smiski products available.</p>
-                <?php endif; ?>
+                </div>
+
+                <button class="slide-btn right" onclick="slideProducts(1)">
+                    <i class="bi bi-chevron-right"></i>
+                </button>
             </div>
+
+            <!-- "VIEW ALL PRODUCTS" BUTTON -->
+            <div class="text-center mt-5">
+                <a href="<?= base_url('customer/shop') ?>"
+                   class="btn btn-light fw-semibold px-4 py-2 rounded-pill shadow-sm">
+                   View All Products →
+                </a>
+            </div>
+
+            <!-- === PRODUCT MODAL === -->
+            <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered">
+                    <div class="modal-content">
+
+                        <div class="modal-header border-0 bg-light">
+                            <h5 class="modal-title fw-bold text-success" id="productModalTitle"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                        </div>
+
+                        <div class="modal-body d-flex flex-column flex-md-row align-items-start gap-4">
+                            <div class="modal-img-wrapper flex-shrink-0">
+                                <img id="productModalImage" src="" alt="" class="img-fluid rounded-3 shadow-sm">
+                            </div>
+                            <div class="modal-details text-dark">
+                                <p class="fw-bold text-success fs-5" id="productModalPrice"></p>
+                                <p id="productModalStock"></p>
+                                <p id="productModalDescription"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <!-- === OTHER PRODUCTS SECTION === -->
-    <section id="others" class="py-4 mt-5">
-        <div class="container">
-            <h3 class="fw-bold mb-4 smiski-text">Other Products</h3>
-
-            <div class="row g-4">
-                <?php if (!empty($others)): ?>
-                    <?php foreach ($others as $item): ?>
-                        <div class="col-lg-3 col-md-4 col-sm-6">
-                            <div class="product-card h-100 border-0 shadow-sm"
-                                 data-bs-toggle="modal"
-                                 data-bs-target="#productModal"
-                                 data-name="<?= esc($item['name']) ?>"
-                                 data-price="<?= number_format($item['price'], 2) ?>"
-                                 data-stock="<?= $item['stock'] > 0 ? 'In Stock: '.$item['stock'] : 'Out of Stock' ?>"
-                                 data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                                 data-description="<?= esc($item['description'] ?? 'No description available') ?>">
-
-                                <div class="product-img-wrapper">
-                                    <img src="<?= base_url('uploads/' . esc($item['image'])) ?>" 
-                                         alt="<?= esc($item['name']) ?>" class="product-img img-fluid rounded-3">
-                                </div>
-
-                                <div class="card-body text-center p-3">
-                                    <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
-                                    <p class="fw-semibold text-success mb-1">₱<?= number_format($item['price'], 2) ?></p>
-                                    <?php if ($item['stock'] > 0): ?>
-                                        <small class="text-muted">In Stock: <?= esc($item['stock']) ?></small>
-                                    <?php else: ?>
-                                        <small class="text-danger fw-bold">Out of Stock</small>
-                                    <?php endif; ?>
-                                </div>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <p class="text-muted">No other products available.</p>
-                <?php endif; ?>
+    <!-- === ABOUT SMISKI FEATURE SECTION === -->
+    <section id="about-smiski" class="py-5">
+        <div class="container text-center">
+            <div class="about-smiski-card mx-auto">
+                <a href="<?= base_url('/customer/about') ?>">
+                    <img src="<?= base_url('uploads/aboutsmiski.png') ?>"
+                         alt="About Smiski"
+                         class="about-smiski-img">
+                </a>
             </div>
         </div>
     </section>
-
-    <!-- === PRODUCT MODAL === -->
-    <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-
-                <div class="modal-header border-0 bg-light">
-                    <h5 class="modal-title fw-bold text-success" id="productModalTitle"></h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <div class="modal-body d-flex flex-column flex-md-row align-items-start gap-4">
-                    <div class="modal-img-wrapper flex-shrink-0">
-                        <img id="productModalImage" src="" alt="" class="img-fluid rounded-3 shadow-sm">
-                    </div>
-                    <div class="modal-details text-dark">
-                        <p class="fw-bold text-success fs-5" id="productModalPrice"></p>
-                        <p id="productModalStock"></p>
-                        <p id="productModalDescription"></p>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</main>
 
 <?= $this->include('templates/footer') ?>
 
@@ -183,13 +168,37 @@
         const desc = card.getAttribute('data-description');
 
         document.getElementById('productModalTitle').textContent = name;
-        document.getElementById('productModalPrice').textContent = '₱' + price;
         document.getElementById('productModalImage').src = image;
+        document.getElementById('productModalImage').alt = name;
         document.getElementById('productModalDescription').textContent = desc;
 
-        const stockEl = document.getElementById('productModalStock');
-        stockEl.textContent = stockText;
-        stockEl.style.color = stockText.toLowerCase().includes('out of stock') ? '#e63946' : '#00c851';
-        stockEl.style.fontWeight = '700';
     });
+
+    function slideProducts(direction) {
+        const slider = document.getElementById('productSlider');
+        const card = slider.querySelector('.product-card-slide');
+        if (!card) return;
+
+        const cardStyle = window.getComputedStyle(card);
+        const cardWidth = card.offsetWidth;
+        const gap = parseInt(cardStyle.marginRight) || 20;
+
+        // Distance to scroll = 3 cards + 3 gaps
+        const scrollDistance = (cardWidth + gap) * 3;
+
+        // Current scroll position
+        const currentScroll = slider.scrollLeft;
+
+        // Max scrollable position
+        const maxScroll = slider.scrollWidth - slider.clientWidth;
+
+        // Calculate new target scroll position
+        let targetScroll = currentScroll + scrollDistance * direction;
+
+        // Clamp target scroll so it doesn't go beyond limits
+        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
+
+        // Scroll smoothly to target
+        slider.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    }
 </script>

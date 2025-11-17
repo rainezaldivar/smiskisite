@@ -1,0 +1,85 @@
+/* ====== GOOGLE FONT IMPORT ====== */
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* ====== GLOBAL STYLES ====== */
+body {
+    background-color: #9ac952;
+    font-family: 'Winky Rough', cursive, sans-serif;
+    color: #fff;
+    padding-top: 130px;
+}
+
+/* ====== CATEGORY TEXT ====== */
+h2 {
+    font-weight: 500;
+    font-size: 3rem;
+    margin: 40px 0 35px 0;
+    padding-bottom: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 3px rgba(154, 201, 82, 0.7);
+    position: relative;
+    text-align: center;
+}
+
+/* ====== GREEN UNDERLINE ====== */
+h2::after {
+    content: "";
+    display: block;
+    width: 900%; 
+    max-width: 1400px;          
+    height: 4px;           
+    background-color: #4a9e32;  
+    margin: 8px auto 0;     
+    border-radius: 2px;     
+}
+
+
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 10px 10px; 
+    justify-content: center; 
+    margin: 0 auto;
+    max-width: 1500px; 
+    margin-bottom: 100px;
+}
+
+.grid a {
+    flex: 0 0 calc((100% / 4) - 1px);
+    max-width: calc((100% / 4) - 1px);
+    display: block;
+    text-align: center;
+    background: none;
+    border-radius: 12px;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.grid a:hover {
+    box-shadow: 0 8px 15px rgb(0 0 0 / 0.12);
+    transform: translateY(-5px);
+}
+
+.grid img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+    .grid a {
+        flex: 0 0 calc((100% / 2) - 15px);
+        max-width: calc((100% / 2) - 15px);
+    }
+}
+
+@media (max-width: 480px) {
+    .grid a {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

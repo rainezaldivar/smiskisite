@@ -2,75 +2,16 @@
 
 /* === GLOBAL STYLES === */
 body {
-    background-color: #9ac952; 
+    background-color: #9ac952 ; 
     font-family: "Winky Rough", sans-serif; 
     color: #fff; 
     margin: 0;
     padding-top: 100px; 
 }
 
-/* === NAVBAR STYLES === */
-.custom-navbar {
-    background: linear-gradient(90deg, #2d7a1f, #4a9e32);/* NAVBAR BACKGROUND */
-    padding: 18px 0;
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
-    z-index: 1030;
-}
-
-/* SCROLLED NAVBAR */
-.custom-navbar.scrolled {
-    background: rgba(26, 26, 26, 0.95);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
-}
-
-/* NAVBAR LOGO */
-.custom-navbar .navbar-brand img {
-    height: 50px;
-    object-fit: contain;
-}
-
-/* NAV LINKS */
-.custom-navbar .nav-link {
-    color: #f8f9fa !important;
-    font-weight: 500;
-    font-size: 1rem;
-    margin: 0 12px;
-    transition: color 0.25s ease, transform 0.25s ease;
-}
-
-.custom-navbar .nav-link:hover {
-    color: #ffd166 !important;
-    transform: translateY(-1px);
-}
-
-/* LOGOUT BUTTON */
-.custom-navbar .btn-outline-danger {
-    border: 1.5px solid #dc3545;
-    color: #f8f9fa;
-    background: transparent;
-    transition: all 0.25s ease;
-}
-
-.custom-navbar .btn-outline-danger:hover {
-    background-color: #dc3545;
-    color: #fff;
-    transform: translateY(-2px);
-}
-
-/* NAVBAR TOGGLER */
-.navbar-toggler {
-    border: none;
-    outline: none;
-}
-
-.navbar-toggler-icon {
-    filter: invert(1); 
-}
-
 /* === CAROUSEL STYLES === */
 #manualCarousel {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 30px auto 3rem auto;
     border-radius: 15px;
     position: relative;
@@ -169,14 +110,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 230px;
+    height: 260px; /* unified product image height */
     overflow: hidden;
 }
 
 .product-img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* fill the container uniformly */
+    object-position: center;
     transition: transform 0.3s ease;
 }
 
@@ -285,6 +227,7 @@ body {
     margin-top: 26px;
     border-radius: 12px;
     overflow: hidden;
+    margin-bottom: 30px;
     
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -322,3 +265,127 @@ body {
     .card-body { padding: 20px; }
     .card img.rounded-circle { width: 100px !important; height: 100px !important; }
 }
+
+/* HORIZONTAL PRODUCT SLIDER */
+.product-slider-wrapper {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+/* ARROW BUTTONS */
+.slide-btn {
+    border: none;
+    background: rgba(0,0,0,0.3);
+    color: white;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10;
+}
+
+.slide-btn:hover {
+    background: rgba(0,0,0,0.55);
+}
+
+/* SLIDER TRACK */
+.product-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+}
+
+.product-slider::-webkit-scrollbar {
+    display: none;
+}
+
+/* PRODUCT CARD */
+.product-card-slide {
+    min-width: 250px;
+    background: white;
+    border-radius: 16px;
+    padding: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.1s;
+}
+
+.product-card-slide:hover{
+    transform: scale(1.05);
+}
+
+/* IMAGE WRAPPER */
+.product-img-wrapper {
+    width: auto;
+    height: 300px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* ABOUT SMISKI SECTION */
+.about-smiski-card {
+    display: flex;               /* enable flexbox */
+    justify-content: center;     /* center horizontally */
+    align-items: center;         /* center vertically */
+    width: auto;
+    max-width: 900px;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 400px;
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.about-smiski-img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+
+
+#about-smiski {
+    background: #a2d890 !important; /* Light green Smiski tone */
+}
+
+/* Increase product card width */
+.product-card-slide {
+    min-width: 300PX;
+    background: white;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: 0.3s;
+}
+
+/* Keep the gap between cards */
+.product-slider {
+    display: flex;
+    gap: 50px;  /* slightly bigger gap */
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding: 10px;
+    max-width: calc(320px * 3 + 24px * 2); /* 3 cards + 2 gaps */
+    margin: 0 auto; /* center slider */
+}
+
+
+
+

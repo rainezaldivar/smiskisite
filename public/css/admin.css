@@ -11,26 +11,16 @@ body {
 
 main {
   flex: 1;
-  padding: 80px 0 40px; /* top padding for navbar */
-}
-
-/* --- PAGE INDICATOR --- */
-.page-indicator {
-  width: 90%;
-  max-width: 1100px;
-  margin: 20px auto 0;
-  font-size: 0.95rem;
-  color: #507a2a;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  padding: 80px 20px 40px; /* smaller side padding for responsiveness */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* --- ADMIN CONTAINER --- */
 .admin-container {
-  width: 90%;
+  width: 100%;
   max-width: 1100px;
-  margin: -38px auto -56px ;
   background: #ffffff;
   border-radius: 20px;
   padding: 40px 50px;
@@ -40,7 +30,6 @@ main {
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 
 .admin-container::before {
   content: "";
@@ -62,12 +51,12 @@ main {
 /* header inside container */
 .admin-container h3 {
   text-align: center;
-  font-size: 2.2rem;
+  font-size: 2rem;
   font-weight: 800;
   color: #507a2a;
   margin-bottom: 30px;
   letter-spacing: 1px;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* --- TABLE --- */
@@ -91,29 +80,15 @@ main {
 
 .table th,
 .table td {
-  padding: 14px 18px;
+  padding: 12px 15px; /* reduced padding for smaller screens */
   vertical-align: middle;
   text-align: center;
-}
-
-.table tbody {
-  font-size: 0.95rem;
-  line-height: 1.4rem;
 }
 
 .table tbody tr {
   height: 50px;
   min-height: 50px;
   transition: all 0.25s ease;
-  cursor: default;
-}
-
-.table tbody tr td {
-  padding: 0 12px;
-  vertical-align: middle;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .table tbody tr:nth-child(even) {
@@ -131,6 +106,7 @@ main {
   border-radius: 10px;
   padding: 6px 14px;
   font-weight: 600;
+  cursor: pointer;
   transition: all 0.25s ease;
 }
 
@@ -185,5 +161,19 @@ main {
   cursor: not-allowed;
 }
 
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 30px 20px;
+  }
 
+  .table th,
+  .table td {
+    padding: 10px;
+    font-size: 0.85rem;
+  }
 
+  .admin-container h3 {
+    font-size: 1.6rem;
+  }
+}

@@ -5,125 +5,191 @@ use CodeIgniter\Controller;
 
 class Auth extends Controller
 {
-    // LOGIN PAGE
+    // ===== LOGIN PAGE =====
     public function login()
     {
-        helper(['form']);
-        echo view('login');
+        helper(['form']); // LOAD FORM HELPER FOR LOGIN FORM
+        echo view('login'); // SHOW LOGIN PAGE
     }
 
-    // LOGIN AUTHENTICATION
+    // ===== LOGIN AUTHENTICATION =====
     public function loginAuth()
     {
-        helper(['form']);
-
-        // VALIDATION RULES
-        $rules = [
-            'email'    => 'required',
-            'password' => 'required'
-        ];
-
-        // CHECK VALIDATION
-        if (!$this->validate($rules)) {
-            return view('login', ['validation' => $this->validator]);
-        }
-
-        $session   = session();
+        $session = session();
         $userModel = new UserModel();
 
-        $email    = $this->request->getVar('email');
+        // === GET USER INPUT FROM LOGIN FORM ===
+        $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
 
-        // FETCH USER BY EMAIL OR USERNAME
-        $data = $userModel
-            ->groupStart()
-            ->where('email', $email)
-            ->orWhere('name', $email)
-            ->groupEnd()
-            ->first();
+        $user = $userModel->where('email', $email)->first(); // FIND USER BY EMAIL
 
-        if (!$data) {
-            // NO ACCOUNT FOUND
-            return redirect()->back()->with('error', 'Account not found. Please register first.');
+        if ($user) {
+            $hashedPassword = $user['password'];
+
+            // CHECK IF PASSWORD MATCHES
+            if (password_verify($password, $hashedPassword) || $password === $hashedPassword) {
+
+                // === SET SESSION DATA ===
+                $session->set([
+                    'id'         => $user['id'],
+                    'name'       => $user['name'],
+                    'email'      => $user['email'],
+                    'role'       => $user['role'],
+                    'isLoggedIn' => true
+                ]);
+
+            // ==== SET WELCOME FLASH MESSAGE ====
+            if ($user['role'] === 'admin') {
+                $session->setFlashdata('success', 'Welcome back, Admin!');
+                return redirect()->to('/admin');
+            } elseif ($user['role'] === 'customer') {
+                $session->setFlashdata('success', 'Welcome back, ' . $user['name'] . '!');
+                return redirect()->to('/customer'); // redirect customers
+            } else {
+                // optional: handle other roles if you have them
+                return redirect()->to('/login');
+            }
+
+        } else {
+            $session->setFlashdata('error', 'Wrong password.');
+            return redirect()->to('/login');
         }
-
-        $hashedPassword = $data['password'];
-
-        // CHECK PASSWORD
-        if (password_verify($password, $hashedPassword) || $password === $hashedPassword) {
-
-            // SET SESSION
-            $session->set([
-                'id'         => $data['id'],
-                'name'       => $data['name'],
-                'email'      => $data['email'],
-                'role'       => $data['role'],
-                'isLoggedIn' => true
-            ]);
-
-            // REDIRECT BASED ON ROLE
-            return $data['role'] === 'admin'
-                ? redirect()->to('/admin')->with('success', 'Welcome back, Admin!')
-                : redirect()->to('/customer')->with('success', 'Login successful! Welcome back.');
-        }
-
-        // WRONG PASSWORD
-        return redirect()->back()->with('error', 'Incorrect password. Please try again.');
+    } else {
+        $session->setFlashdata('error', 'Email not found.');
+        return redirect()->to('/login');
     }
+}
 
-    // REGISTER PAGE
+    // ===== REGISTER PAGE =====
     public function register()
     {
-        helper(['form']);
-        echo view('register');
+        helper(['form']); // LOAD FORM HELPER FOR REGISTRATION
+        echo view('register'); // SHOW REGISTER PAGE
     }
 
-    // SAVE NEW USER
+    // ===== SAVE NEW USER =====
     public function save()
     {
-        helper(['form']);
+        helper(['form']); // LOAD FORM HELPER
 
-        // VALIDATION RULES
+        // ===== VALIDATION RULES =====
         $rules = [
             'name'     => 'required|min_length[3]|max_length[50]',
-            'email'    => 'required|valid_email|is_unique[users.email]',
-            'password' => 'required|min_length[5]'
+            'email'    => 'required|valid_email|is_unique[users.email]|max_length[100]',
+            'password' => 'required|min_length[5]|max_length[255]',
         ];
 
-        // CHECK VALIDATION
         if (!$this->validate($rules)) {
-            return view('register', ['validation' => $this->validator]);
+            return view('register', ['validation' => $this->validator]); // SHOW VALIDATION ERRORS
         }
 
-        $userModel = new UserModel();
+        try {
+            $userModel = new UserModel();
+            $password = $this->request->getVar('password');
+            $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-        // CREATE USER DATA
-        $data = [
-            'name'     => $this->request->getVar('name'),
-            'email'    => $this->request->getVar('email'),
-            'password' => password_hash($this->request->getVar('password'), PASSWORD_DEFAULT),
-            'role'     => 'customer'
-        ];
+            $data = [
+                'name'     => $this->request->getVar('name'),
+                'email'    => $this->request->getVar('email'),
+                'password' => $hashedPassword,
+                'role'     => 'customer',
+            ];
 
-        $userModel->insert($data);
+            if ($userModel->insert($data)) {
 
-        // AUTO-LOGIN NEW USER
-        $session = session();
-        $session->set([
-            'id'         => $userModel->insertID(),
-            'name'       => $data['name'],
-            'email'      => $data['email'],
-            'role'       => 'customer',
-            'isLoggedIn' => true
-        ]);
+                // === AUTO LOGIN AFTER REGISTRATION ===
+                $user = $userModel->where('email', $data['email'])->first();
+                $session = session();
+                $session->set([
+                    'id'         => $user['id'],
+                    'name'       => $user['name'],
+                    'email'      => $user['email'],
+                    'role'       => $user['role'],
+                    'isLoggedIn' => true
+                ]);
 
-        return redirect()->to('/customer')->with('success', 'Registration successful! Welcome to your dashboard.');
+                // ===== SEND WELCOME EMAIL =====
+                $this->sendWelcomeEmail($data['email'], $data['name']);
+
+                return redirect()->to('/customer'); // redirect to customer page
+            } else {
+                return redirect()->back()
+                    ->with('error', 'Failed to create account. Please try again.')
+                    ->withInput();
+            }
+        } catch (\Exception $e) {
+            log_message('error', '[Registration Error] '.$e->getMessage());
+            return redirect()->back()
+                ->with('error', 'An error occurred during registration. Please try again.')
+                ->withInput();
+        }
     }
 
-    // LOGOUT USER
+    // ===== WELCOME EMAIL FUNCTION =====
+    private function sendWelcomeEmail($email, $name)
+    {
+        $emailService = \Config\Services::email();
+        $email = trim($email);
+
+        $message = '
+            <table width="100%" style="background:#f4f4f4; padding:40px 0; font-family:Arial, sans-serif;">
+                <tr>
+                    <td align="center">
+                        <table width="500" style="background:#fff; border-radius:10px; overflow:hidden;">
+                            <!-- HEADER -->
+                            <tr>
+                                <td align="center" style="background: linear-gradient(90deg, #2d7a1f, #4a9e32); padding:20px;">
+                                    <img src="https://smiski.com/e/wp-content/uploads/2016/03/top_logo.png" 
+                                         width="200" 
+                                         alt="Smiski Logo" 
+                                         style="display:block;">
+                                </td>
+                            </tr>
+
+                            <!-- TITLE -->
+                            <tr>
+                                <td align="center" style="padding:30px 20px 10px;">
+                                    <h2>Welcome to Smiski Shop, '.$name.'! 💚</h2>
+                                </td>
+                            </tr>
+
+                            <!-- MESSAGE BODY -->
+                            <tr>
+                                <td align="center" style="padding:0 30px 30px; color:#555; font-size:16px;">
+                                    <p>We’re excited to have you join our Smiski family! Your account is ready.</p>
+                                    <p>Explore adorable Smiski figures, shop exclusive drops, and enjoy a smooth shopping experience.</p>
+                                </td>
+                            </tr>
+
+                            <!-- FOOTER -->
+                            <tr>
+                                <td align="center" style="background:#f0f0f0; padding:20px; font-size:13px; color:#777;">
+                                    <small>This is a school project from FEU Institute of Technology.</small>
+                                    <p>© 2025 Rzeecola / Raiii Zee — All Rights Reserved.</p>
+                                    <h6 style="margin:5px 0; font-weight:normal;">Made with 💚 as a Smiski fan.</h6>
+                                </td>
+                            </tr>
+
+                        </table>
+                    </td>
+                </tr>
+            </table>';
+
+        $emailService->setTo($email);
+        $emailService->setFrom('rainez333@gmail.com', 'Smiski Shop');
+        $emailService->setSubject('Welcome to Smiski Shop!');
+        $emailService->setMessage($message);
+
+        if (!$emailService->send()) {
+            log_message('error', 'Email failed to send to: '.$email);
+        }
+    }
+
+    // ===== LOGOUT USER =====
     public function logout()
     {
-        session()->destroy();
-        return redirect()->to('/login')->with('success', 'You have logged out successfully.');
+        session()->destroy(); // destroy all session data
+        return redirect()->to('/login'); // redirect to login page
     }
 }

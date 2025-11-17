@@ -35,6 +35,7 @@ body {
     padding-right: 1rem;
     margin: 0 auto;
     max-width: 1450px;
+
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -42,6 +43,7 @@ body {
 
 /* NAVBAR BRAND / LOGO */
 .custom-navbar .navbar-brand {
+    flex: none;
     margin-right: 2rem;
 }
 
@@ -51,12 +53,25 @@ body {
     object-fit: contain;
 }
 
+/* MAKE NAV LINKS CONTAINER FLEX & SPACE EVENLY */
+.custom-navbar .navbar-nav {
+    display: flex;
+    gap: 2rem; /* equal gap sa lahat */
+    align-items:flex-end;
+}
+
+/* CENTER NAV LINKS */
+.custom-navbar .navbar-nav.mx-auto {
+    flex: 1;
+    justify-content: flex-end;
+}
+
 /* NAV LINKS */
 .custom-navbar .nav-link {
     color: #f8f9fa !important; 
     font-weight: 500;
-    font-size: 1rem;
-    margin: 0 15px; 
+    font-size: 20px !important;
+    padding: 0 0.5rem;
     transition: color 0.25s ease, transform 0.25s ease;
 }
 

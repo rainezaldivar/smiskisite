@@ -6,45 +6,47 @@ use CodeIgniter\Controller;
 
 class Customer extends Controller
 {
-    // CUSTOMER HOME PAGE
+    // ==== CUSTOMER HOME PAGE ====
     public function index()
     {
-        // CHECK IF USER IS LOGGED IN
+        // ==== CHECK IF USER IS LOGGED IN ====
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login');
+            return redirect()->to('/login'); // redirect to login if not logged in
         }
 
-        // LOAD PRODUCT MODEL
-        $model = new ProductModel();
+        // ==== LOAD PRODUCT MODEL ====
+        $productModel = new ProductModel();
 
-        // FETCH PRODUCTS BY CATEGORY
-        $data['products'] = $model->where('category', 'Figurines')
-                                   ->orderBy('id', 'DESC')
-                                   ->findAll();
-        $data['others']   = $model->where('category', 'Others')
-                                   ->orderBy('id', 'DESC')
-                                   ->findAll();
+        // ==== FETCH PRODUCTS IN FIGURINES CATEGORY ====
+        $data['products'] = $productModel->where('category', 'Figurines')
+                                        ->orderBy('id', 'DESC')
+                                        ->findAll();
 
-        // LOAD CUSTOMER HOME VIEW
+        // ==== FETCH PRODUCTS IN OTHERS CATEGORY ====
+        $data['others'] = $productModel->where('category', 'Others')
+                                      ->orderBy('id', 'DESC')
+                                      ->findAll();
+
+        // ==== LOAD CUSTOMER HOME VIEW WITH PRODUCTS DATA ====
         return view('customer_home', $data);
     }
 
-    // CUSTOMER PROFILE 
+    // ==== CUSTOMER PROFILE PAGE ====
     public function profile()
     {
-        // CHECK IF USER IS LOGGED IN
+        // ==== CHECK IF USER IS LOGGED IN ====
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login');
+            return redirect()->to('/login'); // redirect to login if not logged in
         }
 
-        // LOAD USER MODEL
+        // ==== LOAD USER MODEL ====
         $userModel = new UserModel();
-        $userId    = session()->get('id');
+        $userId = session()->get('id'); // get current user ID
 
-        // FETCH CURRENT USER DATA
+        // ==== FETCH CURRENT USER DATA ====
         $data['user'] = $userModel->find($userId);
 
-        // LOAD PROFILE VIEW
+        // ==== LOAD PROFILE VIEW WITH USER DATA ====
         return view('profile', $data);
     }
 }

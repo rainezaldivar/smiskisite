@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* === GLOBAL STYLES === */
+body {
+    background-color: #9ac952;
+    font-family: "Winky Rough", sans-serif;
+    color: #fff;
+    margin: 0;
+    padding-top: 95px;
+}
+
+/* FULL WIDTH ROW */
+.section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 20px;
+    gap: 40px;
+    height: 1200px;
+}
+
+/* BACKGROUNDS */
+.yellow {
+    background: #fae91e;
+    flex-direction: row;
+}
+
+.green {
+    background: #679e0b;
+    flex-direction: row-reverse;
+}
+
+/* IMAGE STYLE */
+.section img {
+    width: 900px;
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+/* TEXT BOX */
+.text-box {
+    max-width: 420px;
+}
+
+/* TEXT STYLE */
+.section p {
+    font-size: 18px;
+    font-weight: 500;
+    margin: 0;
+}
+
+/* COLOR FIX */
+.yellow p { color: #000; }
+.green p  { color: #fff; }
+
+/* ========================= */
+/* Slow glowing animation with 3s pauses */
+@keyframes yellowBlackPause {
+    0%, 10% { background-color: #fae91e; color: #000; }
+    11%, 30% { background-color: #fae91e; color: #000; }
+    50% { background-color: #000; color: #fff; }
+    40%, 80% { background-color: #000; color: #fff; }
+    80%, 100% { background-color: #fae91e; color: #000; }
+}
+
+yellow-transition {
+    animation: yellowBlackPause 5s ease-in-out infinite;
+}
+
+yellow-transition p {
+    animation: yellowBlackPause 5s ease-in-out infinite;
+}
+
+/* === SCROLL BUTTONS === */
+.scroll-buttons {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 9999;
+}
+
+.scroll-btn {
+    width: 50px;
+    height: 50px;
+    background: #507a2a;
+    border: none;
+    color: #c8ea9a;
+    font-size: 24px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.scroll-btn:hover {
+    background: #3b5a1e;
+    transform: scale(1.08);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+    .section {
+        flex-direction: column !important;
+        text-align: center;
+    }
+
+    .section img {
+        max-width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .text-box {
+        text-align: center;
+    }
+}
