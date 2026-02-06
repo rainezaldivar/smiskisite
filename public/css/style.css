@@ -386,6 +386,157 @@ body {
     margin: 0 auto; /* center slider */
 }
 
+/* === GLOBAL RESPONSIVENESS === */
+@media (max-width: 1200px) {
+    body {
+        padding-top: 90px;
+    }
+    
+    #manualCarousel {
+        max-width: 90%;
+        margin: 20px auto 2rem auto;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .carousel-control-prev {
+        left: 15px;
+    }
+
+    .carousel-control-next {
+        right: 15px;
+    }
+}
+
+/* === TABLET / MEDIUM SCREENS === */
+@media (max-width: 992px) {
+    .product-slider {
+        gap: 30px;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .product-card-slide {
+        min-width: 250px;
+        padding: 12px;
+    }
+
+    .about-smiski-card {
+        height: 300px;
+    }
+
+    .modal-body {
+        gap: 1rem;
+    }
+
+    .card-body {
+        padding: 25px;
+    }
+}
+
+/* === MOBILE SCREENS === */
+@media (max-width: 768px) {
+    body {
+        padding-top: 70px;
+    }
+
+    #manualCarousel {
+        max-width: 95%;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 35px;
+        height: 35px;
+    }
+
+    .carousel-control-prev {
+        top: 280px;
+        left: 10px;
+    }
+
+    .carousel-control-next {
+        top: 280px;
+        right: 10px;
+    }
+
+    /* Stack product slider vertically */
+    .product-slider-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .product-slider {
+        display: flex;
+        gap: 20px;
+        overflow-x: scroll;
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .product-card-slide {
+        min-width: 200px;
+        padding: 10px;
+    }
+
+    /* About Smiski */
+    .about-smiski-card {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .about-smiski-img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Profile cards */
+    .card-body {
+        padding: 15px;
+        text-align: center;
+    }
+
+    .card img.rounded-circle {
+        width: 80px !important;
+        height: 80px !important;
+        margin: 0 auto;
+    }
+
+    .modal-body {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+
+    .modal-img-wrapper {
+        max-width: 90%;
+    }
+}
+
+/* Extra small mobile */
+@media (max-width: 480px) {
+    .product-card-slide {
+        min-width: 180px;
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 30px;
+        height: 30px;
+    }
+
+    .carousel-control-prev-icon::after,
+    .carousel-control-next-icon::after {
+        width: 0.5rem;
+        height: 0.5rem;
+        border-width: 0.2rem;
+    }
+}
+
 
 
 
