@@ -6,37 +6,30 @@ use CodeIgniter\Controller;
 
 class Customer extends Controller
 {
-    // ==== CUSTOMER HOME PAGE ====
+    // ==== CUSTOMER HOME PAGE (Public Access) ====
     public function index()
     {
-        // ==== CHECK IF USER IS LOGGED IN ====
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login'); // redirect to login if not logged in
-        }
+        // 1. LOGIN CHECK REMOVED 
+        // We allow guests to view the homepage now.
 
         // ==== LOAD PRODUCT MODEL ====
         $productModel = new ProductModel();
 
-        // ==== FETCH PRODUCTS IN FIGURINES CATEGORY ====
-        $data['products'] = $productModel->where('category', 'Figurines')
-                                        ->orderBy('id', 'DESC')
-                                        ->findAll();
+        // ==== FETCH ALL PRODUCTS FOR "BROWSE PRODUCTS" SECTION ====
+        // We sort by 'id' DESC to show the latest products first
+        $data['products'] = $productModel->orderBy('id', 'DESC')->findAll();
 
-        // ==== FETCH PRODUCTS IN OTHERS CATEGORY ====
-        $data['others'] = $productModel->where('category', 'Others')
-                                      ->orderBy('id', 'DESC')
-                                      ->findAll();
-
-        // ==== LOAD CUSTOMER HOME VIEW WITH PRODUCTS DATA ====
+        // ==== LOAD CUSTOMER HOME VIEW ====
         return view('customer_home', $data);
     }
 
-    // ==== CUSTOMER PROFILE PAGE ====
+    // ==== CUSTOMER PROFILE PAGE (Protected) ====
     public function profile()
     {
         // ==== CHECK IF USER IS LOGGED IN ====
+        // We Keep this here because profiles are private!
         if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login'); // redirect to login if not logged in
+            return redirect()->to('/login'); 
         }
 
         // ==== LOAD USER MODEL ====
@@ -46,7 +39,7 @@ class Customer extends Controller
         // ==== FETCH CURRENT USER DATA ====
         $data['user'] = $userModel->find($userId);
 
-        // ==== LOAD PROFILE VIEW WITH USER DATA ====
+        // ==== LOAD PROFILE VIEW ====
         return view('profile', $data);
     }
 }

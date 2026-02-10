@@ -1,72 +1,71 @@
 <?= $this->include('templates/header') ?>
 
-<!-- ==== CUSTOM CSS ==== -->
 <link rel="stylesheet" href="<?= base_url('css/product.css') ?>">
 
 <?php
-// ==== FIGURINES PRODUCTS ARRAY ====
+// ==== FIGURINES PRODUCTS ARRAY (Added Names for Clarity) ====
 $products_figurines = [
-    ['img' => base_url('uploads/bday.png'), 'link' => 'https://smiski.com/e/products/birthday-series/'],
-    ['img' => base_url('uploads/sun.png'), 'link' => 'https://smiski.com/e/products/sunday-series/'],
-    ['img' => base_url('uploads/hip.png'), 'link' => 'https://smiski.com/e/products/hippers-series/'],
-    ['img' => base_url('uploads/move.png'), 'link' => 'https://smiski.com/e/products/moving-series/'],
-    ['img' => base_url('uploads/workout.png'), 'link' => 'https://smiski.com/e/products/exercising-series/'],
-    ['img' => base_url('uploads/dress.png'), 'link' => 'https://smiski.com/e/products/dressing-series/'],
-    ['img' => base_url('uploads/work2.png'), 'link' => 'https://smiski.com/e/products/work-series/'],
-    ['img' => base_url('uploads/museum2.png'), 'link' => 'https://smiski.com/e/products/museumseries/'],
-    ['img' => base_url('uploads/cheer2.png'), 'link' => 'https://smiski.com/e/products/cheerseries/'],
-    ['img' => base_url('uploads/yoga2.png'), 'link' => 'https://smiski.com/e/products/yoga-series/'],
-    ['img' => base_url('uploads/bed2.png'), 'link' => 'https://smiski.com/e/products/bed-series/'],
-    ['img' => base_url('uploads/live.png'), 'link' => 'https://smiski.com/e/products/living/'],
-    ['img' => base_url('uploads/bath2.png'), 'link' => 'https://smiski.com/e/products/bath-series/'],
-    ['img' => base_url('uploads/toilet2.png'), 'link' => 'https://smiski.com/e/products/toilet-series/'],
-    ['img' => base_url('uploads/s4.png'), 'link' => 'https://smiski.com/e/products/series-4/'],
-    ['img' => base_url('uploads/s3.png'), 'link' => 'https://smiski.com/e/products/series-3/'],
-    ['img' => base_url('uploads/s2.png'), 'link' => 'https://smiski.com/e/products/series-2/'],
-    ['img' => base_url('uploads/s1.png'), 'link' => 'https://smiski.com/e/products/series-1/'],
+    ['name' => 'Birthday Series', 'img' => base_url('uploads/bday.png'), 'link' => 'https://smiski.com/e/products/birthday-series/'],
+    ['name' => 'Sunday Series', 'img' => base_url('uploads/sun.png'), 'link' => 'https://smiski.com/e/products/sunday-series/'],
+    ['name' => 'Hippers Series', 'img' => base_url('uploads/hip.png'), 'link' => 'https://smiski.com/e/products/hippers-series/'],
+    ['name' => 'Moving Series', 'img' => base_url('uploads/move.png'), 'link' => 'https://smiski.com/e/products/moving-series/'],
+    ['name' => 'Exercising Series', 'img' => base_url('uploads/workout.png'), 'link' => 'https://smiski.com/e/products/exercising-series/'],
+    ['name' => 'Dressing Series', 'img' => base_url('uploads/dress.png'), 'link' => 'https://smiski.com/e/products/dressing-series/'],
+    ['name' => 'Work Series', 'img' => base_url('uploads/work2.png'), 'link' => 'https://smiski.com/e/products/work-series/'],
+    ['name' => 'Museum Series', 'img' => base_url('uploads/museum2.png'), 'link' => 'https://smiski.com/e/products/museumseries/'],
+    ['name' => 'Cheer Series', 'img' => base_url('uploads/cheer2.png'), 'link' => 'https://smiski.com/e/products/cheer-series/'],
+    ['name' => 'Yoga Series', 'img' => base_url('uploads/yoga.png'), 'link' => 'https://smiski.com/e/products/yoga-series/'],
+    ['name' => 'Bed Series', 'img' => base_url('uploads/bed.png'), 'link' => 'https://smiski.com/e/products/bed-series/'],
+    ['name' => 'Living Series', 'img' => base_url('uploads/living.png'), 'link' => 'https://smiski.com/e/products/living-series/'],
+    ['name' => 'Toilet Series', 'img' => base_url('uploads/toilet.png'), 'link' => 'https://smiski.com/e/products/toilet-series/'],
+    ['name' => 'Bath Series', 'img' => base_url('uploads/bath.png'), 'link' => 'https://smiski.com/e/products/bath-series/'],
+    ['name' => 'Series 1', 'img' => base_url('uploads/series1.png'), 'link' => 'https://smiski.com/e/products/series1/'],
 ];
 
-// ==== OTHER PRODUCTS ARRAY ====
-$products_other = [
-    ['img' => base_url('uploads/light2.png'), 'link' => 'https://smiski.com/e/products/touch-light-vol2/'],
-    ['img' => base_url('uploads/plushie.png'), 'link' => 'https://smiski.com/e/products/plush/'],
-    ['img' => base_url('uploads/strapacc2.png'), 'link' => 'https://smiski.com/e/products/strap-accessories-series2/'],
-    ['img' => base_url('uploads/cush.png'), 'link' => 'NULL'],
-    ['img' => base_url('uploads/embroidery2.png'), 'link' => 'https://smiski.com/e/products/embroidery-sticker-series-vol2/'],
-    ['img' => base_url('uploads/plushchain.png'), 'link' => 'https://smiski.com/e/products/plush-key-chain/'],
-    ['img' => base_url('uploads/zipbite2.png'), 'link' => 'https://smiski.com/e/products/zipperbite-smiski-vol2/'],
-    ['img' => base_url('uploads/embroidery1.png'), 'link' => 'https://smiski.com/e/products/embroidery-sticker-series/'],
-    ['img' => base_url('uploads/strapacc1.png'), 'link' => 'https://smiski.com/e/products/accessories/'],
-    ['img' => base_url('uploads/light1.png'), 'link' => 'https://smiski.com/e/products/touch-light/'],
-    ['img' => base_url('uploads/zipbite1.png'), 'link' => 'https://smiski.com/e/products/zipperbite-smiski/'],
-    ['img' => base_url('uploads/rainbomb.png'), 'link' => 'https://smiski.com/e/products/rainbomb/'],
-    ['img' => base_url('uploads/bobhead.png'), 'link' => 'https://smiski.com/e/products/bobbing-head/'],
-    ['img' => base_url('uploads/bb2.png'), 'link' => 'https://smiski.com/e/products/bathball2/'],
-    ['img' => base_url('uploads/bb1.png'), 'link' => 'https://smiski.com/e/products/bath-ball/'],
-    ['img' => base_url('uploads/kchain.png'), 'link' => 'https://smiski.com/e/products/key-chain/'],
-    ['img' => base_url('uploads/brushstand.png'), 'link' => 'https://smiski.com/e/products/toothbrush-stand/'],
-    ['img' => base_url('uploads/sense.png'), 'link' => 'https://smiski.com/e/products/sensor-light/'],
+// ==== OTHER PRODUCTS ARRAY (Added Names) ====
+$products_others = [
+    ['name' => 'Touch Light', 'img' => base_url('uploads/touch-light/'), 'link' => 'https://smiski.com/e/products/touch-light/'],
+    ['name' => 'Zipperbite', 'img' => base_url('uploads/zipbite1.png'), 'link' => 'https://smiski.com/e/products/zipperbite-smiski/'],
+    ['name' => 'Rainbomb', 'img' => base_url('uploads/rainbomb.png'), 'link' => 'https://smiski.com/e/products/rainbomb/'],
+    ['name' => 'Bobbing Head', 'img' => base_url('uploads/bobhead.png'), 'link' => 'https://smiski.com/e/products/bobbing-head/'],
+    ['name' => 'Bath Ball 2', 'img' => base_url('uploads/bb2.png'), 'link' => 'https://smiski.com/e/products/bathball2/'],
+    ['name' => 'Bath Ball 1', 'img' => base_url('uploads/bb1.png'), 'link' => 'https://smiski.com/e/products/bath-ball/'],
+    ['name' => 'Key Chain', 'img' => base_url('uploads/kchain.png'), 'link' => 'https://smiski.com/e/products/key-chain/'],
+    ['name' => 'Toothbrush Stand', 'img' => base_url('uploads/brushstand.png'), 'link' => 'https://smiski.com/e/products/toothbrush-stand/'],
+    ['name' => 'Sensor Light', 'img' => base_url('uploads/sense.png'), 'link' => 'https://smiski.com/e/products/sensor-light/'],
 ];
 ?>
 
-<!-- ==== FIGURINES SECTION ==== -->
-<h2>Figurines</h2>
-<div class="grid">
-  <?php foreach($products_figurines as $prod): ?>
-    <a href="<?= $prod['link'] ?>" target="_blank" rel="noopener noreferrer">
-      <img src="<?= $prod['img'] ?>" alt="Product" />
-    </a>
-  <?php endforeach; ?>
-</div>
+<div class="product-wrapper">
+    <h2 class="section-title">Figurines</h2>
+    <div class="product-grid">
+      <?php foreach($products_figurines as $prod): ?>
+        <a href="<?= $prod['link'] ?>" class="product-card" target="_blank" rel="noopener noreferrer">
+            <div class="card-img-container">
+                <img src="<?= $prod['img'] ?>" alt="<?= esc($prod['name']) ?>">
+            </div>
+            <div class="card-details">
+                <h4 class="product-name"><?= esc($prod['name']) ?></h4>
+                <span class="btn-view">View Series <i class="bi bi-arrow-right"></i></span>
+            </div>
+        </a>
+      <?php endforeach; ?>
+    </div>
 
-<!-- ==== OTHER PRODUCTS SECTION ==== -->
-<h2>Other Products</h2>
-<div class="grid">
-  <?php foreach($products_other as $prod): ?>
-    <a href="<?= $prod['link'] ?>" target="_blank" rel="noopener noreferrer">
-      <img src="<?= $prod['img'] ?>" alt="Product" />
-    </a>
-  <?php endforeach; ?>
+    <h2 class="section-title">Other Products</h2>
+    <div class="product-grid">
+      <?php foreach($products_others as $prod): ?>
+        <a href="<?= $prod['link'] ?>" class="product-card" target="_blank" rel="noopener noreferrer">
+            <div class="card-img-container">
+                <img src="<?= $prod['img'] ?>" alt="<?= esc($prod['name']) ?>">
+            </div>
+            <div class="card-details">
+                <h4 class="product-name"><?= esc($prod['name']) ?></h4>
+                <span class="btn-view">View Details <i class="bi bi-arrow-right"></i></span>
+            </div>
+        </a>
+      <?php endforeach; ?>
+    </div>
 </div>
 
 <?= $this->include('templates/footer') ?>

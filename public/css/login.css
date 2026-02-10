@@ -1,7 +1,6 @@
-/* === GOOGLE FONT IMPORT === */
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough:wght@400;600;700&display=swap');
 
-/* === BODY STYLES === */
+/* === BODY STYLES  === */
 body.login-body,
 body.register-body {
     background: url('../uploads/smiski.jpg') no-repeat center center fixed;
@@ -16,102 +15,105 @@ body.register-body {
     position: relative;
 }
 
-/* OVERLAY TINT */
+/* OVERLAY TINT - BLUR EFFECT */
 body.login-body::before,
 body.register-body::before {
     content: "";
     position: absolute;
     inset: 0;
     background: rgba(154, 201, 82, 0.25); 
-    backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px); 
     z-index: 1;
 }
 
-/* === AUTH CONTAINER === */
 .auth-container {
-    background: rgba(255, 255, 255, 0.96);
-    border-radius: 18px;
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    background: #fcfcfc;
+    box-shadow: 0 0 20px rgba(111, 190, 59, 0.5);
+    backdrop-filter: blur(5px);
+    border-radius: 20px;
     width: 100%;
-    max-width: 400px;
-    padding: 2.5rem;
+    max-width: 420px;
+    padding: 3rem; 
     text-align: center;
     position: relative;
     z-index: 2;
-    animation: fadeIn 0.4s ease;
 }
 
-/* === HEADINGS & SUBTITLE === */
-.auth-container h2 {
-    color: #2d7a1f;
+/* === TYPOGRAPHY === */
+h2 {
+    color: #2d7a1f; 
     font-weight: 800;
-    margin-bottom: 0.25rem;
+    letter-spacing: 1px;
 }
 
-.auth-container p.subtitle {
-    color: #5b8853;
-    font-weight: 500;
-    margin-bottom: 2rem;
+p.text-muted {
+    color: #555 !important; 
+    font-size: 0.95rem;
 }
 
 /* === FORM ELEMENTS === */
-.auth-container .form-label {
-    font-weight: 600;
-    color: #3f6538;
-    text-align: left;
+.form-label {
+    font-weight: 700;
+    color: #2d7a1f;
+    margin-bottom: 8px;
     display: block;
+    text-align: left; /* Tip-4: Left align labels for faster scanning */
 }
 
-.auth-container .form-control {
-    border-radius: 10px;
-    border: 1.6px solid #c9e7ac;
-    padding: 0.7rem 0.9rem;
-    margin-bottom: 1.2rem;
-    transition: 0.3s;
+.form-control {
+    padding: 12px 15px; 
+    border-radius: 12px;
+    border: 2px solid #7bb872;
+    background: #fcfcfc;
+    font-size: 1rem;
+    transition: all 0.3s ease;
 }
 
-.auth-container .form-control:focus {
-    border-color: #69b43a;
-    box-shadow: 0 0 5px rgba(105, 180, 58, 0.3);
+.form-control:focus {
+    border-color: #4a9e32;
+    box-shadow: 0 0 0 4px rgba(74, 158, 50, 0.15);
+    background: #fcfcfc;
+    outline: none;
 }
 
 /* === BUTTON STYLES === */
 .btn-auth {
     width: 100%;
-    background: linear-gradient(90deg, #4a9e32, #6fbe3b);
-    border: none;
-    color: #fff;
-    font-weight: 700;
-    border-radius: 10px;
-    padding: 0.8rem;
-    margin-top: 0.5rem;
-    transition: 0.25s ease;
+    background-color: #e3f5d5;
+    color: #1b4d13;
+    border: 2px solid #7bb872;
+    font-weight: 800;
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: all 0.1s ease;
+    box-shadow: none;
 }
 
 .btn-auth:hover {
-    background: linear-gradient(90deg, #6fbe3b, #9cd94c);
+    background-color: #1b4d13;
+    color: #ffffff;
     transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(27, 77, 19, 0.2);
 }
 
-/* === FOOTER TEXT === */
-.auth-container p.footer-text {
-    margin-top: 1rem;
-    color: #4a9e32;
-    font-weight: 500;
-}
-
-.auth-container p.footer-text a {
+/* === LINKS === */
+.register-link {
     color: #2d7a1f;
+    font-weight: 800;
     text-decoration: none;
-    font-weight: 700;
+    transition: color 0.2s;
 }
 
-.auth-container p.footer-text a:hover {
+.register-link:hover {
+    color: #1b4d13;
     text-decoration: underline;
 }
 
-/* === ANIMATION === */
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-10px); }
-    to { opacity: 1; transform: translateY(0); }
+/* === ALERTS === */
+.alert {
+    border-radius: 10px;
+    font-size: 0.9rem;
+    text-align: left;
 }

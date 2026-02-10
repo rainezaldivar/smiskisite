@@ -1,204 +1,196 @@
 <?= $this->include('templates/header') ?>
 
 <main>
-    <!-- CUSTOM CSS -->
-    <link rel="stylesheet" href="<?= base_url('css/style.css') ?>">
+    <link rel="stylesheet" href="<?= base_url('css/style.css?v=' . time()) ?>">
 
-    <!-- === HERO CAROUSEL === -->
-    <div id="manualCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
-        <div class="carousel-inner rounded-4 shadow-sm overflow-hidden">
-
-            <!-- CAROUSEL ITEMS -->
-            <div class="carousel-item">
-                <a href="https://smiski.com/e/products/strap-accessories-series2/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski1.png') ?>" class="d-block w-100" alt="Smiski 1" style="object-fit:contain;">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://smiski.com/e/products/embroidery-sticker-series-vol2/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski2.png') ?>" class="d-block w-100" alt="Smiski 2" style="object-fit:contain;">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://smiski.com/e/products/plush-key-chain/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski3.jpg') ?>" class="d-block w-100" alt="Smiski 3" style="object-fit:contain;">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://www.facebook.com/share/p/1C3NPs7cxz/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski4.webp') ?>" class="d-block w-100" alt="Smiski 4" style="object-fit:contain;">
-                </a>
-            </div>
-            <div class="carousel-item">
-                <a href="https://smiski.com/e/products/plush/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski5.png') ?>" class="d-block w-100" alt="Smiski 5" style="object-fit:contain;">
-                </a>
-            </div>
-            <div class="carousel-item active">
-                <a href="https://smiski.com/e/products/touch-light-vol2/" target="_blank">
-                    <img src="<?= base_url('uploads/smiski6.png') ?>" class="d-block w-100" alt="Smiski 5" style="object-fit:contain;">
-                </a>
+    <section class="hero-section">
+        <div id="manualCarousel" class="carousel slide shadow-lg" data-bs-ride="carousel" data-bs-interval="4000">
+            
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#manualCarousel" data-bs-slide-to="0" class="active"></button>
+                <button type="button" data-bs-target="#manualCarousel" data-bs-slide-to="1"></button>
+                <button type="button" data-bs-target="#manualCarousel" data-bs-slide-to="2"></button>
+                <button type="button" data-bs-target="#manualCarousel" data-bs-slide-to="3"></button>
+                <button type="button" data-bs-target="#manualCarousel" data-bs-slide-to="4"></button>
             </div>
 
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <a href="https://smiski.com/e/products/strap-accessories-series3/" target="_blank">
+                        <img src="<?= base_url('uploads/smiski2.png') ?>" class="d-block w-100" alt="Smiski Accessories">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://smiski.com/e/products/touch-light-vol2/" target="_blank">
+                        <img src="<?= base_url('uploads/smiski6.png') ?>" class="d-block w-100" alt="Smiski Touch Light">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://smiski.com/e/products/strap-accessories-series2/" target="_blank">
+                        <img src="<?= base_url('uploads/smiski1.png') ?>" class="d-block w-100" alt="Smiski Accessories">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://smiski.com/e/products/plush/" target="_blank">
+                        <img src="<?= base_url('uploads/smiski5.png') ?>" class="d-block w-100" alt="Smiski Plush">
+                    </a>
+                </div>
+                <div class="carousel-item">
+                    <a href="https://smiski.com/e/products/cushion-pouch/" target="_blank">
+                        <img src="<?= base_url('uploads/smiski4.webp') ?>" class="d-block w-100" alt="Smiski Plush">
+                    </a>
+                </div>
+            </div>
+
+            <button class="carousel-control-prev" type="button" data-bs-target="#manualCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#manualCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
+    </section>
 
-        <!-- CAROUSEL CONTROLS -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#manualCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#manualCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
+    <section class="section-padding" id="featured-series">
+        <div class="container text-center">
+            
+            <h2 class="section-title">Featured Series</h2>
+            <div class="green-underline mx-auto"></div>
 
-    <!-- === PRODUCT SECTION === -->
-    <section id="all-products" class="py-5">
-        <div class="container">
-
-            <div class="text-center mb-5">
-                <h2 class="fw-bold text-white display-6 mb-5">LATEST PRODUCTS</h2>
-            </div>
-
-            <?php
-                $allProducts = array_merge($products ?? [], $others ?? []);
-                usort($allProducts, fn($a, $b) => $b['id'] <=> $a['id']);
-                $latestProducts = array_slice($allProducts, 0, 9);
-            ?>
-
-            <div class="product-slider-wrapper">
-                <button class="slide-btn left" onclick="slideProducts(-300)">
+            <div class="slider-container position-relative">
+                <button class="slider-btn left shadow-sm" onclick="slideContainer('featuredSlider', -1)">
                     <i class="bi bi-chevron-left"></i>
                 </button>
 
-                <div id="productSlider" class="product-slider">
-                    <?php foreach ($latestProducts as $item): ?>
-                        <div class="product-card-slide"
-                             role="button"
-                             data-bs-toggle="modal"
-                             data-bs-target="#productModal"
-                             data-name="<?= esc($item['name']) ?>"
-                             data-price="<?= number_format($item['price'], 2) ?>"
-                             data-stock="<?= esc($item['stock'] ?? 'In Stock') ?>"
-                             data-image="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                             data-description="<?= esc($item['description'] ?? 'No description available.') ?>">
-
-                            <div class="product-img-wrapper">
-                                <img src="<?= base_url('uploads/' . esc($item['image'])) ?>"
-                                     alt="<?= esc($item['name']) ?>"
-                                     class="product-img">
-                            </div>
-
-                            <div class="text-center mt-2">
-                                <h6 class="fw-bold text-dark mb-1"><?= esc($item['name']) ?></h6>
-                                </p>
-                            </div>
-
-                        </div>
-                    <?php endforeach; ?>
+                <div class="product-slider" id="featuredSlider">
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/birthday_yum.png') ?>" alt="Birthday Series"></div>
+                        <div class="card-content"><h5>Birthday Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/sunday_guitar.png') ?>" alt="Sunday Series"></div>
+                        <div class="card-content"><h5>Sunday Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/moving_fall.png') ?>" alt="Moving Series"></div>
+                        <div class="card-content"><h5>Moving Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/work_approved.png') ?>" alt="Work Series"></div>
+                        <div class="card-content"><h5>Work Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/museum_pearl.png') ?>" alt="Museum Series"></div>
+                        <div class="card-content"><h5>Museum Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    <div class="product-card-slide">
+                        <div class="img-wrapper"><img src="<?= base_url('uploads/exercise_balance.png') ?>" alt="Exercising Series"></div>
+                        <div class="card-content"><h5>Exercising Series</h5><a href="<?= base_url('customer/shop') ?>" class="btn btn-pick-now">View</a></div>
+                    </div>
+                    
+   
                 </div>
 
-                <button class="slide-btn right" onclick="slideProducts(1)">
+                <button class="slider-btn right shadow-sm" onclick="slideContainer('featuredSlider', 1)">
                     <i class="bi bi-chevron-right"></i>
                 </button>
             </div>
+        </div>
+    </section>
 
-            <!-- "VIEW ALL PRODUCTS" BUTTON -->
-            <div class="text-center mt-5">
-                <a href="<?= base_url('customer/shop') ?>"
-                   class="btn btn-light fw-semibold px-4 py-2 rounded-pill shadow-sm">
-                   View All Products →
-                </a>
-            </div>
-
-            <!-- === PRODUCT MODAL === -->
-            <div class="modal fade" id="productModal" tabindex="-1" aria-hidden="true">
-                <div class="modal-dialog modal-lg modal-dialog-centered">
-                    <div class="modal-content">
-
-                        <div class="modal-header border-0 bg-light">
-                            <h5 class="modal-title fw-bold text-success" id="productModalTitle"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-
-                        <div class="modal-body d-flex flex-column flex-md-row align-items-start gap-4">
-                            <div class="modal-img-wrapper flex-shrink-0">
-                                <img id="productModalImage" src="" alt="" class="img-fluid rounded-3 shadow-sm">
-                            </div>
-                            <div class="modal-details text-dark">
-                                <p class="fw-bold text-success fs-5" id="productModalPrice"></p>
-                                <p id="productModalStock"></p>
-                                <p id="productModalDescription"></p>
-                            </div>
-                        </div>
-
-                    </div>
+    <section class="section-padding bg-white">
+        <div class="container">
+            <div class="d-flex justify-content-between align-items-end mb-4 px-2">
+                <div>
+                    <h2 class="section-title text-start mb-0">Explore Our <br>Categories</h2>
+                    <div class="green-underline ms-1 mb-0" style="width: 60px;"></div>
                 </div>
+                <a href="<?= base_url('customer/shop') ?>" class="text-decoration-none fw-bold d-none d-md-block" style="color: #2d7a1f;">
+                    View full catalog <i class="bi bi-arrow-right"></i>
+                </a>
             </div>
 
-        </div>
-    </section>
-
-    <!-- === ABOUT SMISKI FEATURE SECTION === -->
-    <section id="about-smiski" class="py-5">
-        <div class="container text-center">
-            <div class="about-smiski-card mx-auto">
-                <a href="<?= base_url('/customer/about') ?>">
-                    <img src="<?= base_url('uploads/aboutsmiski.png') ?>"
-                         alt="About Smiski"
-                         class="about-smiski-img">
+            <div class="categories-grid">
+                <a href="<?= base_url('customer/shop?category=Figurines') ?>" class="cat-card hero-card">
+                    <img src="<?= base_url('uploads/cheerdancing.png') ?>" alt="Figurines">
+                    <div class="cat-overlay"><h3>Figurines</h3><span class="cat-cta">View all <i class="bi bi-arrow-right"></i></span></div>
+                </a>
+                <a href="<?= base_url('customer/shop?category=Straps') ?>" class="cat-card">
+                    <img src="<?= base_url('uploads/strapv.3.png') ?>" alt="Straps">
+                    <div class="cat-overlay"><h3>Straps</h3><span class="cat-cta">View all <i class="bi bi-arrow-right"></i></span></div>
+                </a>
+                <a href="<?= base_url('customer/shop?category=TouchLights') ?>" class="cat-card">
+                    <img src="<?= base_url('uploads/touchlight2.1.png') ?>" alt="Touch Lights">
+                    <div class="cat-overlay"><h3>Touch Lights</h3><span class="cat-cta">View all <i class="bi bi-arrow-right"></i></span></div>
+                </a>
+                <a href="<?= base_url('customer/shop?category=Plushies') ?>" class="cat-card">
+                    <img src="<?= base_url('uploads/plush.2.png') ?>" alt="Plushies">
+                    <div class="cat-overlay"><h3>Plushies</h3><span class="cat-cta">View all <i class="bi bi-arrow-right"></i></span></div>
+                </a>
+                <a href="<?= base_url('customer/shop?category=Stickers') ?>" class="cat-card">
+                    <img src="<?= base_url('uploads/sticker_smiski.png') ?>" alt="Stickers">
+                    <div class="cat-overlay"><h3>Stickers</h3><span class="cat-cta">View all <i class="bi bi-arrow-right"></i></span></div>
                 </a>
             </div>
         </div>
     </section>
 
-<?= $this->include('templates/footer') ?>
+    <section class="section-padding">
+        <div class="container text-center">
+            <h2 class="section-title">Browse Products</h2>
+            <div class="green-underline mx-auto mb-5"></div>
+            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 g-4 justify-content-center">
+                <?php $limitProducts = isset($products) ? array_slice($products, 0, 8) : []; ?>
+                <?php if(!empty($limitProducts)): ?>
+                    <?php foreach ($limitProducts as $product): ?>
+                        <div class="col">
+                            <a href="<?= base_url('customer/product_details/' . $product['id']) ?>" class="text-decoration-none">
+                                <div class="browse-card h-100 shadow-sm">
+                                    <div class="browse-img">
+                                        <img src="<?= base_url('uploads/' . $product['image']) ?>" alt="<?= $product['name'] ?>">
+                                    </div>
+                                    <div class="browse-details">
+                                        <h6 class="browse-title"><?= $product['name'] ?></h6>
+                                        <p class="browse-price">₱ <?= number_format($product['price'], 2) ?></p>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <div class="col-12"><p class="text-muted">No products available yet.</p></div>
+                <?php endif; ?>
+            </div>
+            <div class="mt-5">
+                <a href="<?= base_url('customer/shop') ?>" class="btn btn-view-all">View More <i class="bi bi-arrow-right ms-2"></i></a>
+            </div>
+        </div>
+    </section>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <section id="about-smiski" class="about-section">
+        <div class="container text-center">
+            <div class="about-card-wrapper shadow-lg">
+                <a href="<?= base_url('/customer/about') ?>">
+                    <img src="<?= base_url('uploads/aboutsmiski.png') ?>" alt="About Smiski" class="img-fluid w-100">
+                </a>
+            </div>
+        </div>
+    </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
-    const productModal = document.getElementById('productModal');
-    productModal.addEventListener('show.bs.modal', function (event) {
-        const card = event.relatedTarget;
-
-        const name = card.getAttribute('data-name');
-        const price = card.getAttribute('data-price');
-        const stockText = card.getAttribute('data-stock');
-        const image = card.getAttribute('data-image');
-        const desc = card.getAttribute('data-description');
-
-        document.getElementById('productModalTitle').textContent = name;
-        document.getElementById('productModalImage').src = image;
-        document.getElementById('productModalImage').alt = name;
-        document.getElementById('productModalDescription').textContent = desc;
-
-    });
-
-    function slideProducts(direction) {
-        const slider = document.getElementById('productSlider');
-        const card = slider.querySelector('.product-card-slide');
-        if (!card) return;
-
-        const cardStyle = window.getComputedStyle(card);
-        const cardWidth = card.offsetWidth;
-        const gap = parseInt(cardStyle.marginRight) || 20;
-
-        // Distance to scroll = 3 cards + 3 gaps
-        const scrollDistance = (cardWidth + gap) * 3;
-
-        // Current scroll position
-        const currentScroll = slider.scrollLeft;
-
-        // Max scrollable position
-        const maxScroll = slider.scrollWidth - slider.clientWidth;
-
-        // Calculate new target scroll position
-        let targetScroll = currentScroll + scrollDistance * direction;
-
-        // Clamp target scroll so it doesn't go beyond limits
-        targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-
-        // Scroll smoothly to target
-        slider.scrollTo({ left: targetScroll, behavior: 'smooth' });
+    function slideContainer(elementId, direction) {
+        const container = document.getElementById(elementId);
+        if(container) {
+            const scrollAmount = container.clientWidth;
+            container.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        }
     }
 </script>
+
+<?= $this->include('templates/footer') ?>

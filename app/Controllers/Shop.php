@@ -10,17 +10,12 @@ class Shop extends BaseController
         // ==== LOAD PRODUCT MODEL ====
         $productModel = new ProductModel();
 
-        // ==== FETCH PRODUCTS IN FIGURINES CATEGORY ====
-        $data['products'] = $productModel->where('category', 'Figurines')
-                                         ->orderBy('id', 'DESC')
-                                         ->findAll();
+        // ==== FETCH ALL PRODUCTS ====
+        // We removed ->where('category', ...) so ALL items (Figures, Others, etc.) are fetched.
+        // We put them ALL into $data['products'] so the view loop can see them.
+        $data['products'] = $productModel->orderBy('id', 'DESC')->findAll();
 
-        // ==== FETCH PRODUCTS IN OTHERS CATEGORY ====
-        $data['others'] = $productModel->where('category', 'Others')
-                                       ->orderBy('id', 'DESC')
-                                       ->findAll();
-
-        // ==== LOAD SHOP VIEW WITH PRODUCTS DATA ====
+        // ==== LOAD SHOP VIEW ====
         return view('shop', $data);
     }
 }
