@@ -1,32 +1,23 @@
-/* IMPORT GOOGLE FONT */
 @import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
 
-/* === GLOBAL STYLES === */
 html {
     scroll-behavior: smooth;
 }
 
 body {
-    background-color: #ebffcb; 
-    font-family: "Winky Rough", sans-serif;
-    color: #fff; 
+    background-color: #f0f2f5; 
+    font-family: 'Winky Rough', sans-serif;
+    color: #334e26; /* Darker green for text instead of generic grey/black */
     margin: 0;
-    
-    /* ADJUSTED: Reduced padding since header is now smaller */
-    padding-top: 60px; 
+    padding-top: 75px; 
 }
 
-/* === HEADER / NAVBAR === */
 .custom-navbar {
     width: 100%;
-    
-    /* GLASS EFFECT */
-    background: #ffec29; 
+    /* Tinted glassmorphism to match the new body color */
+    background: rgba(246, 250, 239, 0.95); 
     backdrop-filter: blur(10px); 
-    
-    /* ADJUSTED: Reduced padding to make header thin (50% smaller) */
-    padding: 10px 0; 
-    
+    padding: 12px 0; 
     margin: 0;
     border: none;
     position: fixed; 
@@ -35,31 +26,26 @@ body {
     right: 0;
     z-index: 1030;
     transition: all 0.3s ease;
-
-    box-shadow: 0 4px 10px rgba(45, 122, 31, 0.15);
+    box-shadow: 0 4px 15px rgba(45, 122, 31, 0.06); /* Very subtle green shadow */
 }
 
-/* NAVBAR CONTAINER */
-.custom-navbar .container-fluid {
+.custom-navbar .container {
     padding-left: 1rem;
     padding-right: 1rem;
     margin: 0 auto;
-    max-width: 1450px;
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-/* NAVBAR BRAND / LOGO */
 .custom-navbar .navbar-brand {
     flex: none;
     margin-right: 2rem;
-    padding: 0; /* Remove default padding */
+    padding: 0;
 }
 
-/* ADJUSTED: Smaller Logo */
 .custom-navbar .navbar-brand img {
-    height: 30px; /* Reduced from 55px */
+    height: 32px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s ease;
@@ -69,41 +55,31 @@ body {
     transform: rotate(-5deg); 
 }
 
-/* NAV LINKS CONTAINER */
 .custom-navbar .navbar-nav {
     display: flex;
-    gap: 2rem; 
     align-items: center;
 }
 
-/* CENTER NAV LINKS */
-.custom-navbar .navbar-nav.mx-auto {
-    flex: 1;
-    justify-content: flex-end;
-}
-
-/* NAV LINKS */
 .custom-navbar .nav-link {
-    color: #40583c !important; 
+    color: #526b48 !important; /* Muted green for resting state */
     font-weight: 600;
-    font-size: 1rem !important; /* Slightly smaller text */
-    padding: 0.2rem 0; /* Minimal padding */
+    font-size: 1rem !important;
+    padding: 0.5rem 1.2rem !important;
     position: relative;
     transition: all 0.3s ease;
 }
 
-/* ACTIVE NAV LINK */
-.nav-link.active { 
-    color: #4a9e32 !important; 
-    font-weight: 800; 
+.nav-link.active, .nav-link:hover { 
+    color: #2D7A1F !important; /* Signature Smiski green */
+    transform: translateY(-2px);
 }
 
 .custom-navbar .nav-link::after {
     content: '';
     display: block;
     width: 0;
-    height: 3px;
-    background: #78ad23;
+    height: 2px;
+    background: #2D7A1F;
     transition: width 0.3s;
     border-radius: 2px;
     margin: auto;
@@ -114,39 +90,26 @@ body {
     width: 100%;
 }
 
-.nav-link:hover { 
-    color: #4a9e32 !important; 
-    transform: translateY(-2px); 
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+.bi-cart2, .bi-person {
+    font-size: 1.4rem;
+    color: #526b48;
+    transition: color 0.3s ease;
 }
 
-/* PROFILE ICON SIZE */
-.bi-person-circle {
-    font-size: 1.5rem; /* Make the profile icon clearly visible */
+.nav-link:hover .bi-cart2, 
+.nav-link:hover .bi-person {
+    color: #2D7A1F;
 }
 
-/* NAVBAR TOGGLER */
 .navbar-toggler {
     border: none;
     outline: none;
     padding: 0;
+    box-shadow: none;
 }
 
-.navbar-toggler-icon {
-    filter: invert(1); 
-}
-
-
-/* Add this to your header.css */
-
-
-/* Adjust Icons to match text color */
-.bi-cart3, .bi-person-circle {
-    color: #40583c;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover .bi-cart3, 
-.nav-link:hover .bi-person-circle {
-    color: #4a9e32;
+.smiski-badge {
+    background-color: #2D7A1F !important;
+    color: #ffffff;
+    border: 2px solid #f6faef; /* Matches the new navbar background */
 }

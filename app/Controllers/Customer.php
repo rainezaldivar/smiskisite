@@ -42,4 +42,32 @@ class Customer extends Controller
         // ==== LOAD PROFILE VIEW ====
         return view('profile', $data);
     }
+
+    // ==================================================
+    // ==== NEW: CART PAGE FUNCTION (Added this!) ====
+    // ==================================================
+    public function cart()
+    {
+        if (!session()->get('isLoggedIn')) {
+            return redirect()->to('/login'); 
+        }
+
+        return view('cart');
+    }
+
+    // ==================================================
+    // ==== EXTRA: SHOP PAGE (Para gumana yung links) ====
+    // ==================================================
+    // Idinagdag ko na rin ito kasi yung Cart page natin may "Continue Shopping" link
+    public function shop()
+    {
+        // Load data if needed, or just show the view
+        return view('shop'); 
+    }
+    
+    // ==== EXTRA: ABOUT PAGE ====
+    public function about()
+    {
+        return view('about');
+    }
 }

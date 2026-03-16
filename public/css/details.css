@@ -1,0 +1,184 @@
+/* Import Zen Maru Gothic Font */
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+    --smiski-green: #2d7a1f;
+    --smiski-green-hover: #1b4d13;
+    --soft-green-bg: #f9fdf5;
+    --soft-green-border: #eef5e0;
+    --soft-yellow-bg: #fffde7;
+    --label-yellow: #fff8c5;
+    --text-gray: #5d5d5d;
+}
+
+body {
+    font-family: 'Winky Rough', sans-serif;
+    color: #4a4a4a;
+    background-color: #ebffcb;
+    margin: 0;
+    padding-top: 130px; /* Ensure content isn't hidden behind header */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ==== Navigation Link (FIX: TIP-11 Fitts's Law) ==== */
+.back-link {
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    
+    /* FIX: Tip-25 Contrast - Changed #aaa to #555 (Darker Grey) */
+    color: #555; 
+    
+    text-decoration: none;
+    transition: color 0.3s ease;
+    
+    /* FIX: Added padding to make it easier to tap on mobile */
+    display: inline-block;
+    padding: 10px 0; 
+    margin-bottom: 20px;
+}
+
+.back-link:hover {
+    color: var(--smiski-green);
+}
+
+/* ==== Header Styles ==== */
+.katakana-title {
+    color: var(--smiski-green);
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    font-size: 3.5rem; /* Copied from your previous requests */
+    line-height: 1.2;
+}
+
+.english-subtitle {
+    /* FIX: Tip-25 Contrast - Changed #888 to #666 */
+    color: #666;
+    
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+}
+
+/* ==== Product Image Box ==== */
+.product-image-box {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Rectangle as per your preference */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.variant-img {
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.05));
+}
+
+/* ==== Labels ==== */
+.yellow-pill-label {
+    /* FIX: Tip-15 Avoid Pure White */
+    background-color: #fcfcfc; 
+    
+    border: 2px solid #2d7a1f;
+    color: #2d7a1f;
+    border-radius: 50px;
+    font-weight: 700;
+    box-shadow: 0 3px 0 rgba(45, 122, 31, 0.1);
+    display: inline-block;
+}
+
+/* ==== Info Boxes ==== */
+.info-box {
+    background-color: var(--soft-yellow-bg);
+    
+    /* FIX: Tip-15 Avoid Pure White */
+    border: 2px solid #fcfcfc; 
+    
+    border-radius: 2rem;
+    padding: 2.5rem;
+    text-align: center;
+    height: 100%;
+    transition: border-color 0.3s ease;
+}
+
+.info-box:hover {
+    border-color: var(--label-yellow);
+}
+
+.icon-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    margin: 0 auto 1rem auto;
+}
+
+.icon-circle.green {
+    background-color: var(--smiski-green);
+    color: white; /* Text on dark green is fine as white */
+}
+
+.icon-circle.white {
+    /* FIX: Tip-15 Avoid Pure White */
+    background-color: #fcfcfc; 
+    
+    color: var(--smiski-green);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.info-title {
+    color: var(--text-gray);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.info-desc {
+    font-size: 0.9rem;
+    
+    /* FIX: Contrast */
+    color: #666; 
+    
+    line-height: 1.6;
+}
+
+/* ==== Buttons ==== */
+.btn-smiski {
+    background-color: var(--smiski-green);
+    color: white; /* White text on Dark Green is excellent contrast */
+    border-radius: 50px;
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s;
+    border: none;
+    box-shadow: 0 4px 0 #1b4d13;
+    display: inline-block;
+    padding-top: 12px;    /* Manual padding to center text visually */
+    padding-bottom: 12px;
+}
+
+.btn-smiski:hover {
+    background-color: var(--smiski-green-hover);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #0e2e0a;
+}
+
+.btn-smiski:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 #1b4d13;
+}

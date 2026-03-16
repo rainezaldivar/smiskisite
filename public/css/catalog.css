@@ -1,0 +1,96 @@
+/* ====== GOOGLE FONT IMPORT ====== */
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+/* ====== GLOBAL STYLES ====== */
+body {
+    background-color: #ebffcb;
+    font-family: 'Winky Rough', cursive, sans-serif;
+    
+    /* FIX: Tip-15 Avoid Pure Black. #333 is good (Dark Grey) */
+    color: #333; 
+    
+    padding-top: 130px; 
+    margin: 0;
+}
+
+.product-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Titles */
+.section-title {
+    font-size: 3rem;
+    color: #2d7a1f;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 0.3rem;
+    margin-top: 50px;
+}
+
+/* Header with Logo + Text Side-by-Side */
+.category-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-bottom: 4px solid #b8e57a;
+    padding-bottom: 10px;
+    margin-top: 100px;
+}
+
+.text-success {
+    color: #2d7a1f !important;
+}
+
+/* ====== CARD STYLING ====== */
+.custom-hover-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    
+    /* FIX: Tip-15 Avoid Pure White (#fff). Used #fcfcfc (Soft White) instead */
+    border: 3px solid #fcfcfc !important;
+    background: #fcfcfc; 
+    
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.custom-hover-card:hover {
+    box-shadow: 0 15px 30px rgba(45, 122, 31, 0.15) !important;
+    border-color: #2d7a1f !important;
+    
+    /* Optional: Make it slightly brighter on hover to indicate activity */
+    background: #ffffff; 
+}
+
+/* Image Background Container */
+.img-bg-circle {
+    /* Soft Mint/White background is good */
+    background-color: #f9fdf5;
+    border-radius: 20px;
+    width: 100%;
+    
+    /* Rectangle (Landscape) Aspect Ratio */
+    aspect-ratio: 4 / 3; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease;
+    padding: 20px;
+}
+
+.custom-hover-card:hover .img-bg-circle {
+    background-color: #ebffcb; 
+}
+
+.img-bg-circle img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 5px rgba(0,0,0,0.05));
+    transition: transform 0.3s ease;
+}
+
+.custom-hover-card:hover img {
+    transform: scale(1.05);
+}

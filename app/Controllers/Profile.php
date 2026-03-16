@@ -7,96 +7,57 @@ class Profile extends Controller
 {
     protected $userModel;
 
-    public function __construct()
-    {
-        // ==== LOAD FORM AND URL HELPERS ====
+    public function __construct() {
         helper(['form', 'url']);
-
-        // ==== INITIALIZE USER MODEL ====
         $this->userModel = new UserModel();
     }
 
-    // ==== PROFILE PAGE ====
-    public function index()
-    {
-        // ==== CHECK IF USER IS LOGGED IN ====
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login'); // redirect if not logged in
-        }
-
-        // ==== GET CURRENT USER DATA ====
-        $userId = session()->get('id');
-        $user = $this->userModel->find($userId);
-
-        // ==== LOAD PROFILE VIEW WITH USER DATA ====
-        return view('profile', ['user' => $user]);
+    public function index() {
+        if (!session()->get('isLoggedIn')) return redirect()->to('/login');
+        return view('profile', ['user' => $this->userModel->find(session()->get('id'))]);
     }
 
-    // ==== UPLOAD PROFILE PICTURE ====
-    public function uploadProfilePicture()
-    {
-        // ==== CHECK IF USER IS LOGGED IN ====
-        if (!session()->get('isLoggedIn')) {
-            return redirect()->to('/login');
-        }
-
-        // ==== GET UPLOADED FILE ====
+    public function uploadProfilePicture() {
         $file = $this->request->getFile('profile_picture');
 
-        // ==== CHECK IF FILE IS VALID ====
-        if (!$file->isValid() || $file->getError() !== UPLOAD_ERR_OK) {
-            return redirect()->back()->with('error', 'Invalid or corrupted file.');
+        if (!$file->isValid() || $file->getSizeByUnit('mb') > 5) {
+            return redirect()->back()->with('error', 'Upload failed! Ensure the file is an image and less than 5MB.');
         }
 
-        // ==== CHECK FILE TYPE ====
-        $allowedTypes = ['jpg', 'jpeg', 'png'];
-        $ext = strtolower($file->getExtension());
-        if (!in_array($ext, $allowedTypes)) {
-            return redirect()->back()->with('error', 'Only JPG or PNG allowed.');
+        try {
+            $newName = $file->getRandomName();
+            $uploadPath = FCPATH . 'uploads/'; 
+            
+            if (!is_dir($uploadPath)) { mkdir($uploadPath, 0777, true); }
+            $file->move($uploadPath, $newName);
+
+            $db = \Config\Database::connect();
+            $db->table('users')->where('id', session()->get('id'))->update(['profile_picture' => $newName]);
+            
+            session()->set('profile_picture', $newName);
+            return redirect()->to('/profile')->with('success', 'Profile picture updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->to('/profile')->with('error', 'Upload Error: ' . $e->getMessage());
         }
-
-        // ==== CHECK FILE SIZE (MAX 2MB) ====
-        if ($file->getSize() > 2 * 1024 * 1024) {
-            return redirect()->back()->with('error', 'File too large (max 2MB).');
-        }
-
-        // ==== CREATE UPLOAD DIRECTORY IF NOT EXISTS ====
-        $uploadsDir = WRITEPATH . 'uploads/';
-        if (!is_dir($uploadsDir)) {
-            mkdir($uploadsDir, 0777, true);
-        }
-
-        // ==== CREATE NEW FILENAME AND MOVE FILE ====
-        $newFileName = 'profile_' . session()->get('id') . '_' . time() . '.' . $ext;
-        $file->move($uploadsDir, $newFileName);
-
-        // ==== IMAGE MANIPULATION (RESIZE TO 300x300) ====
-        \Config\Services::image()
-            ->withFile($uploadsDir . $newFileName)
-            ->fit(300, 300, 'center')
-            ->save($uploadsDir . $newFileName);
-
-        // ==== UPDATE DATABASE WITH NEW PROFILE PICTURE ====
-        $this->userModel->update(session()->get('id'), [
-            'profile_picture' => $newFileName
-        ]);
-
-        return redirect()->to('/profile')->with('success', 'Profile photo updated!');
     }
 
-    // ==== DISPLAY PROFILE PICTURE ====
-    public function profilePicture($filename)
-    {
-        $path = WRITEPATH . 'uploads/' . $filename;
-
-        // ==== CHECK IF FILE EXISTS ====
-        if (!file_exists($path)) {
-            throw new \CodeIgniter\Exceptions\PageNotFoundException();
+    public function updateDetails() {
+        try {
+            $data = $this->request->getPost();
+            
+            if (!empty($data)) {
+                // Para hindi mag-error kapag blanko ang birthday
+                if (empty($data['dob'])) {
+                    $data['dob'] = null;
+                }
+                
+                $this->userModel->update(session()->get('id'), $data);
+                session()->set(array_merge(session()->get(), $data));
+            }
+            
+            return redirect()->to('/profile')->with('success', 'Profile updated successfully!');
+        } catch (\Exception $e) {
+            return redirect()->to('/profile')->with('error', 'Save Error: ' . $e->getMessage());
         }
-
-        // ==== RETURN IMAGE CONTENT ====
-        return $this->response
-                    ->setContentType(mime_content_type($path))
-                    ->setBody(file_get_contents($path));
     }
 }

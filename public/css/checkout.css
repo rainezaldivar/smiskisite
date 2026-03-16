@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Winky+Rough:ital,wght@0,300..900;1,300..900&display=swap');
+
+body {
+    background-color: #ebffcb;
+    font-family: 'Winky Rough', sans-serif;
+    color: #333;
+    padding-top: 100px;
+    padding-bottom: 20px;
+}
+
+/* Widened container and added bottom margin before footer */
+.checkout-container {
+    max-width: 1100px;
+    margin: 0 auto 100px auto; 
+    padding: 0 15px;
+}
+
+/* Larger Checkout Header aligned to the left, no icon */
+.page-header {
+    font-size: 3rem; 
+    color: #2d7a1f;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+/* Cards */
+.checkout-card {
+    background-color: #fcfcfc;
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+.address-card {
+    border-top: 4px solid #2d7a1f;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #2d7a1f;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 16px;
+}
+
+.address-details p {
+    margin: 4px 0;
+    font-size: 1rem;
+    color: #444;
+}
+
+/* Table-like Item Section */
+.table-header-row {
+    display: flex;
+    color: #666;
+    font-size: 0.9rem;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #eef5e0;
+    margin-bottom: 12px;
+}
+
+.product-row {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+}
+
+/* Table Column Widths */
+.col-product {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.col-price {
+    width: 20%;
+    text-align: center;
+}
+.col-qty {
+    width: 20%;
+    text-align: center;
+}
+.col-subtotal {
+    width: 20%;
+    text-align: right;
+}
+
+.product-img {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+    border: 1px solid #eef5e0;
+    border-radius: 8px;
+    background: #f9fdf5;
+}
+
+/* Options Section */
+.option-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 0;
+    border-top: 1px solid #eef5e0;
+}
+
+/* Payment Methods */
+.payment-header-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.payment-method-text {
+    font-weight: bold;
+    color: #333;
+    margin-right: 15px;
+}
+
+.btn-change {
+    color: #2d7a1f;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+.payment-methods {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.payment-btn {
+    border: 1px solid #ccc;
+    background: #fff;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.payment-btn.active {
+    border-color: #2d7a1f;
+    color: #2d7a1f;
+    background-color: #f9fdf5;
+}
+
+.payment-desc-box {
+    background-color: #f9fdf5;
+    border: 1px solid #eef5e0;
+    border-radius: 4px;
+    padding: 12px;
+    margin-top: 16px;
+    color: #555;
+    font-size: 0.95rem;
+}
+
+/* Summary Box */
+.summary-container {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto; /* Aligns to the right */
+}
+
+.summary-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    color: #555;
+}
+
+.summary-row.total-row {
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid #eef5e0;
+    align-items: center;
+}
+
+.total-label {
+    font-size: 1.1rem;
+    color: #333;
+}
+
+.total-amount {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #2d7a1f;
+}
+
+.btn-place-order {
+    background-color: #2d7a1f;
+    color: #fff;
+    border: none;
+    padding: 14px 0;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+.btn-place-order:hover {
+    background-color: #1b4d13;
+}
+
+/* Disabled state for Place Order button */
+.btn-place-order:disabled {
+    background-color: #a8c4a1;
+    cursor: not-allowed;
+    opacity: 0.8;
+}
