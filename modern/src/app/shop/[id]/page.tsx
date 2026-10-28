@@ -43,8 +43,9 @@ export default async function ProductPage({
         Back to all companions
       </Link>
       <div className="mt-8 grid gap-10 lg:grid-cols-2 lg:gap-16">
-        <div className="flex aspect-square items-center justify-center rounded-[32px] bg-[#e9eedf] p-10 sm:p-16">
+        <div className="flex aspect-square items-center justify-center rounded-sm bg-[#e9eedf] p-10 sm:p-16">
           <img
+            draggable={false}
             src={imageUrl(product.image)}
             alt={product.name}
             className="h-full w-full object-contain"
@@ -65,7 +66,7 @@ export default async function ProductPage({
           </p>
           <div className="mt-6 flex items-center gap-2 text-xs font-bold">
             <span
-              className={`h-2 w-2 rounded-full ${product.stock > 0 ? "bg-[#78944e]" : "bg-[#a69c8c]"}`}
+              className={`h-2 w-2 rounded-sm ${product.stock > 0 ? "bg-[#78944e]" : "bg-[#a69c8c]"}`}
             />
             {product.stock > 0
               ? `${product.stock} available · ready for a new home`

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowUpRight, Sprout } from "lucide-react";
 export function SiteFooter() {
   return (
-    <footer className="mt-20 border-t border-[#dfe5d6] bg-[#edf1e4]">
+    <footer className="mt-10 border-t border-[#dfe5d6] bg-[#edf1e4]">
       <div className="container-page grid gap-12 py-14 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
           <Link
@@ -22,8 +22,8 @@ export function SiteFooter() {
           <p className="eyebrow mb-5">Explore</p>
           <div className="flex flex-col gap-3 text-sm">
             <Link href="/shop">Shop all companions</Link>
-            <Link href="/catalog">Collector’s guide</Link>
-            <Link href="/about">About Smiski</Link>
+            <Link href="/catalog">Collections</Link>
+            <Link href="/about">About SMISKI</Link>
           </div>
         </div>
         <div>

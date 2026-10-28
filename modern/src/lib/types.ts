@@ -21,6 +21,7 @@ export type Series = {
   description: string;
   image: string;
   coverImage?: string;
+  secretImage?: string;
   katakana?: string;
   variations: SeriesVariation[];
   group: "figurines" | "accessories" | "lifestyle";

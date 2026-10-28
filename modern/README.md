@@ -70,6 +70,12 @@ Use a personal, non-commercial portfolio within the free plan's quotas. Supabase
 
 ## Source map
 
+The home news carousel reads `src/data/news.json`, sorts entries by publication date, and links to the specific official announcement. Its bundled SMISKI logo works without external image requests; `sourceImage` records the original announcement artwork for future replacement. Adding new announcements requires updating this file; the feed is not automatically synchronized with the official site.
+
+Product and collection cards share the same styles in `src/app/globals.css`. The home collections carousel is server-rendered and uses native CSS markers, buttons, anchor positioning, scroll snapping, and scroll-state queries. Browsers without marker support show a warning and retain horizontal scrolling. Current build tooling reports warnings for these experimental selectors; the production controls have been checked in Edge with JavaScript disabled.
+
+Character artwork is preserved, including any backgrounds embedded in the images. Secret characters use a centered silhouette placeholder. When the secret artwork is supplied, add its path as `secretImage` on the corresponding series in `src/data/series.json`; the page applies the silhouette effect and question mark.
+
 ```text
 src/app/                Pages, server actions, auth callbacks
 src/components/         Shared UI, bag, checkout and account forms

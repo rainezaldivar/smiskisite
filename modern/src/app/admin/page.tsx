@@ -120,14 +120,14 @@ export default async function AdminPage({
             Find registered users and manage customer accounts.
           </p>
         </div>
-        <span className="hidden size-14 items-center justify-center rounded-2xl bg-[#e7efd9] text-[#58723d] sm:flex">
+        <span className="hidden size-14 items-center justify-center rounded-sm bg-[#e7efd9] text-[#58723d] sm:flex">
           <Shield size={25} aria-hidden />
         </span>
       </div>
       {unavailable ? (
         <div
           role="status"
-          className="mt-9 rounded-[1.75rem] border border-[#dfe5d2] bg-white/80 p-8"
+          className="mt-9 rounded-sm border border-[#dfe5d2] bg-white/80 p-8"
         >
           <h2 className="text-xl font-semibold text-[#293329]">
             User management is unavailable
@@ -148,7 +148,7 @@ export default async function AdminPage({
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-2xl border border-[#dfe5d2] bg-white/80 p-5"
+                className="rounded-sm border border-[#dfe5d2] bg-white/80 p-5"
               >
                 <p className="text-xs text-[#737d6b]">{stat.label}</p>
                 <p className="mt-2 text-3xl font-semibold tracking-tight text-[#344d31]">
@@ -159,7 +159,7 @@ export default async function AdminPage({
           </div>
           <section
             aria-label="Registered users"
-            className="mt-6 overflow-hidden rounded-[1.75rem] border border-[#dfe5d2] bg-white/80"
+            className="mt-6 overflow-hidden rounded-sm border border-[#dfe5d2] bg-white/80"
           >
             <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#e6eadf] p-5 sm:p-6">
               <h2 className="inline-flex items-center gap-2 text-lg font-semibold text-[#293329]">
@@ -179,12 +179,12 @@ export default async function AdminPage({
                   defaultValue={query}
                   maxLength={80}
                   placeholder="Search name or email"
-                  className="min-w-0 flex-1 rounded-full border border-[#dce2d2] bg-white px-4 py-2.5 text-sm outline-none focus:border-[#728c57] sm:w-56"
+                  className="min-w-0 flex-1 rounded-sm border border-[#dce2d2] bg-white px-4 py-2.5 text-sm outline-none focus:border-[#728c57] sm:w-56"
                 />
                 <button
                   type="submit"
                   aria-label="Search users"
-                  className="flex size-10 shrink-0 items-center justify-center rounded-full bg-[#344d31] text-white hover:bg-[#243c22]"
+                  className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-[#344d31] text-white hover:bg-[#243c22]"
                 >
                   <Search size={17} aria-hidden />
                 </button>
@@ -230,7 +230,7 @@ export default async function AdminPage({
                           {user.email}
                         </td>
                         <td className="px-6 py-5">
-                          <span className="rounded-full bg-[#edf3df] px-3 py-1 text-xs capitalize text-[#58723d]">
+                          <span className="rounded-sm bg-[#edf3df] px-3 py-1 text-xs capitalize text-[#58723d]">
                             {user.role}
                           </span>
                         </td>
@@ -282,7 +282,7 @@ export default async function AdminPage({
                 {page > 1 && (
                   <Link
                     href={listHref(page - 1, query)}
-                    className="rounded-full border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
+                    className="rounded-sm border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
                     aria-label="Previous page"
                   >
                     <ArrowLeft size={15} aria-hidden />
@@ -294,7 +294,7 @@ export default async function AdminPage({
                 {page < totalPages && (
                   <Link
                     href={listHref(page + 1, query)}
-                    className="rounded-full border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
+                    className="rounded-sm border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
                     aria-label="Next page"
                   >
                     <ArrowRight size={15} aria-hidden />

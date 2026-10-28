@@ -1,26 +1,24 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight, Box, Sparkles } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import { series } from "@/lib/series";
 import { imageUrl } from "@/lib/utils";
+import { hasSecretCharacter } from "@/lib/product-filters";
+import { CollectionCard } from "@/components/content/collection-card";
 
 type Props = { params: Promise<{ slug: string }> };
-
 export function generateStaticParams() {
   return series.map((entry) => ({ slug: entry.id }));
 }
-
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
   const entry = series.find((item) => item.id === slug);
   return {
     title: entry?.name ?? "Collection not found",
-    description:
-      entry?.description || "Explore the Smiskisite collector’s dictionary.",
+    description: entry?.description,
   };
 }
-
 export default async function SeriesPage({ params }: Props) {
   const { slug } = await params;
   const entry = series.find((item) => item.id === slug);
@@ -28,147 +26,134 @@ export default async function SeriesPage({ params }: Props) {
   const related = series
     .filter((item) => item.group === entry.group && item.id !== entry.id)
     .slice(0, 4);
-  const label =
-    entry.group === "figurines"
-      ? "Figurines"
-      : entry.group === "accessories"
-        ? "Accessories"
-        : "Lifestyle & home";
-
   return (
     <div className="container-page py-8 sm:py-12">
       <Link
         href="/catalog"
-        className="mb-8 inline-flex items-center gap-2 text-sm font-medium text-[#52664b] hover:text-[#183d29]"
+        className="mb-8 inline-flex items-center gap-2 font-medium text-[#52664b]"
       >
-        <ArrowLeft size={17} aria-hidden="true" /> Back to the dictionary
+        <ArrowLeft size={18} aria-hidden="true" /> Collections
       </Link>
-      <section className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-        <div className="flex min-h-72 items-center justify-center overflow-hidden rounded-[2rem] bg-[#e9efdd] p-8 sm:min-h-96 sm:p-12">
+      <section className="grid items-center gap-6 lg:grid-cols-2 lg:gap-12">
+        <div className="collection-hero-image flex aspect-square max-h-[520px] items-center justify-center p-6">
           <img
-            src={imageUrl(entry.coverImage || entry.image)}
+            src={imageUrl(entry.image)}
             alt={entry.name}
-            className="max-h-[420px] w-full object-contain"
+            draggable={false}
+            className="h-full w-full object-contain"
           />
         </div>
         <div className="py-4">
-          <p className="eyebrow mb-4">{label} / COLLECTOR’S DICTIONARY</p>
           <h1 className="page-title">{entry.name}</h1>
           {entry.katakana && (
-            <p
-              lang="ja"
-              className="mt-4 text-lg tracking-widest text-[#6d815a]"
-            >
+            <p lang="ja" className="muted mt-4 text-xl tracking-widest">
               {entry.katakana}
             </p>
           )}
           {entry.description && (
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-[#5b6c54]">
+            <p className="muted mt-6 max-w-lg text-lg leading-relaxed">
               {entry.description}
             </p>
           )}
-          <div className="my-8 flex items-center gap-3 border-y border-[#dce4d5] py-5 text-sm text-[#52664b]">
-            <Box size={22} aria-hidden="true" />
-            <span>
-              {entry.variations.length
-                ? `${entry.variations.length} characters to get to know`
-                : "A small discovery for your everyday life"}
-            </span>
-          </div>
-          <Link href="/shop" className="button-primary">
-            Explore the shop <ArrowRight size={17} aria-hidden="true" />
-          </Link>
         </div>
       </section>
-
       {entry.variations.length > 0 && (
-        <section className="mt-16 sm:mt-20" aria-labelledby="characters-title">
-          <p className="eyebrow mb-3">MEET THE LITTLE CHARACTERS</p>
-          <h2
-            id="characters-title"
-            className="text-3xl font-semibold tracking-tight sm:text-4xl"
-          >
-            Every pose has a personality.
+        <section className="mt-12 sm:mt-16" aria-labelledby="characters-title">
+          <h2 id="characters-title" className="section-heading">
+            Meet the Little Characters
           </h2>
-          <div className="mt-8 grid grid-cols-2 gap-4 md:grid-cols-3 lg:gap-6">
+          <div className="character-grid mt-8">
             {entry.variations.map((variation, index) => (
               <article
                 key={`${variation.name}-${index}`}
-                className="overflow-hidden rounded-3xl border border-[#e1e8db] bg-white p-4 sm:p-6"
+                className="character-card"
               >
-                {variation.image ? (
-                  <div className="mb-5 flex aspect-square items-center justify-center rounded-2xl bg-[#f2f5ec] p-5">
+                <div className="character-image">
+                  {variation.image && (
                     <img
                       src={imageUrl(variation.image)}
                       alt={variation.name}
+                      draggable={false}
                       loading="lazy"
-                      className="h-full w-full object-contain"
                     />
-                  </div>
-                ) : (
-                  <div className="mb-5 flex h-20 items-center gap-3 text-[#9aaa7c]">
-                    <Sparkles size={26} aria-hidden="true" />
-                    <span className="text-sm font-semibold">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                  </div>
-                )}
-                <h3 className="text-base font-semibold sm:text-lg">
-                  {variation.name}
-                </h3>
+                  )}
+                </div>
+                <h3 className="text-xl font-semibold">{variation.name}</h3>
                 {variation.description && (
-                  <p className="muted mt-2 text-sm leading-relaxed">
+                  <p className="muted mt-2 leading-relaxed">
                     {variation.description}
                   </p>
                 )}
               </article>
             ))}
+            {hasSecretCharacter(entry) && (
+              <article
+                className="character-card secret-character"
+                aria-label="Secret character"
+              >
+                <div
+                  className="character-image secret-image"
+                  role="img"
+                  aria-label="Secret character silhouette"
+                >
+                  {/* Add secretImage to the series when its artwork is supplied. */}
+                  {entry.secretImage ? (
+                    <img
+                      src={imageUrl(entry.secretImage)}
+                      alt=""
+                      draggable={false}
+                      loading="lazy"
+                      className="secret-artwork"
+                    />
+                  ) : (
+                    <svg
+                      viewBox="0 0 200 240"
+                      aria-hidden="true"
+                      className="secret-silhouette"
+                    >
+                      <path
+                        d="M100 15c-29 0-49 20-49 46 0 20 10 37 24 44l-19 20-24 27c-9 11 5 25 15 17l19-17-2 39-13 26c-6 14 13 23 21 11l21-31h14l21 31c8 12 27 3 21-11l-13-26-2-39 19 17c10 8 24-6 15-17l-24-27-19-20c14-7 24-24 24-44 0-26-20-46-49-46Z"
+                        fill="currentColor"
+                      />
+                    </svg>
+                  )}
+                  <span className="secret-question" aria-hidden="true">
+                    ?
+                  </span>
+                </div>
+              </article>
+            )}
           </div>
         </section>
       )}
-
       {related.length > 0 && (
         <section
-          className="mt-16 border-t border-[#dce4d5] pt-12 sm:mt-20"
+          className="mt-12 border-t border-[#dce4d5] pt-10 sm:mt-16"
           aria-labelledby="more-series-title"
         >
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-            <h2
-              id="more-series-title"
-              className="text-2xl font-semibold tracking-tight"
-            >
+            <h2 id="more-series-title" className="section-heading">
               Keep exploring
             </h2>
-            <Link
-              href="/catalog"
-              className="inline-flex items-center gap-2 text-sm font-medium"
-            >
-              All collections <ArrowRight size={17} aria-hidden="true" />
+            <Link href="/catalog" className="font-medium">
+              All collections
             </Link>
           </div>
           <div className="grid grid-cols-2 gap-4 md:grid-cols-4 lg:gap-6">
             {related.map((item) => (
-              <Link
-                href={`/catalog/${item.id}`}
-                key={item.id}
-                className="group rounded-3xl border border-[#e1e8db] bg-white p-4 transition-colors hover:border-[#99ae7e]"
-              >
-                <div className="mb-4 aspect-square rounded-2xl bg-[#f1f4e9] p-4">
-                  <img
-                    src={imageUrl(item.image)}
-                    alt={item.name}
-                    loading="lazy"
-                    className="h-full w-full object-contain transition-transform duration-300 group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="text-sm font-semibold sm:text-base">
-                  {item.name}
-                </h3>
-              </Link>
+              <CollectionCard key={item.id} entry={item} />
             ))}
           </div>
         </section>
       )}
+      <div className="mt-12 flex justify-center border-t border-[#dce4d5] pt-10">
+        <Link
+          href={`/shop?series=${encodeURIComponent(entry.id)}`}
+          className="button-primary"
+        >
+          Explore the Shop
+        </Link>
+      </div>
     </div>
   );
 }

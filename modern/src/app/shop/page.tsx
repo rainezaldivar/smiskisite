@@ -1,24 +1,19 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import { getProducts } from "@/lib/products";
 import { ShopBrowser } from "@/components/shop-browser";
+import { getSeries } from "@/lib/series";
 export const metadata: Metadata = { title: "Shop" };
-export default async function ShopPage() {
+export default async function ShopPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ series?: string }>;
+}) {
   const products = await getProducts();
+  const { series: seriesId } = await searchParams;
+  const entry = seriesId ? getSeries(seriesId) : undefined;
   return (
-    <section className="container-page py-12 sm:py-16">
-      <p className="eyebrow">Find your little companion</p>
-      <div className="mt-4 flex flex-wrap items-end justify-between gap-5">
-        <h1 className="page-title">
-          Small things.
-          <br />
-          Big happiness.
-        </h1>
-        <p className="muted max-w-xs text-sm leading-7">
-          A quiet companion for every corner.
-          <br />
-          Which one feels like you?
-        </p>
-      </div>
+    <section className="container-page py-8 sm:py-12">
+      <h1 className="page-title">{entry?.name ?? "Shop"}</h1>
       <ShopBrowser products={products} />
     </section>
   );

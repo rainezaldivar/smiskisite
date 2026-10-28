@@ -8,7 +8,7 @@ import { updateProfile, uploadAvatar } from "@/app/actions/profile";
 import { initialFormState } from "./form-state";
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
+  "mt-2 w-full rounded-sm border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
 
 export function ProfileDetailsForm({ profile }: { profile: Profile }) {
   const [state, action, pending] = useActionState(
@@ -78,7 +78,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
       {state.message && (
         <p
           role={state.status === "error" ? "alert" : "status"}
-          className={`rounded-xl px-4 py-3 text-sm ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
+          className={`rounded-sm px-4 py-3 text-sm ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
         >
           {state.message}
         </p>
@@ -189,7 +189,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
       <button
         disabled={pending}
         type="submit"
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#344d31] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#344d31] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60 sm:w-auto"
       >
         {pending ? (
           <LoaderCircle size={16} className="animate-spin" aria-hidden />
@@ -217,11 +217,12 @@ export function AvatarForm({ profile }: { profile: Profile }) {
   const source = pictureSource(profile.profile_picture);
   return (
     <div>
-      <div className="mx-auto mb-5 flex size-28 items-center justify-center overflow-hidden rounded-full bg-[#e6eed7] text-3xl font-semibold text-[#58723d]">
+      <div className="mx-auto mb-5 flex size-28 items-center justify-center overflow-hidden rounded-sm bg-[#e6eed7] text-3xl font-semibold text-[#58723d]">
         {failedSource === source ? (
           profile.name.slice(0, 2).toUpperCase()
         ) : (
           <Image
+            draggable={false}
             key={profile.profile_picture}
             src={source}
             alt={`${profile.name}'s profile photo`}
@@ -237,7 +238,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
         {profile.name}
       </h2>
       <p className="mt-1 break-all text-sm text-[#737d6b]">{profile.email}</p>
-      <span className="mt-3 inline-block rounded-full bg-[#edf3df] px-3 py-1 text-xs font-medium capitalize text-[#58723d]">
+      <span className="mt-3 inline-block rounded-sm bg-[#edf3df] px-3 py-1 text-xs font-medium capitalize text-[#58723d]">
         {profile.role === "admin" ? "Administrator" : "Smiski family"}
       </span>
       <form
@@ -256,7 +257,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
           type="file"
           accept="image/jpeg,image/png,image/webp"
           required
-          className="mt-3 block w-full text-xs text-[#737d6b] file:mr-2 file:rounded-full file:border-0 file:bg-[#edf3df] file:px-3 file:py-2 file:text-xs file:font-medium file:text-[#3d5631]"
+          className="mt-3 block w-full text-xs text-[#737d6b] file:mr-2 file:rounded-sm file:border-0 file:bg-[#edf3df] file:px-3 file:py-2 file:text-xs file:font-medium file:text-[#3d5631]"
         />
         <p className="mt-2 text-xs text-[#737d6b]">
           JPG, PNG, or WebP. Up to 5 MB.
@@ -264,7 +265,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
         <button
           disabled={pending}
           type="submit"
-          className="mt-4 w-full rounded-full border border-[#cedcbb] px-4 py-2.5 text-xs font-semibold text-[#344d31] hover:bg-[#edf3df] disabled:opacity-60"
+          className="mt-4 w-full rounded-sm border border-[#cedcbb] px-4 py-2.5 text-xs font-semibold text-[#344d31] hover:bg-[#edf3df] disabled:opacity-60"
         >
           {pending ? "Uploading…" : "Update photo"}
         </button>

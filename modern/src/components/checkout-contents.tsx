@@ -186,9 +186,10 @@ export function CheckoutContents({
                 >
                   {product && (
                     <img
+                      draggable={false}
                       src={imageUrl(product.image)}
                       alt={product.name}
-                      className="h-20 w-20 rounded-2xl bg-sage object-contain p-2"
+                      className="h-20 w-20 rounded-sm bg-sage object-contain p-2"
                     />
                   )}
                   <div className="min-w-0 flex-1">
@@ -229,7 +230,7 @@ export function CheckoutContents({
             <dd>{formatPrice(subtotal + 100)}</dd>
           </div>
         </dl>
-        <div className="mt-6 rounded-2xl bg-[#eef2e2] p-4 text-xs leading-6">
+        <div className="mt-6 rounded-sm bg-[#eef2e2] p-4 text-xs leading-6">
           <p className="flex items-center gap-2 font-bold">
             <ShieldCheck size={15} />
             Demo checkout
@@ -241,7 +242,7 @@ export function CheckoutContents({
         </div>
         {error && (
           <p
-            className="mt-5 rounded-xl bg-[#fff0e9] p-3 text-sm text-[#98452f]"
+            className="mt-5 rounded-sm bg-[#fff0e9] p-3 text-sm text-[#98452f]"
             role="alert"
           >
             {error}

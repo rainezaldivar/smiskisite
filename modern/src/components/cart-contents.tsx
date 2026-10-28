@@ -88,16 +88,17 @@ export function CartContents({ products }: { products: Product[] }) {
                 {product ? (
                   <Link
                     href={`/shop/${product.id}`}
-                    className="flex h-24 w-20 shrink-0 items-center rounded-2xl bg-[#eef2e5] p-2 sm:w-24"
+                    className="flex h-24 w-20 shrink-0 items-center rounded-sm bg-[#eef2e5] p-2 sm:w-24"
                   >
                     <img
+                      draggable={false}
                       className="h-full w-full object-contain"
                       src={imageUrl(product.image)}
                       alt={product.name}
                     />
                   </Link>
                 ) : (
-                  <div className="flex h-24 w-20 items-center justify-center rounded-xl bg-sage">
+                  <div className="flex h-24 w-20 items-center justify-center rounded-sm bg-sage">
                     <ShoppingBag size={24} />
                   </div>
                 )}
@@ -116,7 +117,7 @@ export function CartContents({ products }: { products: Product[] }) {
                     {product ? formatPrice(product.price) : "—"}
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <div className="inline-flex items-center rounded-full border border-[#d0dac4]">
+                    <div className="inline-flex items-center rounded-sm border border-[#d0dac4]">
                       <button
                         className="p-2"
                         aria-label={`Decrease ${product?.name ?? "item"} quantity`}

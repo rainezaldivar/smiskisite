@@ -25,7 +25,7 @@ export function ProductPurchase({ product }: { product: Product }) {
       <label className="field-label" htmlFor="product-quantity">
         Quantity
       </label>
-      <div className="inline-flex items-center rounded-full border border-[#cbd6bd] bg-white">
+      <div className="inline-flex items-center rounded-sm border border-[#cbd6bd] bg-white">
         <button
           className="p-3"
           aria-label="Decrease quantity"

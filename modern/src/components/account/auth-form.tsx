@@ -7,7 +7,7 @@ import { login, register } from "@/app/actions/auth";
 import { initialFormState } from "./form-state";
 
 const inputClass =
-  "mt-2 w-full rounded-xl border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
+  "mt-2 w-full rounded-sm border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
 
 export function AuthForm({
   mode,
@@ -69,7 +69,7 @@ export function AuthForm({
       {state.message && (
         <div
           role={state.status === "error" ? "alert" : "status"}
-          className={`rounded-xl px-4 py-3 text-sm leading-relaxed ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
+          className={`rounded-sm px-4 py-3 text-sm leading-relaxed ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
         >
           {state.message}
         </div>
@@ -130,7 +130,7 @@ export function AuthForm({
           <button
             type="submit"
             disabled={pending}
-            className="flex w-full items-center justify-center gap-2 rounded-full bg-[#344d31] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-sm bg-[#344d31] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60"
           >
             {pending ? (
               <LoaderCircle size={17} className="animate-spin" aria-hidden />

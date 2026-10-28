@@ -48,13 +48,13 @@ export default async function ProfilePage({
       {params.notice === "admin-only" && (
         <p
           role="alert"
-          className="mb-6 rounded-xl bg-amber-50 px-4 py-3 text-sm text-amber-900"
+          className="mb-6 rounded-sm bg-amber-50 px-4 py-3 text-sm text-amber-900"
         >
           That page is available to administrators only.
         </p>
       )}
       <div className="grid items-start gap-6 lg:grid-cols-[280px_1fr]">
-        <aside className="rounded-[1.75rem] border border-[#dfe5d2] bg-white/80 p-6 text-center">
+        <aside className="rounded-sm border border-[#dfe5d2] bg-white/80 p-6 text-center">
           <AvatarForm profile={profile} />
           <nav
             aria-label="Account links"
@@ -62,14 +62,14 @@ export default async function ProfilePage({
           >
             <Link
               href="/orders"
-              className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-[#374333] hover:bg-[#edf3df]"
+              className="flex items-center gap-3 rounded-sm px-3 py-3 text-sm font-medium text-[#374333] hover:bg-[#edf3df]"
             >
               <Package size={17} aria-hidden /> My demo orders
             </Link>
             {profile.role === "admin" && (
               <Link
                 href="/admin"
-                className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-[#374333] hover:bg-[#edf3df]"
+                className="flex items-center gap-3 rounded-sm px-3 py-3 text-sm font-medium text-[#374333] hover:bg-[#edf3df]"
               >
                 <Shield size={17} aria-hidden /> Manage users
               </Link>
@@ -77,7 +77,7 @@ export default async function ProfilePage({
             <form action={logout}>
               <button
                 type="submit"
-                className="flex w-full items-center gap-3 rounded-xl px-3 py-3 text-left text-sm font-medium text-[#737d6b] hover:bg-[#f3f3ed]"
+                className="flex w-full items-center gap-3 rounded-sm px-3 py-3 text-left text-sm font-medium text-[#737d6b] hover:bg-[#f3f3ed]"
               >
                 <LogOut size={17} aria-hidden /> Sign out
               </button>
@@ -86,7 +86,7 @@ export default async function ProfilePage({
         </aside>
         <section
           aria-label="Edit your profile"
-          className="rounded-[1.75rem] border border-[#dfe5d2] bg-white/80 p-6 sm:p-8"
+          className="rounded-sm border border-[#dfe5d2] bg-white/80 p-6 sm:p-8"
         >
           <ProfileDetailsForm profile={profile} />
         </section>

@@ -55,7 +55,7 @@ export default function AboutPage() {
           return (
             <section
               key={chapter.number}
-              className="grid overflow-hidden rounded-[2rem] border border-[#e0e7d8] bg-white md:min-h-80 md:grid-cols-2"
+              className="grid overflow-hidden rounded-sm border border-[#e0e7d8] bg-white md:min-h-80 md:grid-cols-2"
               aria-labelledby={`story-${chapter.number}`}
             >
               <div
@@ -63,6 +63,7 @@ export default function AboutPage() {
                 style={{ backgroundColor: chapter.background }}
               >
                 <img
+                  draggable={false}
                   src={`/uploads/${chapter.image}`}
                   alt={chapter.alt}
                   loading="lazy"
@@ -91,7 +92,7 @@ export default function AboutPage() {
         })}
       </div>
       <section
-        className="mt-12 grid items-center gap-6 rounded-[2rem] bg-[#e9efdb] p-7 sm:mt-16 sm:p-10 md:grid-cols-[1fr_250px] lg:p-14"
+        className="mt-12 grid items-center gap-6 rounded-sm bg-[#e9efdb] p-7 sm:mt-16 sm:p-10 md:grid-cols-[1fr_250px] lg:p-14"
         aria-labelledby="personalities-title"
       >
         <div>
@@ -121,10 +122,11 @@ export default function AboutPage() {
           </div>
         </div>
         <img
+          draggable={false}
           src="/uploads/about04.png"
           alt="Smiski characters with different little personalities"
           loading="lazy"
-          className="mx-auto max-h-64 w-full max-w-sm rounded-2xl object-contain"
+          className="mx-auto max-h-64 w-full max-w-sm rounded-sm object-contain"
         />
       </section>
       <p className="mx-auto mt-10 max-w-2xl text-center text-sm leading-relaxed text-[#73806a]">

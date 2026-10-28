@@ -22,7 +22,7 @@ export default async function OrderSuccessPage({
   return (
     <section className="container-page max-w-3xl py-14 sm:py-20">
       <div className="text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-lime">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-lime">
           <Check size={30} />
         </div>
         <p className="eyebrow mt-6">A little joy, saved</p>
@@ -41,7 +41,8 @@ export default async function OrderSuccessPage({
           {order.order_items.map((item) => (
             <div className="flex items-center gap-4 py-4" key={item.product_id}>
               <img
-                className="h-20 w-20 rounded-2xl bg-sage object-contain p-2"
+                draggable={false}
+                className="h-20 w-20 rounded-sm bg-sage object-contain p-2"
                 src={imageUrl(item.image)}
                 alt={item.product_name}
               />

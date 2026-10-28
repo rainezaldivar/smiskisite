@@ -3,6 +3,7 @@ import { getCurrentProfile } from "@/lib/auth";
 import { CartProvider } from "@/components/cart-provider";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { ImageProtection } from "@/components/image-protection";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,6 +25,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
+        <ImageProtection />
         <CartProvider userId={profile?.id ?? null}>
           <a href="#main-content" className="skip-link">
             Skip to content

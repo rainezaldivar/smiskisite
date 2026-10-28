@@ -31,7 +31,7 @@ async function addExistingProduct(page: Page, quantity = 2) {
   ).toBeVisible();
   await expect(
     page.getByRole("link", {
-      name: `Shopping bag, ${quantity} items`,
+      name: `Cart, ${quantity} items`,
       exact: true,
     }),
   ).toBeVisible();
@@ -42,10 +42,11 @@ test("home leads to a searchable collector’s dictionary and real character det
 }) => {
   await page.goto("/");
   await expect(page.getByRole("heading", { level: 1 })).toContainText(
-    "Small creatures.",
+    "Latest News",
   );
   await page
-    .getByRole("link", { name: "The collector’s dictionary", exact: true })
+    .getByRole("navigation", { name: "Main navigation", exact: true })
+    .getByRole("link", { name: "Collections", exact: true })
     .click();
   await expect(page).toHaveURL(/\/catalog$/);
 
@@ -74,7 +75,8 @@ test("home leads to a searchable collector’s dictionary and real character det
     .toBeGreaterThan(0);
 
   await page
-    .getByRole("link", { name: "Back to the dictionary", exact: true })
+    .getByRole("link", { name: "Collections", exact: true })
+    .first()
     .click();
   await page.getByRole("button", { name: "Accessories", exact: true }).click();
   await expect(
@@ -92,7 +94,7 @@ test("shop category and price filters show the actual matching products", async 
   page,
 }) => {
   await page.goto("/shop");
-  await page.getByRole("button", { name: "Figurines", exact: true }).click();
+  await page.getByRole("checkbox", { name: "Figurines", exact: true }).check();
   await expect(page).toHaveURL(/category=Figurines/);
   await page.getByLabel("Sort products").selectOption("price_asc");
   await expect(page).toHaveURL(/sort=price_asc/);
@@ -121,10 +123,9 @@ test("bag quantities and selection persist after reload, and removing an item em
   page,
 }) => {
   await addExistingProduct(page);
-  await page
-    .getByRole("link", { name: "Shopping bag, 2 items", exact: true })
-    .click();
-  await expect(page).toHaveURL(/\/cart$/);
+  await page.getByRole("link", { name: "Cart, 2 items", exact: true }).click();
+  await expect(page).toHaveURL(/\/login\?next=%2Fcart$/);
+  await page.goto("/cart");
   const row = page.getByRole("article").filter({
     has: page.getByRole("heading", {
       name: availableProduct!.name,
@@ -416,4 +417,171 @@ test.describe("mobile browsing", () => {
       ).toBeLessThanOrEqual(widths.viewport + 1);
     }
   });
+});
+
+test("news is newest first, links to official articles, and About follows it", async ({
+  page,
+}) => {
+  await page.goto("/");
+  const announcements = JSON.parse(
+    readFileSync(new URL("../src/data/news.json", import.meta.url), "utf8"),
+  ) as { title: string; publishedAt: string; href: string }[];
+  announcements.sort(
+    (a, b) => Date.parse(b.publishedAt) - Date.parse(a.publishedAt),
+  );
+  await expect(page.locator(".news-slide h2")).toHaveText(
+    announcements.map((item) => item.title),
+  );
+  await expect(page.locator(".news-slide a").first()).toHaveAttribute(
+    "href",
+    announcements[0].href,
+  );
+  expect(
+    await page
+      .locator("main > div > section")
+      .evaluateAll((sections) =>
+        sections
+          .slice(0, 2)
+          .map((section) => section.getAttribute("aria-labelledby")),
+      ),
+  ).toEqual(["news-title", "about-preview-title"]);
+  await expect(
+    page.getByText("LITTLE CREATURES. EVERYDAY JOY.", { exact: true }),
+  ).toHaveCount(0);
+  const header = page.getByRole("banner");
+  await expect(
+    header.getByRole("link", { name: "Sign Up", exact: true }),
+  ).toHaveAttribute("href", "/register");
+  await expect(
+    header.getByRole("link", { name: "Log In", exact: true }),
+  ).toHaveAttribute("href", "/login");
+  await header
+    .getByRole("link", { name: "Cart, 0 items", exact: true })
+    .click();
+  await expect(page).toHaveURL(/\/login\?next=%2Fcart$/);
+});
+
+test("category checkboxes combine, survive reload, and reset pagination", async ({
+  page,
+}) => {
+  await page.goto("/shop?page=4");
+  await page.getByRole("checkbox", { name: "Sticker", exact: true }).check();
+  await expect
+    .poll(() => new URL(page.url()).searchParams.has("page"))
+    .toBe(false);
+  await expect(page.locator("main article h3")).toHaveCount(6);
+  await expect(page.locator("main article h3")).toHaveText(
+    products
+      .filter((product) => product.name.includes("Sticker"))
+      .sort((a, b) => b.id - a.id)
+      .map((product) => product.name),
+  );
+  await page.getByRole("checkbox", { name: "Hippers", exact: true }).check();
+  await expect(page.locator("main article h3")).toHaveCount(7);
+  await expect
+    .poll(() => new URL(page.url()).searchParams.getAll("category"))
+    .toEqual(["Sticker", "Hippers"]);
+  await page.reload();
+  await expect(
+    page.getByRole("checkbox", { name: "Sticker", exact: true }),
+  ).toBeChecked();
+  await expect(
+    page.getByRole("checkbox", { name: "Hippers", exact: true }),
+  ).toBeChecked();
+  await page.getByRole("checkbox", { name: "Sticker", exact: true }).uncheck();
+  await expect(page.locator("main article h3")).toHaveText([
+    "SMISKI Hippers Series",
+  ]);
+});
+
+test("collection secrets are centered and shopping stays scoped to each series", async ({
+  page,
+}) => {
+  for (const slug of ["birthday", "hippers", "strap1", "moving", "yoga"]) {
+    await page.goto("/catalog/" + slug);
+    await expect(
+      page.getByRole("heading", {
+        name: "Meet the Little Characters",
+        exact: true,
+      }),
+    ).toBeVisible();
+    await expect(page.locator(".character-grid > article")).toHaveCount(7);
+    const secret = page.locator(".secret-character");
+    await expect(secret).toHaveText("?");
+    const bounds = await page.locator(".character-grid").boundingBox();
+    const secretBounds = await secret.boundingBox();
+    expect(
+      Math.abs(
+        secretBounds!.x +
+          secretBounds!.width / 2 -
+          bounds!.x -
+          bounds!.width / 2,
+      ),
+    ).toBeLessThan(2);
+    await page
+      .getByRole("link", { name: "Explore the Shop", exact: true })
+      .click();
+    await expect
+      .poll(() => new URL(page.url()).searchParams.get("series"))
+      .toBe(slug);
+    const expected =
+      slug === "birthday"
+        ? "SMISKI Birthday Series"
+        : slug === "hippers"
+          ? "SMISKI Hippers Series"
+          : slug === "moving"
+            ? "SMISKI Moving Series"
+            : slug === "yoga"
+              ? "SMISKI Yoga Series"
+              : "SMISKI Strap Accessories Series 1";
+    await expect(page.locator("main article h3")).toHaveText([expected]);
+  }
+  await page.goto("/catalog/toothbrush");
+  await expect(page.locator(".secret-character")).toHaveCount(0);
+});
+
+test("collections carousel works without JavaScript", async ({ browser }) => {
+  const context = await browser.newContext({ javaScriptEnabled: false });
+  const page = await context.newPage();
+  await page.goto("/");
+  const carousel = page.locator(".collections-carousel");
+  await expect(carousel.locator(".profile-card")).toHaveCount(6);
+  await expect(carousel).toHaveCSS("scroll-snap-type", "x mandatory");
+  await carousel.scrollIntoViewIfNeeded();
+  const initial = await carousel.evaluate((element) => element.scrollLeft);
+  await carousel.focus();
+  await carousel.hover();
+  await page.mouse.wheel(600, 0);
+  await expect
+    .poll(() => carousel.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(initial);
+  await carousel.locator('a[href="/catalog/work"]').click();
+  await expect(page).toHaveURL(/\/catalog\/work$/);
+  await context.close();
+});
+
+test("images resist dragging while product links stay clickable and square", async ({
+  page,
+}) => {
+  await page.goto("/shop");
+  const image = page.locator("main article img").first();
+  await expect(image).toHaveAttribute("draggable", "false");
+  await expect(image).toHaveCSS("pointer-events", "none");
+  await expect(image).toHaveCSS("user-select", "none");
+  const container = page.locator(".store-card-image").first();
+  const bounds = await container.boundingBox();
+  expect(Math.abs(bounds!.width - bounds!.height)).toBeLessThan(2);
+  expect(
+    await container.evaluate(
+      (element) =>
+        !element.dispatchEvent(
+          new MouseEvent("contextmenu", { bubbles: true, cancelable: true }),
+        ),
+    ),
+  ).toBe(true);
+  const card = page.locator("main article").first();
+  await card.hover();
+  await expect(card).not.toHaveCSS("box-shadow", "none");
+  await card.getByRole("link").click();
+  await expect(page).toHaveURL(/\/shop\/\d+$/);
 });
