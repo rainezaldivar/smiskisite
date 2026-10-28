@@ -1,0 +1,1027 @@
+[
+  {
+    "id": "birthday",
+    "legacyId": "birthday",
+    "name": "Birthday Series",
+    "description": "Celebrate a special day with these festive Smiskis.",
+    "image": "/uploads/bday.png",
+    "coverImage": "/uploads/coverbday.webp",
+    "katakana": "バースデー シリーズ",
+    "variations": [
+      {
+        "name": "Giving a Bouquet",
+        "description": "SMISKI is giving a flower bouquet.",
+        "image": "/uploads/variations/birthday/bouquet.png"
+      },
+      {
+        "name": "Wrapped Up",
+        "description": "SMISKI pretends to be a present.",
+        "image": "/uploads/variations/birthday/wrapped.png"
+      },
+      {
+        "name": "Popping Confetti",
+        "description": "SMISKI is popping a confetti cannon.",
+        "image": "/uploads/variations/birthday/confetti.png"
+      },
+      {
+        "name": "Birthday Message",
+        "description": "SMISKI carries a birthday message.",
+        "image": "/uploads/variations/birthday/message.png"
+      },
+      {
+        "name": "Decorating",
+        "description": "Little SMISKI decorating a party.",
+        "image": "/uploads/variations/birthday/decorating.png"
+      },
+      {
+        "name": "Tasting",
+        "description": "SMISKI is tasting a birthday cake.",
+        "image": "/uploads/variations/birthday/tasting.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "sunday",
+    "legacyId": "sunday",
+    "name": "Sunday Series",
+    "description": "Relaxing and enjoying a lazy weekend.",
+    "image": "/uploads/sun.png",
+    "coverImage": "/uploads/coversunday.jpg",
+    "katakana": "サンデー シリーズ",
+    "variations": [
+      {
+        "name": "Blowing Bubbles",
+        "description": "SMISKI is playing with soap bubbles.",
+        "image": "/uploads/variations/sunday/bubbles.png"
+      },
+      {
+        "name": "Paper Airplane",
+        "description": "SMISKI flies paper airplanes.",
+        "image": "/uploads/variations/sunday/airplane.png"
+      },
+      {
+        "name": "Sunbathing",
+        "description": "SMISKI taking a warm nap in the sun.",
+        "image": "/uploads/variations/sunday/sunbathing.png"
+      },
+      {
+        "name": "Sing-Along",
+        "description": "SMISKI sings while playing the guitar.",
+        "image": "/uploads/variations/sunday/singalong.png"
+      },
+      {
+        "name": "Skateboarding",
+        "description": "SMISKI is so cool riding a skateboard!",
+        "image": "/uploads/variations/sunday/skateboard.png"
+      },
+      {
+        "name": "Gardening",
+        "description": "SMISKI loves flowers and plants.",
+        "image": "/uploads/variations/sunday/gardening.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "moving",
+    "legacyId": "moving",
+    "name": "Moving Series",
+    "description": "Helping you pack and move to a new corner.",
+    "image": "/uploads/move.png",
+    "coverImage": "/uploads/covermoving.jpg",
+    "katakana": "ムービング シリーズ",
+    "variations": [
+      {
+        "name": "Carrying Ladder",
+        "description": "SMISKI is carrying a ladder.",
+        "image": "/uploads/variations/moving/ladder.png"
+      },
+      {
+        "name": "Balancing Boxes",
+        "description": "SMISKI is carefully balancing packages.",
+        "image": "/uploads/variations/moving/boxes.png"
+      },
+      {
+        "name": "Decorating",
+        "description": "SMISKI is holding his favorite lamp.",
+        "image": "/uploads/variations/moving/decorating.png"
+      },
+      {
+        "name": "Teamwork",
+        "description": "Little SMISKI moving a large box.",
+        "image": "/uploads/variations/moving/teamwork.png"
+      },
+      {
+        "name": "Green Thumb",
+        "description": "SMISKI is carrying a cactus.",
+        "image": "/uploads/variations/moving/cactus.png"
+      },
+      {
+        "name": "Falling Down",
+        "description": "SMISKI trips and falls with his package.",
+        "image": "/uploads/variations/moving/falling.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "exercising",
+    "legacyId": "exercising",
+    "name": "Exercising Series",
+    "description": "Getting fit and staying healthy.",
+    "image": "/uploads/workout.png",
+    "coverImage": "/uploads/coverexercise.webp",
+    "katakana": "エクササイズ シリーズ",
+    "variations": [
+      {
+        "name": "Doing Crunches",
+        "description": "SMISKI is working his abs.",
+        "image": "/uploads/variations/exercise/crunches.png"
+      },
+      {
+        "name": "Aerobics",
+        "description": "SMISKI is doing aerobics.",
+        "image": "/uploads/variations/exercise/aerobics.png"
+      },
+      {
+        "name": "Little Balance",
+        "description": "Little SMISKI is on a balance ball.",
+        "image": "/uploads/variations/exercise/balance.png"
+      },
+      {
+        "name": "Dumbbell",
+        "description": "SMISKI is doing weight training.",
+        "image": "/uploads/variations/exercise/dumbbell.png"
+      },
+      {
+        "name": "Hoop",
+        "description": "SMISKI hooping and breaking a sweat.",
+        "image": "/uploads/variations/exercise/hoop.png"
+      },
+      {
+        "name": "Stretch",
+        "description": "SMISKI is doing stretches.",
+        "image": "/uploads/variations/exercise/stretch.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "dressing",
+    "legacyId": "dressing",
+    "name": "Dressing Series",
+    "description": "Getting ready for the day implies struggles.",
+    "image": "/uploads/dress.png",
+    "coverImage": "/uploads/coverdressing.webp",
+    "katakana": "ドレッシング シリーズ",
+    "variations": [
+      {
+        "name": "Underpants",
+        "description": "SMISKI putting on underpants.",
+        "image": "/uploads/variations/dressing/underpants.png"
+      },
+      {
+        "name": "Struggling",
+        "description": "A sad SMISKI trying on a sweater.",
+        "image": "/uploads/variations/dressing/struggling.png"
+      },
+      {
+        "name": "Loose Pants",
+        "description": "SMISKI lost because pants are too big.",
+        "image": "/uploads/variations/dressing/loosepants.png"
+      },
+      {
+        "name": "Putting On Socks",
+        "description": "SMISKI is putting on socks.",
+        "image": "/uploads/variations/dressing/socks.png"
+      },
+      {
+        "name": "Sweater",
+        "description": "SMISKI is trying on a sweater.",
+        "image": "/uploads/variations/dressing/sweater.png"
+      },
+      {
+        "name": "Tight Pants",
+        "description": "SMISKI is trying on tight pants.",
+        "image": "/uploads/variations/dressing/tightpants.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "work",
+    "legacyId": "work",
+    "name": "Work Series",
+    "description": "Working hard (or hardly working) at the office.",
+    "image": "/uploads/work2.png",
+    "coverImage": "/uploads/work.png",
+    "katakana": "ワーク シリーズ",
+    "variations": [
+      {
+        "name": "Approving",
+        "description": "SMISKI praises your work from the corner.",
+        "image": "/uploads/variations/work/approving.png"
+      },
+      {
+        "name": "Researching",
+        "description": "SMISKI is searching on his computer.",
+        "image": "/uploads/variations/work/researching.png"
+      },
+      {
+        "name": "Presenting",
+        "description": "SMISKI is presenting to the group.",
+        "image": "/uploads/variations/work/presenting.png"
+      },
+      {
+        "name": "Good Idea",
+        "description": "SMISKI is inspired with a light bulb.",
+        "image": "/uploads/variations/work/goodidea.png"
+      },
+      {
+        "name": "On the Road",
+        "description": "SMISKI hurries to work.",
+        "image": "/uploads/variations/work/ontheroad.png"
+      },
+      {
+        "name": "Group Think",
+        "description": "SMISKI deliberating in a meeting.",
+        "image": "/uploads/variations/work/groupthink.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "museum",
+    "legacyId": "museum",
+    "name": "Museum Series",
+    "description": "Imitating famous works of art.",
+    "image": "/uploads/museum2.png",
+    "coverImage": "/uploads/museum.png",
+    "katakana": "ミュージアム シリーズ",
+    "variations": [
+      {
+        "name": "The Source",
+        "description": "Imitating \"The Source\" by Ingres.",
+        "image": "/uploads/museum2.png"
+      },
+      {
+        "name": "Fuzin & Raijin",
+        "description": "The Wind God and Thunder God.",
+        "image": "/uploads/variations/museum/fuzin.png"
+      },
+      {
+        "name": "Bacchus",
+        "description": "Imitating the god of wine.",
+        "image": "/uploads/variations/museum/bacchus.png"
+      },
+      {
+        "name": "Velázquez",
+        "description": "Inspired by classical portraits.",
+        "image": "/uploads/variations/museum/velazquez.png"
+      },
+      {
+        "name": "Dalí",
+        "description": "Inspired by The Persistence of Memory.",
+        "image": "/uploads/variations/museum/dali.png"
+      },
+      {
+        "name": "Pearl Earring",
+        "description": "Imitating the Girl with a Pearl Earring.",
+        "image": "/uploads/variations/museum/pearl.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "cheer",
+    "legacyId": "cheer",
+    "name": "Cheer Series",
+    "description": "Smiski is by your side cheering for you!",
+    "image": "/uploads/cheer2.png",
+    "coverImage": "/uploads/cheer.png",
+    "katakana": "チア シリーズ",
+    "variations": [
+      {
+        "name": "Marching",
+        "description": "Marching forward with confidence.",
+        "image": "/uploads/variations/cheer/marching.png"
+      },
+      {
+        "name": "On Drums",
+        "description": "Keeping the rhythm.",
+        "image": "/uploads/cheer2.png"
+      },
+      {
+        "name": "On Your Side",
+        "description": "Always supporting you.",
+        "image": "/uploads/cheer2.png"
+      },
+      {
+        "name": "Dancing",
+        "description": "Dancing to cheer you up.",
+        "image": "/uploads/variations/cheer/dancing.png"
+      },
+      {
+        "name": "Little Cheerleading",
+        "description": "Small cheers make a big difference.",
+        "image": "/uploads/variations/cheer/little.png"
+      },
+      {
+        "name": "Cheering",
+        "description": "Go! Fight! Win!",
+        "image": "/uploads/variations/cheer/cheering.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "living",
+    "legacyId": "living",
+    "name": "Living Series",
+    "description": "Smiskis that hide in plain sight in your living room.",
+    "image": "/uploads/live.png",
+    "coverImage": "/uploads/living.png",
+    "katakana": "リビング シリーズ",
+    "variations": [
+      {
+        "name": "Daydreaming",
+        "description": "Lost in thought.",
+        "image": "/uploads/variations/living/daydreaming.png"
+      },
+      {
+        "name": "Playing",
+        "description": "Hide and seek pro.",
+        "image": "/uploads/variations/living/playing.png"
+      },
+      {
+        "name": "Hiding",
+        "description": "Peeking behind things.",
+        "image": "/uploads/variations/living/hiding.png"
+      },
+      {
+        "name": "Nap Time",
+        "description": "Sleeping peacefully.",
+        "image": "/uploads/variations/living/naptime.png"
+      },
+      {
+        "name": "Thinking",
+        "description": "Solving problems.",
+        "image": "/uploads/variations/living/thinking.png"
+      },
+      {
+        "name": "Lifting",
+        "description": "Moving things around.",
+        "image": "/uploads/variations/living/lifting.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "bed",
+    "legacyId": "bed",
+    "name": "Bed Series",
+    "description": "They glow beside you while you sleep.",
+    "image": "/uploads/bed2.png",
+    "coverImage": "/uploads/bed.png",
+    "katakana": "ベッド シリーズ",
+    "variations": [
+      {
+        "name": "Before Rest",
+        "description": "Preparing for sleep.",
+        "image": "/uploads/variations/bed/beforerest.png"
+      },
+      {
+        "name": "Sleepy",
+        "description": "Rubbing eyes.",
+        "image": "/uploads/variations/bed/sleepy.png"
+      },
+      {
+        "name": "Co-sleeping",
+        "description": "Sleeping together.",
+        "image": "/uploads/variations/bed/cosleeping.png"
+      },
+      {
+        "name": "Reading",
+        "description": "Reading a bedtime story.",
+        "image": "/uploads/variations/bed/reading.png"
+      },
+      {
+        "name": "At Sleep",
+        "description": "Deep in dreams.",
+        "image": "/uploads/variations/bed/atsleep.png"
+      },
+      {
+        "name": "Fussing",
+        "description": "Can't find a comfortable spot.",
+        "image": "/uploads/variations/bed/fussing.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "yoga",
+    "legacyId": "yoga",
+    "name": "Yoga Series",
+    "description": "Finding inner peace in the dark.",
+    "image": "/uploads/yoga2.png",
+    "coverImage": "/uploads/yoga.png",
+    "katakana": "ヨガ シリーズ",
+    "variations": [
+      {
+        "name": "Lotus Pose",
+        "description": "Meditation pose.",
+        "image": "/uploads/variations/yoga/lotus.png"
+      },
+      {
+        "name": "Twist Pose",
+        "description": "Detoxing the body.",
+        "image": "/uploads/variations/yoga/twist.png"
+      },
+      {
+        "name": "Shoulderstand",
+        "description": "Inverting the world.",
+        "image": "/uploads/variations/yoga/shoulderstand.png"
+      },
+      {
+        "name": "Triangle Pose",
+        "description": "Stretching the sides.",
+        "image": "/uploads/variations/yoga/triangle.png"
+      },
+      {
+        "name": "Tree Pose",
+        "description": "Balancing act.",
+        "image": "/uploads/variations/yoga/tree.png"
+      },
+      {
+        "name": "Ship Pose",
+        "description": "Core strength.",
+        "image": "/uploads/variations/yoga/ship.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "bath",
+    "legacyId": "bath",
+    "name": "Bath Series",
+    "description": "Relaxing in the tub with Smiski.",
+    "image": "/uploads/bath2.png",
+    "coverImage": "/uploads/bath.png",
+    "katakana": "バス シリーズ",
+    "variations": [
+      {
+        "name": "Shampooing",
+        "description": "Smiski trying to copy how to shampoo.",
+        "image": "/uploads/variations/bath/shampooing.png"
+      },
+      {
+        "name": "Not Looking",
+        "description": "Very shy Smiski.",
+        "image": "/uploads/variations/bath/notlooking.png"
+      },
+      {
+        "name": "Scrubbing",
+        "description": "Smiski that loves to scrub each other.",
+        "image": "/uploads/variations/bath/scrubbing.png"
+      },
+      {
+        "name": "With Duck",
+        "description": "Playing with Duck in the bath tub.",
+        "image": "/uploads/variations/bath/duck.png"
+      },
+      {
+        "name": "Dazed",
+        "description": "Relaxing and enjoying the bath.",
+        "image": "/uploads/variations/bath/dazed.png"
+      },
+      {
+        "name": "Looking",
+        "description": "Saw the bath room for the first time.",
+        "image": "/uploads/variations/bath/looking.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "toilet",
+    "legacyId": "toilet",
+    "name": "Toilet Series",
+    "description": "Funny little guys hanging out in the bathroom.",
+    "image": "/uploads/toilet2.png",
+    "coverImage": "/uploads/toilet.png",
+    "katakana": "トイレ シリーズ",
+    "variations": [
+      {
+        "name": "Peek-A-Boo",
+        "description": "Peeking from the Toilet Paper roll.",
+        "image": "/uploads/variations/toilet/peekaboo.png"
+      },
+      {
+        "name": "Little (Smelly)",
+        "description": "Holding breath because of smell.",
+        "image": "/uploads/variations/toilet/little.png"
+      },
+      {
+        "name": "Squatting",
+        "description": "Always squatting but doesn’t know why.",
+        "image": "/uploads/variations/toilet/squatting.png"
+      },
+      {
+        "name": "Helping Out",
+        "description": "Helping in case the paper runs out.",
+        "image": "/uploads/variations/toilet/helping.png"
+      },
+      {
+        "name": "Resting",
+        "description": "Observing the rest room.",
+        "image": "/uploads/variations/toilet/resting.png"
+      },
+      {
+        "name": "Holding In",
+        "description": "Holding in too long to even move.",
+        "image": "/uploads/variations/toilet/holdingin.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "series4",
+    "legacyId": "series4",
+    "name": "Series 4",
+    "description": "The fourth generation of glowing friends.",
+    "image": "/uploads/s4.png",
+    "coverImage": "/uploads/series4.png",
+    "katakana": "シリーズ 4",
+    "variations": [
+      {
+        "name": "Sneaking",
+        "description": "Always sneaking and secretly moving.",
+        "image": "/uploads/variations/s4/sneaking.png"
+      },
+      {
+        "name": "Scared",
+        "description": "Wants to go down but scared to.",
+        "image": "/uploads/variations/s4/scared.png"
+      },
+      {
+        "name": "Relaxing",
+        "description": "Full and cannot move.",
+        "image": "/uploads/variations/s4/relaxing.png"
+      },
+      {
+        "name": "Lazy",
+        "description": "Always lazy.",
+        "image": "/uploads/variations/s4/lazy.png"
+      },
+      {
+        "name": "Stuck",
+        "description": "Got stuck on a way to somewhere.",
+        "image": "/uploads/variations/s4/stuck.png"
+      },
+      {
+        "name": "Defeated",
+        "description": "Cannot find any favorite corner.",
+        "image": "/uploads/variations/s4/defeated.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "series3",
+    "legacyId": "series3",
+    "name": "Series 3",
+    "description": "More poses and more fun.",
+    "image": "/uploads/s3.png",
+    "coverImage": "/uploads/series3.png",
+    "katakana": "シリーズ 3",
+    "variations": [
+      {
+        "name": "Bridge",
+        "description": "To think flexibly, one must act flexibly!",
+        "image": "/uploads/variations/s3/bridge.png"
+      },
+      {
+        "name": "Peeking",
+        "description": "Finds comfort in high places.",
+        "image": "/uploads/variations/s3/peeking.png"
+      },
+      {
+        "name": "Climbing",
+        "description": "Curious of what is waiting at the top.",
+        "image": "/uploads/variations/s3/climbing.png"
+      },
+      {
+        "name": "Little",
+        "description": "Lining up against the wall.",
+        "image": "/uploads/variations/s3/little.png"
+      },
+      {
+        "name": "Hiding",
+        "description": "Found underneath towels and blankets.",
+        "image": "/uploads/variations/s3/hiding.png"
+      },
+      {
+        "name": "Handstand",
+        "description": "Doing a handstand against the wall.",
+        "image": "/uploads/variations/s3/handstand.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "series2",
+    "legacyId": "series2",
+    "name": "Series 2",
+    "description": "The second wave of Smiski.",
+    "image": "/uploads/s2.png",
+    "coverImage": "/uploads/series2.png",
+    "katakana": "シリーズ 2",
+    "variations": [
+      {
+        "name": "Kneeling",
+        "description": "Often sits with knees folded.",
+        "image": "/uploads/variations/s2/kneeling.png"
+      },
+      {
+        "name": "Climbing",
+        "description": "Trying to climb over things.",
+        "image": "/uploads/variations/s2/climbing.png"
+      },
+      {
+        "name": "Daydreaming",
+        "description": "Likes to daydream all day long.",
+        "image": "/uploads/variations/s2/daydreaming.png"
+      },
+      {
+        "name": "Pushing",
+        "description": "Always pushing things together.",
+        "image": "/uploads/variations/s2/pushing.png"
+      },
+      {
+        "name": "Peeking",
+        "description": "Looking out from an upside down view.",
+        "image": "/uploads/variations/s2/peeking.png"
+      },
+      {
+        "name": "Listening",
+        "description": "Curious about sounds next door.",
+        "image": "/uploads/variations/s2/listening.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "series1",
+    "legacyId": "series1",
+    "name": "Series 1",
+    "description": "The original glow in the dark figures.",
+    "image": "/uploads/s1.png",
+    "coverImage": "/uploads/series1.png",
+    "katakana": "シリーズ 1",
+    "variations": [
+      {
+        "name": "Hugging Knees",
+        "description": "Hugging knees, staring into distance.",
+        "image": "/uploads/variations/s1/hugging.png"
+      },
+      {
+        "name": "Sitting",
+        "description": "Sitting silently. Wary personality.",
+        "image": "/uploads/variations/s1/sitting.png"
+      },
+      {
+        "name": "Looking Back",
+        "description": "Scares easily. Will turn back and stare.",
+        "image": "/uploads/variations/s1/lookingback.png"
+      },
+      {
+        "name": "Lounging",
+        "description": "Lazy Smiski that likes to lie down.",
+        "image": "/uploads/variations/s1/lounging.png"
+      },
+      {
+        "name": "Hiding",
+        "description": "Hiding is his specialty.",
+        "image": "/uploads/variations/s1/hiding.png"
+      },
+      {
+        "name": "Peeking",
+        "description": "Hunched over and peeking.",
+        "image": "/uploads/variations/s1/peeking.png"
+      }
+    ],
+    "group": "figurines"
+  },
+  {
+    "id": "hippers",
+    "legacyId": "hippers",
+    "name": "Smiski Hippers",
+    "description": "Attachable figures for your devices.",
+    "image": "/uploads/hip.png",
+    "coverImage": "/uploads/coverhipper.webp",
+    "katakana": "スミスキー ヒッパーズ",
+    "variations": [
+      {
+        "name": "On His Smartphone",
+        "description": "Protecting your phone.",
+        "image": "/uploads/hip.png"
+      },
+      {
+        "name": "Trying to Climb",
+        "description": "Almost there!",
+        "image": "/uploads/hip.png"
+      },
+      {
+        "name": "Looking Out",
+        "description": "Watching the world.",
+        "image": "/uploads/hip.png"
+      },
+      {
+        "name": "Sticking",
+        "description": "Hanging on tight.",
+        "image": "/uploads/hip.png"
+      },
+      {
+        "name": "Dozing",
+        "description": "Falling asleep on your screen.",
+        "image": "/uploads/hip.png"
+      },
+      {
+        "name": "Upside Down",
+        "description": "A new perspective.",
+        "image": "/uploads/hip.png"
+      }
+    ],
+    "group": "accessories"
+  },
+  {
+    "id": "zipper-1",
+    "legacyId": "zipper",
+    "name": "Zipperbite Vol. 2",
+    "description": "",
+    "image": "/uploads/zipbite2.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "zipper-2",
+    "legacyId": "zipper",
+    "name": "Zipperbites Vol. 1",
+    "description": "",
+    "image": "/uploads/zipbite1.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "keychain",
+    "legacyId": "keychain",
+    "name": "Smiski Keychain",
+    "description": "",
+    "image": "/uploads/kchain.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "strap1",
+    "legacyId": "strap1",
+    "name": "Strap Accessory Series 1",
+    "description": "Take your Smiski everywhere you go.",
+    "image": "/uploads/strapacc1.png",
+    "coverImage": "/uploads/strap1.png",
+    "katakana": "ストラップ シリーズ 1",
+    "variations": [
+      {
+        "name": "Peeking",
+        "description": "Always hunched over and peeking.",
+        "image": "/uploads/strapacc1.png"
+      },
+      {
+        "name": "Hugging Knees",
+        "description": "Hugging knees in the corner.",
+        "image": "/uploads/strapacc1.png"
+      },
+      {
+        "name": "Looking Back",
+        "description": "Scares easily.",
+        "image": "/uploads/strapacc1.png"
+      },
+      {
+        "name": "Sitting",
+        "description": "Often found sitting silently.",
+        "image": "/uploads/strapacc1.png"
+      },
+      {
+        "name": "Hiding",
+        "description": "Hiding is his specialty.",
+        "image": "/uploads/strapacc1.png"
+      },
+      {
+        "name": "Lounging",
+        "description": "Lazy Smiski that likes to lie down.",
+        "image": "/uploads/strapacc1.png"
+      }
+    ],
+    "group": "accessories"
+  },
+  {
+    "id": "strap2",
+    "legacyId": "strap2",
+    "name": "Strap Accessory Series 2",
+    "description": "More poses for your bag or keys.",
+    "image": "/uploads/strapacc2.png",
+    "coverImage": "/uploads/strap2.png",
+    "katakana": "ストラップ シリーズ 2",
+    "variations": [
+      {
+        "name": "Kneeling",
+        "description": "Often sits with knees folded.",
+        "image": "/uploads/strapacc2.png"
+      },
+      {
+        "name": "Pushing",
+        "description": "Always pushing things together.",
+        "image": "/uploads/strapacc2.png"
+      },
+      {
+        "name": "Listening",
+        "description": "Curious about the sounds.",
+        "image": "/uploads/strapacc2.png"
+      },
+      {
+        "name": "Climbing",
+        "description": "Trying to climb over things.",
+        "image": "/uploads/strapacc2.png"
+      },
+      {
+        "name": "Peeking",
+        "description": "Looking from upside down.",
+        "image": "/uploads/strapacc2.png"
+      },
+      {
+        "name": "Daydreaming",
+        "description": "Likes to daydream all day long.",
+        "image": "/uploads/strapacc2.png"
+      }
+    ],
+    "group": "accessories"
+  },
+  {
+    "id": "strap3",
+    "legacyId": "strap3",
+    "name": "Strap Accessory Series 3",
+    "description": "Adventure straps for your travels.",
+    "image": "/uploads/strapacc3.png",
+    "coverImage": "/uploads/strap3.png",
+    "katakana": "ストラップ シリーズ 3",
+    "variations": [
+      {
+        "name": "Bridge",
+        "description": "To think flexibly, one must act flexibly!",
+        "image": "/uploads/strapacc3.png"
+      },
+      {
+        "name": "Peeking",
+        "description": "Finds comfort in high places.",
+        "image": "/uploads/strapacc3.png"
+      },
+      {
+        "name": "Handstand",
+        "description": "Doing a handstand.",
+        "image": "/uploads/strapacc3.png"
+      },
+      {
+        "name": "Climbing",
+        "description": "Loves adventure and climbing.",
+        "image": "/uploads/strapacc3.png"
+      },
+      {
+        "name": "Little",
+        "description": "Little ones lining up.",
+        "image": "/uploads/strapacc3.png"
+      },
+      {
+        "name": "Hiding",
+        "description": "Likes to be in small, cosy places.",
+        "image": "/uploads/strapacc3.png"
+      }
+    ],
+    "group": "accessories"
+  },
+  {
+    "id": "cushion",
+    "legacyId": "cushion",
+    "name": "Cushion Pouch",
+    "description": "",
+    "image": "/uploads/cush.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "sticker-1",
+    "legacyId": "sticker",
+    "name": "Embroidery Sticker Vol. 2",
+    "description": "",
+    "image": "/uploads/embroidery2.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "sticker-2",
+    "legacyId": "sticker",
+    "name": "Embroidery Sticker Vol. 1",
+    "description": "",
+    "image": "/uploads/embroidery1.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "plush",
+    "legacyId": "plush",
+    "name": "Smiski Plush",
+    "description": "",
+    "image": "/uploads/plushie.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "plushkey",
+    "legacyId": "plushkey",
+    "name": "Plush Keychain",
+    "description": "",
+    "image": "/uploads/plushchain.png",
+    "variations": [],
+    "group": "accessories"
+  },
+  {
+    "id": "light-1",
+    "legacyId": "light",
+    "name": "Touch Light Vol. 1",
+    "description": "A gentle glow with just a tap.",
+    "image": "/uploads/light1.png",
+    "coverImage": "/uploads/light1.png",
+    "katakana": "タッチライト",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "light-2",
+    "legacyId": "light",
+    "name": "Touch Light Vol. 2",
+    "description": "A gentle glow with just a tap.",
+    "image": "/uploads/light2.png",
+    "coverImage": "/uploads/light2.png",
+    "katakana": "タッチライト",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "toothbrush",
+    "legacyId": "toothbrush",
+    "name": "Toothbrush Stand",
+    "description": "Protecting your toothbrush efficiently.",
+    "image": "/uploads/brushstand.png",
+    "coverImage": "/uploads/brushstand.png",
+    "katakana": "歯ブラシスタンド",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "bobbing",
+    "legacyId": "bobbing",
+    "name": "Bobbing Head",
+    "description": "A nodding companion for your desk.",
+    "image": "/uploads/bobhead.png",
+    "coverImage": "/uploads/bobhead.png",
+    "katakana": "ボビングヘッド",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "sensor",
+    "legacyId": "sensor",
+    "name": "Sensor Light",
+    "description": "",
+    "image": "/uploads/sense.png",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "bathball-1",
+    "legacyId": "bathball",
+    "name": "Bath Ball 2",
+    "description": "",
+    "image": "/uploads/bb2.png",
+    "variations": [],
+    "group": "lifestyle"
+  },
+  {
+    "id": "bathball-2",
+    "legacyId": "bathball",
+    "name": "Bath Ball 1",
+    "description": "",
+    "image": "/uploads/bb1.png",
+    "variations": [],
+    "group": "lifestyle"
+  }
+]

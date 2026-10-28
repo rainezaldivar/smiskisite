@@ -124,3 +124,18 @@ _modules/*
 
 /results/
 /phpunit*.xml
+
+# Modern application and local tooling
+.tools/
+modern/node_modules/
+modern/.next/
+modern/.env*
+!modern/.env.example
+modern/playwright-report/
+modern/test-results/
+modern/coverage/
+modern/*.tsbuildinfo
+modern/.vercel/
+modern/migration-reports/
+modern/.migration/
+modern/private-exports/

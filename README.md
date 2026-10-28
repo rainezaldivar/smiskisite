@@ -1,4 +1,14 @@
-# CodeIgniter 4 Application Starter
+# Smiskisite
+
+The revamped Next.js/TypeScript application is in **[modern/](modern/README.md)**. It includes the storefront, collector's catalog, accounts, profile, shopping bag, demo checkout, and admin user management, with Supabase schema and data migration tooling.
+
+For local setup and Vercel deployment, start with [modern/README.md](modern/README.md). For preserving the existing MySQL data, follow [the migration guide](modern/docs/MIGRATION.md).
+
+The original CodeIgniter/PHP application and its data/assets remain below and in their original locations for reference and rollback.
+
+---
+
+# Original CodeIgniter application
 
 ## What is CodeIgniter?
 

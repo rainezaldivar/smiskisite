@@ -1,0 +1,53 @@
+{
+  "products": 42,
+  "series": 36,
+  "variations": 126,
+  "missingLegacyImagePaths": [
+    "/uploads/touch-light.png",
+    "/uploads/variations/cheer/on_drums.png",
+    "/uploads/variations/cheer/on_your_side.png",
+    "/uploads/variations/hip/climbing.png",
+    "/uploads/variations/hip/dozing.png",
+    "/uploads/variations/hip/looking.png",
+    "/uploads/variations/hip/smartphone.png",
+    "/uploads/variations/hip/sticking.png",
+    "/uploads/variations/hip/upsidedown.png",
+    "/uploads/variations/museum/source.png",
+    "/uploads/variations/strap1/hiding.png",
+    "/uploads/variations/strap1/hugging.png",
+    "/uploads/variations/strap1/looking.png",
+    "/uploads/variations/strap1/lounging.png",
+    "/uploads/variations/strap1/peeking.png",
+    "/uploads/variations/strap1/sitting.png",
+    "/uploads/variations/strap2/climbing.png",
+    "/uploads/variations/strap2/daydreaming.png",
+    "/uploads/variations/strap2/kneeling.png",
+    "/uploads/variations/strap2/listening.png",
+    "/uploads/variations/strap2/peeking.png",
+    "/uploads/variations/strap2/pushing.png",
+    "/uploads/variations/strap3/bridge.png",
+    "/uploads/variations/strap3/climbing.png",
+    "/uploads/variations/strap3/handstand.png",
+    "/uploads/variations/strap3/hiding.png",
+    "/uploads/variations/strap3/little.png",
+    "/uploads/variations/strap3/peeking.png"
+  ],
+  "duplicateLegacyIds": [
+    {
+      "id": "zipper",
+      "count": 2
+    },
+    {
+      "id": "sticker",
+      "count": 2
+    },
+    {
+      "id": "light",
+      "count": 2
+    },
+    {
+      "id": "bathball",
+      "count": 2
+    }
+  ]
+}

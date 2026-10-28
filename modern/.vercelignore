@@ -1,0 +1,17 @@
+/.env*
+/.migration/
+/migration-reports/
+/private-exports/
+/node_modules/
+/.next/
+/.vercel/
+/test-results/
+/playwright-report/
+/coverage/
+*.tsbuildinfo
+/tests/
+/e2e/
+/scripts/
+/docs/
+/supabase/
+/dev.ps1

@@ -1,0 +1,380 @@
+[
+  {
+    "id": 1,
+    "name": "SMISKI Series 1",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "series1.png",
+    "category": "Figurines",
+    "stock": 50
+  },
+  {
+    "id": 2,
+    "name": "SMISKI Series 2",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "series2.png",
+    "category": "Figurines",
+    "stock": 0
+  },
+  {
+    "id": 3,
+    "name": "SMISKI Series 3",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "series3.png",
+    "category": "Figurines",
+    "stock": 0
+  },
+  {
+    "id": 4,
+    "name": "SMISKI Series 4",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "series4.png",
+    "category": "Figurines",
+    "stock": 0
+  },
+  {
+    "id": 5,
+    "name": "SMISKI Toilet Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "toilet.png",
+    "category": "Figurines",
+    "stock": 35
+  },
+  {
+    "id": 6,
+    "name": "SMISKI Bath Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "bath.png",
+    "category": "Figurines",
+    "stock": 85
+  },
+  {
+    "id": 7,
+    "name": "SMISKI Living Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "living.png",
+    "category": "Figurines",
+    "stock": 12
+  },
+  {
+    "id": 8,
+    "name": "SMISKI Bed Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "bed.png",
+    "category": "Figurines",
+    "stock": 10
+  },
+  {
+    "id": 9,
+    "name": "SMISKI Yoga Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "yoga.png",
+    "category": "Figurines",
+    "stock": 8
+  },
+  {
+    "id": 10,
+    "name": "SMISKI Cheer Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "cheer.png",
+    "category": "Figurines",
+    "stock": 10
+  },
+  {
+    "id": 11,
+    "name": "SMISKI Museum Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "museum.png",
+    "category": "Figurines",
+    "stock": 15
+  },
+  {
+    "id": 12,
+    "name": "SMISKI Work Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "work.png",
+    "category": "Figurines",
+    "stock": 73
+  },
+  {
+    "id": 13,
+    "name": "SMISKI Dressing Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "dressing.png",
+    "category": "Figurines",
+    "stock": 65
+  },
+  {
+    "id": 14,
+    "name": "SMISKI Exercise Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "exercise.png",
+    "category": "Figurines",
+    "stock": 111
+  },
+  {
+    "id": 15,
+    "name": "SMISKI Moving Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "moving.png",
+    "category": "Figurines",
+    "stock": 20
+  },
+  {
+    "id": 16,
+    "name": "SMISKI Sunday Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "sunday.png",
+    "category": "Figurines",
+    "stock": 30
+  },
+  {
+    "id": 17,
+    "name": "SMISKI Birthday Series",
+    "price": 499,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "birthday.png",
+    "category": "Figurines",
+    "stock": 21
+  },
+  {
+    "id": 18,
+    "name": "SMISKI Hippers Series",
+    "price": 599,
+    "description": "SMISKI are curious little creatures that love hiding in small spaces and corners of your room. Although they like to stay hidden, you might discover one at night as they mysteriously glow in the dark.",
+    "image": "hippers.png",
+    "category": "Others",
+    "stock": 10
+  },
+  {
+    "id": 19,
+    "name": "SMISKI Sensor Light",
+    "price": 2200,
+    "description": "Lights up automatically for approx. 20 secs. After light goes out, Smiski will start glow in the dark.",
+    "image": "sensor.png",
+    "category": "Others",
+    "stock": 0
+  },
+  {
+    "id": 20,
+    "name": "SMISKI Strap Accessories Series 1",
+    "price": 299,
+    "description": "Celebrating its 10th anniversary this year, SMISKI, the fairy who watches over you and loves corner, is now available as a mini-sized strap. From inside the surreal and adorable capsules shaped like SMISKI's faces, SMISKI with unique personalities emerge and quietly watch over you. From the ever-popular mini figure series \"SMISKI Series 1,\" there are a total of 6 kinds + 1 secret.",
+    "image": "strap1.png",
+    "category": "Others",
+    "stock": 35
+  },
+  {
+    "id": 21,
+    "name": "SMISKI Strap Accessories Series 2",
+    "price": 299,
+    "description": "Celebrating its 10th anniversary this year, SMISKI, the fairy who watches over you and loves corner, is now available as a mini-sized strap. From inside the surreal and adorable capsules shaped like SMISKI's faces, SMISKI with unique personalities emerge and quietly watch over you. From the ever-popular mini figure series \"SMISKI Series 2,\" there are a total of 6 kinds + 1 secret.",
+    "image": "strap2.png",
+    "category": "Others",
+    "stock": 40
+  },
+  {
+    "id": 22,
+    "name": "SMISKI Toothbrush Stand (Protecting)",
+    "price": 549,
+    "description": "“I’m taking cover of your toothbrush…” \r\n\r\nSMISKI Toothbrush Stand! SMISKI are now here to hold your toothbrush! Each seems to be struggling how to carry on. \r\nSMISKI Protecting, SMISKI Holding, SMISKI Hugging, and SMISKI Carrying. Choose your favorite from 4 kinds!",
+    "image": "protecting.png",
+    "category": "Others",
+    "stock": 20
+  },
+  {
+    "id": 23,
+    "name": "SMISKI Toothbrush Stand (Holding)",
+    "price": 549,
+    "description": "“I’m taking cover of your toothbrush…” SMISKI Toothbrush Stand! SMISKI are now here to hold your toothbrush! Each seems to be struggling how to carry on. SMISKI Protecting, SMISKI Holding, SMISKI Hugging, and SMISKI Carrying. Choose your favorite from 4 kinds!",
+    "image": "holding.png",
+    "category": "Others",
+    "stock": 22
+  },
+  {
+    "id": 24,
+    "name": "SMISKI Toothbrush Stand (Hugging)",
+    "price": 549,
+    "description": "“I’m taking cover of your toothbrush…” SMISKI Toothbrush Stand! SMISKI are now here to hold your toothbrush! Each seems to be struggling how to carry on. SMISKI Protecting, SMISKI Holding, SMISKI Hugging, and SMISKI Carrying. Choose your favorite from 4 kinds!",
+    "image": "hugging.png",
+    "category": "Others",
+    "stock": 18
+  },
+  {
+    "id": 25,
+    "name": "SMISKI Toothbrush Stand (Carrying)",
+    "price": 549,
+    "description": "“I’m taking cover of your toothbrush…” SMISKI Toothbrush Stand! SMISKI are now here to hold your toothbrush! Each seems to be struggling how to carry on. SMISKI Protecting, SMISKI Holding, SMISKI Hugging, and SMISKI Carrying. Choose your favorite from 4 kinds!",
+    "image": "carrying.png",
+    "category": "Others",
+    "stock": 25
+  },
+  {
+    "id": 26,
+    "name": "SMISKI Keychain (Grabbing)",
+    "price": 549,
+    "description": "“I have an eye on your keys...” SMISKI Key Chain! SMISKI doing his best to protect keys in your bag is so adorable. It glows in the dark making you easy to find keys missing in bag.",
+    "image": "keygrabbing.png",
+    "category": "Others",
+    "stock": 30
+  },
+  {
+    "id": 27,
+    "name": "SMISKI Keychain (Carrying)",
+    "price": 549,
+    "description": "“I have an eye on your keys...” SMISKI Key Chain! SMISKI doing his best to protect keys in your bag is so adorable. It glows in the dark making you easy to find keys missing in bag.",
+    "image": "keycarrying.png",
+    "category": "Others",
+    "stock": 30
+  },
+  {
+    "id": 28,
+    "name": "SMISKI Keychain (Pulling)",
+    "price": 549,
+    "description": "“I have an eye on your keys...” SMISKI Key Chain! SMISKI doing his best to protect keys in your bag is so adorable. It glows in the dark making you easy to find keys missing in bag.",
+    "image": "keypulling.png",
+    "category": "Others",
+    "stock": 28
+  },
+  {
+    "id": 29,
+    "name": "SMISKI Zipperbite Vol.1 (Hanging On!)",
+    "price": 399.99,
+    "description": "\"CABLE BITES\", created by Dreams in 2017, which became a global phenomenon with over 10 million units sold worldwide, takes on new form in “ZIPPERBITES”. “SMISKI”, a mysterious creature who watches over you and who loves corners, is added to our lineup of zipper accessories, \"ZIPPERBITE\"! New SMISKI figures have been discovered clinging to your favorite zipper to quietly watch over you. You can attach Smiski Zipperbites to a variety of zippers—jackets or coats, backpacks, pen cases—anything with an appropriately sized zipper pull. \"ZIPPERBITE\", a unique new product from Dreams Inc. is attached by hooking it onto the hole of the zipper pull. SMISKI Hanging is a curious fellow. He is found on your favorite zipper where he hangs quietly, confidently and in control.",
+    "image": "ziphangon.png",
+    "category": "Others",
+    "stock": 45
+  },
+  {
+    "id": 30,
+    "name": "SMISKI Zipperbite Vol.1 (Hugging Knees)",
+    "price": 399.99,
+    "description": "\"CABLE BITES\", created by Dreams in 2017, which became a global phenomenon with over 10 million units sold worldwide, takes on new form in “ZIPPERBITES”. “SMISKI”, a mysterious creature who watches over you and who loves corners, is added to our lineup of zipper accessories, \"ZIPPERBITE\"! New SMISKI figures have been discovered clinging to your favorite zipper to quietly watch over you. You can attach Smiski Zipperbites to a variety of zippers—jackets or coats, backpacks, pen cases—anything with an appropriately sized zipper pull. \"ZIPPERBITE\", a unique new product from Dreams Inc. is attached by hooking it onto the hole of the zipper pull. SMISKI Hugging Knees sits quietly in a corner where you might find it. When attached to your zipper, SMISKI Hugging Knees is a zen-like figure.",
+    "image": "ziphugknees.png",
+    "category": "Others",
+    "stock": 50
+  },
+  {
+    "id": 31,
+    "name": "SMISKI Zipperbite Vol.2 (Lotus Pose / Yoga Series)",
+    "price": 399.99,
+    "description": "The second edition of the popular SMISKI ZIPPERBITE is here! Usually, SMISKI waits in the corner of your room, but with SMISKI ZIPPERBITE they can attach to your bags, pouches, or hoodies—anything with a zipper—to quietly watch over you wherever you go! Attach your favorite SMISKI to any zipper and showcase your unique personal style. SMISKI wants to calm his mind. This pose is said to have a relaxing effect.",
+    "image": "ziplotus.png",
+    "category": "Others",
+    "stock": 42
+  },
+  {
+    "id": 32,
+    "name": "SMISKI Zipperbite Vol.2 (Falling Down / Moving Series)",
+    "price": 399.99,
+    "description": "The second edition of the popular SMISKI ZIPPERBITE is here! Usually, SMISKI waits in the corner of your room, but with SMISKI ZIPPERBITE they can attach to your bags, pouches, or hoodies—anything with a zipper—to quietly watch over you wherever you go! Attach your favorite SMISKI to any zipper and showcase your unique personal style. SMISKI trips and falls with his package. Is the package damaged?",
+    "image": "zipfall.png",
+    "category": "Others",
+    "stock": 38
+  },
+  {
+    "id": 33,
+    "name": "SMISKI Cushion Pouch",
+    "price": 629,
+    "description": "Take SMISKI out with the SMISKI Cushion Pouch! Each pouch is large enough to hold everyday accessories like earphones, cables, and even a small mobile phone battery—and each is lined with a cushioning material to protect what you keep inside! It comes fitted with a “SMISKI Hugging Knees” charm on the zipper. The pouch’s included carabiner makes it easy to attach to any bag, belt loop, backpack for easy convenience! It’s the perfect item for commuting, traveling, or everyday casual outings.",
+    "image": "pouch.png",
+    "category": "Others",
+    "stock": 0
+  },
+  {
+    "id": 34,
+    "name": "SMISKI Plush Key Chain (Hugging Knees)",
+    "price": 799,
+    "description": "To celebrate the 10th anniversary of SMISKI, the first plush keychain is here! From the mysterious creatures who love hiding in corners, comes the new SMISKI Plush Key Chain. With SMISKI by your side, even ordinary moments become just a little more special. Attach the SMISKI mascot charm to your favorite items and take them along on your adventures! Whether it's on your backpack, shoulder bag, or keys, SMISKI can keep you company during your daily commute, school, or weekend outings. Take the SMISKI Plush Keychain with you and create memories that are uniquely yours.",
+    "image": "plushhugknees.png",
+    "category": "Others",
+    "stock": 25
+  },
+  {
+    "id": 35,
+    "name": "SMISKI Plush Key Chain (Hanging On!)",
+    "price": 799,
+    "description": "To celebrate the 10th anniversary of SMISKI, the first plush keychain is here! From the mysterious creatures who love hiding in corners, comes the new SMISKI Plush Key Chain. With SMISKI by your side, even ordinary moments become just a little more special. Attach the SMISKI mascot charm to your favorite items and take them along on your adventures! Whether it's on your backpack, shoulder bag, or keys, SMISKI can keep you company during your daily commute, school, or weekend outings. Take the SMISKI Plush Keychain with you and create memories that are uniquely yours.",
+    "image": "plushhangon.png",
+    "category": "Others",
+    "stock": 30
+  },
+  {
+    "id": 36,
+    "name": "SMISKI Embroidery Sticker vol.1 (Hugging Knees)",
+    "price": 209,
+    "description": "SMISKI, who is celebrating their 10th anniversary this year, is now available in the form of a stylish self-adhesive embroidery sticker! Easily decorate your surroundings with the self-adhesive sticker backing for your smartphone or notebook—or use them as iron-on patches for your T-shirts and tote bags. Made from embroidered material, each sticker blends perfectly with fabric products and fashion items, making them a great accessory for everyday use! The SMISKI Embroidery Sticker features three poses from the Series 1 mini figure lineup: SMISKI Hugging Knees, SMISKI Lounging, and SMISKI Peeking. Always in the corner hugging onto the knees, staring out into the distance pensive in thought.",
+    "image": "patchknees.png",
+    "category": "Others",
+    "stock": 40
+  },
+  {
+    "id": 37,
+    "name": "SMISKI Embroidery Sticker vol.1 (Lounging)",
+    "price": 209,
+    "description": "SMISKI, who is celebrating their 10th anniversary this year, is now available in the form of a stylish self-adhesive embroidery sticker! Easily decorate your surroundings with the self-adhesive sticker backing for your smartphone or notebook—or use them as iron-on patches for your T-shirts and tote bags. Made from embroidered material, each sticker blends perfectly with fabric products and fashion items, making them a great accessory for everyday use! The SMISKI Embroidery Sticker features three poses from the Series 1 mini figure lineup: SMISKI Hugging Knees, SMISKI Lounging, and SMISKI Peeking. A lazy Smiski that likes to lie down and lounge about. Does not like anything that involves moving or exercise.",
+    "image": "patchlounging.png",
+    "category": "Others",
+    "stock": 38
+  },
+  {
+    "id": 38,
+    "name": "SMISKI Embroidery Sticker vol.1 (Peeking)",
+    "price": 209,
+    "description": "SMISKI, who is celebrating their 10th anniversary this year, is now available in the form of a stylish self-adhesive embroidery sticker! Easily decorate your surroundings with the self-adhesive sticker backing for your smartphone or notebook—or use them as iron-on patches for your T-shirts and tote bags. Made from embroidered material, each sticker blends perfectly with fabric products and fashion items, making them a great accessory for everyday use! The SMISKI Embroidery Sticker features three poses from the Series 1 mini figure lineup: SMISKI Hugging Knees, SMISKI Lounging, and SMISKI Peeking. Always hunched over and peeking in from the corner. Needs to gather up courage before approaching anything.",
+    "image": "patchpeek.png",
+    "category": "Others",
+    "stock": 36
+  },
+  {
+    "id": 39,
+    "name": "SMISKI Embroidery Sticker vol.2 (Peeking 2)",
+    "price": 209,
+    "description": "The new Vol. 2 lineup features three popular poses from the mini figure SMISKI Series 2 and SMISKI Series 3 collections: SMISKI Peeking, SMISKI Pushing, and SMISKI Little. Attach each embroidery sticker directly to your accessories with the self-adhesive backing, or use an iron to secure them as patches to clothing! Thanks to the embroidered texture, they blend naturally with fabric items like clothes or pouches and are perfect for daily use. Decorate your everyday items with a touch of SMISKI whimsy. A playful Smiski who likes to look out at the world from an upside down point of view.",
+    "image": "patchpeek2.png",
+    "category": "Others",
+    "stock": 42
+  },
+  {
+    "id": 40,
+    "name": "SMISKI Embroidery Sticker vol.2 (Pushing)",
+    "price": 209,
+    "description": "The new Vol. 2 lineup features three popular poses from the mini figure SMISKI Series 2 and SMISKI Series 3 collections: SMISKI Peeking, SMISKI Pushing, and SMISKI Little. Attach each embroidery sticker directly to your accessories with the self-adhesive backing, or use an iron to secure them as patches to clothing! Thanks to the embroidered texture, they blend naturally with fabric items like clothes or pouches and are perfect for daily use. Decorate your everyday items with a touch of SMISKI whimsy. Always pushing things together to create the perfect hiding spot.",
+    "image": "patchpush.png",
+    "category": "Others",
+    "stock": 37
+  },
+  {
+    "id": 41,
+    "name": "SMISKI Embroidery Sticker vol.2 (Little)",
+    "price": 209,
+    "description": "The new Vol. 2 lineup features three popular poses from the mini figure SMISKI Series 2 and SMISKI Series 3 collections: SMISKI Peeking, SMISKI Pushing, and SMISKI Little. Attach each embroidery sticker directly to your accessories with the self-adhesive backing, or use an iron to secure them as patches to clothing! Thanks to the embroidered texture, they blend naturally with fabric items like clothes or pouches and are perfect for daily use. Decorate your everyday items with a touch of SMISKI whimsy. Little Smiski have made their appearance! For some reason these little ones like to line up against the wall in this pose.",
+    "image": "patchlittle.png",
+    "category": "Others",
+    "stock": 39
+  },
+  {
+    "id": 42,
+    "name": "SMISKI Touch Lamp",
+    "price": 2549,
+    "description": "\"Smiski Daydreaming\", which appeared in \"Living Series\", is now available as a touch light! Smiski is pondering with a small cat on his head that gently illuminates your room.",
+    "image": "light.png",
+    "category": "Others",
+    "stock": 19
+  }
+]
