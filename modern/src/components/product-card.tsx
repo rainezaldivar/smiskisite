@@ -19,7 +19,7 @@ export function ProductCard({ product }: { product: Product }) {
             loading="lazy"
           />
           {product.stock <= 0 && (
-            <span className="absolute left-4 top-4 rounded-sm bg-white px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
+            <span className="absolute left-4 top-4 rounded-sm bg-surface px-3 py-1 text-[10px] font-bold uppercase tracking-wider">
               Sold out
             </span>
           )}

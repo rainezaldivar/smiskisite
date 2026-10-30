@@ -1,12 +1,12 @@
 # Preserve and migrate the legacy data
 
-The Next.js application lives in `modern/`; the original PHP application, SQL dump, and assets remain in place. Run commands in this document from `modern/`. The bundled public browsing snapshot contains **42 products, 36 collection entries, and 126 variation descriptions** from the repository. It contains no user records or password hashes.
+The Next.js application lives in `modern/`; the retired PHP runtime and duplicate assets have been removed. Run commands in this document from `modern/`. The bundled public browsing snapshot contains **42 products, 36 collection entries, and 126 variation descriptions** from the original project. It contains no user records or password hashes. The SQL/JSON importer remains available for existing accounts and product data.
 
 Without Supabase environment variables, only public browsing uses that snapshot. Authentication, profile writes, uploads, order history, and checkout require Supabase. A configured database failure is shown as an error rather than silently returning the old snapshot.
 
 ## 1. Back up the actual source
 
-Export the running MySQL/MariaDB database and copy its complete `public/uploads` directory before doing any import. Keep both outside your public repository and website directories. The committed `../smiski_db.sql` is an older backup: its users table lacks several fields now used by the PHP profile page. Importing that backup cannot recover fields absent from it.
+If the old site is still running elsewhere, export its MySQL/MariaDB database and copy its complete uploads directory before doing any import. Keep both private. The old local SQL dump and configuration were moved to `private-exports/codeigniter-20261030/` during cleanup. That folder is ignored by Git, excluded from deployment, and absent from fresh clones. The SQL dump is an older backup whose users table lacks several profile fields; importing it cannot recover fields absent from it. The importer always requires an explicit `--input=PATH`; it does not automatically select this backup.
 
 Supported input is a phpMyAdmin-style SQL dump with backtick-quoted `INSERT INTO products/users` statements, or a private JSON export:
 
@@ -76,9 +76,9 @@ Verify source/destination product and user counts, primary/legacy ID mappings, p
 
 ## 5. Images and catalog content
 
-Root `public/uploads` is copied intact to `modern/public/uploads`; those assets deploy with the site and retain `/uploads/...` URLs. Copy any additional live uploads to the same relative paths before deployment. New profile uploads go to the `avatars` storage bucket because a serverless deployment's filesystem is not durable storage.
+All 225 files from the original uploads directory were verified byte-for-byte against `modern/public/uploads` before the duplicate root directory was removed. Those assets deploy with the site and retain `/uploads/...` URLs. Copy any additional live uploads to the same relative paths before deployment. New profile uploads go to the `avatars` storage bucket because a serverless deployment's filesystem is not durable storage.
 
-`node scripts/extract-legacy.mjs` regenerates **public-only** snapshots from the checked-in SQL products and the PHP catalog/detail arrays. It never exports users. Run it only when intentionally updating that snapshot. `src/data/extraction-report.json` records missing legacy images and duplicate dictionary IDs; missing images use an existing catalog cover. Duplicate collection IDs have distinct `-1`/`-2` slugs. Original names/descriptions and all 126 variation descriptions are retained. Details missing in the source remain empty rather than borrowing another series' information.
+The one-time PHP extraction script and its `data:extract` command were retired with the old templates. Maintain the bundled public content directly in `src/data/products.json` and `src/data/series.json`; do not add private account records to either file. `src/data/extraction-report.json` is retained as a historical record of missing source images and duplicate dictionary IDs. Missing images use an existing catalog cover, and duplicate collection IDs have distinct `-1`/`-2` slugs. Original names/descriptions and all 126 variation descriptions are retained. Details missing in the source remain empty rather than borrowing another series' information.
 
 Object storage migration is optional for existing assets. `node scripts/upload-assets.mjs --bucket=legacy-assets` previews a mapping; add `--apply` with server environment variables to copy into an existing public bucket. It does not overwrite objects or change database paths. Update paths only after reviewing that mapping; the current site already works with the included assets.
 

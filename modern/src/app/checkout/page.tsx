@@ -26,7 +26,7 @@ export default async function CheckoutPage({
       <p className="eyebrow">One step closer</p>
       <h1 className="page-title mt-4">A new home awaits.</h1>
       {!isSupabaseConfigured() && (
-        <div className="mt-7 rounded-sm border border-[#d9dfbe] bg-[#f0f3df] p-5 text-sm leading-7">
+        <div className="mt-7 rounded-sm border border-line bg-soft p-5 text-sm leading-7">
           <strong>Checkout isn’t available yet.</strong>
           <p className="muted">
             You can explore the shop and build your bag. Account services need

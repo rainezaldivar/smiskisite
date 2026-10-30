@@ -26,7 +26,7 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
 
   return (
     <div>
-      <div className="mb-8 flex flex-col gap-5 border-b border-[#dce4d5] pb-6 lg:flex-row lg:items-center lg:justify-between">
+      <div className="mb-8 flex flex-col gap-5 border-b border-line pb-6 lg:flex-row lg:items-center lg:justify-between">
         <div className="flex flex-wrap gap-2" aria-label="Filter collections">
           {groups.map((item) => (
             <button
@@ -34,7 +34,7 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
               type="button"
               aria-pressed={group === item.id}
               onClick={() => setGroup(item.id)}
-              className={`rounded-sm border px-4 py-2.5 text-sm font-medium transition-colors ${group === item.id ? "border-[#183d29] bg-[#183d29] text-white" : "border-[#dce4d5] bg-white text-[#36513e] hover:border-[#7e9866]"}`}
+              className={`rounded-sm border px-4 py-2.5 text-sm font-medium transition-colors ${group === item.id ? "border-action bg-action text-white" : "border-line bg-surface text-ink hover:border-accent"}`}
             >
               {item.label}
             </button>
@@ -46,7 +46,7 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
           </label>
           <Search
             size={18}
-            className="pointer-events-none absolute left-3.5 top-3.5 text-[#6b7e68]"
+            className="pointer-events-none absolute left-3.5 top-3.5 text-muted"
             aria-hidden="true"
           />
           <input
@@ -61,7 +61,7 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
             <button
               type="button"
               onClick={() => setQuery("")}
-              className="absolute right-2 top-2 rounded-sm p-1.5 hover:bg-[#edf1e6]"
+              className="absolute right-2 top-2 rounded-sm p-1.5 hover:bg-soft"
               aria-label="Clear search"
             >
               <X size={18} />
@@ -69,7 +69,7 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
           )}
         </div>
       </div>
-      <p className="mb-6 text-sm text-[#63715c]" role="status">
+      <p className="mb-6 text-sm text-muted" role="status">
         {matches.length} {matches.length === 1 ? "collection" : "collections"}{" "}
         to discover
       </p>
@@ -80,10 +80,10 @@ export function CatalogBrowser({ entries }: { entries: Series[] }) {
           ))}
         </div>
       ) : (
-        <div className="rounded-sm border border-[#dce4d5] bg-white px-6 py-16 text-center">
+        <div className="rounded-sm border border-line bg-surface px-6 py-16 text-center">
           <Search
             size={32}
-            className="mx-auto mb-4 text-[#7f966b]"
+            className="mx-auto mb-4 text-accent"
             aria-hidden="true"
           />
           <h2 className="text-xl font-semibold">No little creatures found</h2>

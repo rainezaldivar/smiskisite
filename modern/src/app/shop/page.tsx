@@ -12,8 +12,10 @@ export default async function ShopPage({
   const { series: seriesId } = await searchParams;
   const entry = seriesId ? getSeries(seriesId) : undefined;
   return (
-    <section className="container-page py-8 sm:py-12">
-      <h1 className="page-title">{entry?.name ?? "Shop"}</h1>
+    <section className="container-page py-6 sm:py-8">
+      <h1 className={entry ? "section-heading" : "sr-only"}>
+        {entry?.name ?? "Shop"}
+      </h1>
       <ShopBrowser products={products} />
     </section>
   );

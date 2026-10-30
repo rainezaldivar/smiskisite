@@ -101,38 +101,38 @@ export default async function AdminPage({
 
   const totalPages = Math.max(1, Math.ceil(filteredCount / pageSize));
   return (
-    <div className="mx-auto max-w-6xl px-5 py-10 sm:px-8 sm:py-14">
+    <div className="container-page py-10 sm:py-14">
       <Link
         href="/profile"
-        className="inline-flex items-center gap-2 text-xs font-medium text-[#737d6b] hover:text-[#344d31]"
+        className="inline-flex items-center gap-2 text-xs font-medium text-muted hover:text-ink"
       >
         <ArrowLeft size={14} aria-hidden /> Back to my account
       </Link>
       <div className="mt-7 flex items-start justify-between gap-4">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-[#829568]">
+          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
             Administration
           </p>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-[#293329] sm:text-4xl">
+          <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
             People in our little world.
           </h1>
-          <p className="mt-3 text-sm leading-6 text-[#737d6b]">
+          <p className="mt-3 text-sm leading-6 text-muted">
             Find registered users and manage customer accounts.
           </p>
         </div>
-        <span className="hidden size-14 items-center justify-center rounded-sm bg-[#e7efd9] text-[#58723d] sm:flex">
+        <span className="hidden size-14 items-center justify-center rounded-sm bg-soft text-accent sm:flex">
           <Shield size={25} aria-hidden />
         </span>
       </div>
       {unavailable ? (
         <div
           role="status"
-          className="mt-9 rounded-sm border border-[#dfe5d2] bg-white/80 p-8"
+          className="mt-9 rounded-sm border border-line bg-surface/80 p-8"
         >
-          <h2 className="text-xl font-semibold text-[#293329]">
+          <h2 className="text-xl font-semibold text-ink">
             User management is unavailable
           </h2>
-          <p className="mt-3 max-w-xl text-sm leading-7 text-[#737d6b]">
+          <p className="mt-3 max-w-xl text-sm leading-7 text-muted">
             The site’s account management service needs to be connected, or is
             temporarily unavailable. Your administrator access is still
             protected. Please try again later.
@@ -148,10 +148,10 @@ export default async function AdminPage({
             ].map((stat) => (
               <div
                 key={stat.label}
-                className="rounded-sm border border-[#dfe5d2] bg-white/80 p-5"
+                className="rounded-sm border border-line bg-surface/80 p-5"
               >
-                <p className="text-xs text-[#737d6b]">{stat.label}</p>
-                <p className="mt-2 text-3xl font-semibold tracking-tight text-[#344d31]">
+                <p className="text-xs text-muted">{stat.label}</p>
+                <p className="mt-2 text-3xl font-semibold tracking-tight text-ink">
                   {stat.count}
                 </p>
               </div>
@@ -159,10 +159,10 @@ export default async function AdminPage({
           </div>
           <section
             aria-label="Registered users"
-            className="mt-6 overflow-hidden rounded-sm border border-[#dfe5d2] bg-white/80"
+            className="mt-6 overflow-hidden rounded-sm border border-line bg-surface/80"
           >
-            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#e6eadf] p-5 sm:p-6">
-              <h2 className="inline-flex items-center gap-2 text-lg font-semibold text-[#293329]">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-b border-line p-5 sm:p-6">
+              <h2 className="inline-flex items-center gap-2 text-lg font-semibold text-ink">
                 <Users size={19} aria-hidden /> Registered users
               </h2>
               <form
@@ -179,12 +179,12 @@ export default async function AdminPage({
                   defaultValue={query}
                   maxLength={80}
                   placeholder="Search name or email"
-                  className="min-w-0 flex-1 rounded-sm border border-[#dce2d2] bg-white px-4 py-2.5 text-sm outline-none focus:border-[#728c57] sm:w-56"
+                  className="min-w-0 flex-1 rounded-sm border border-line bg-surface px-4 py-2.5 text-sm outline-none focus:border-accent sm:w-56"
                 />
                 <button
                   type="submit"
                   aria-label="Search users"
-                  className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-[#344d31] text-white hover:bg-[#243c22]"
+                  className="flex size-10 shrink-0 items-center justify-center rounded-sm bg-action text-white hover:bg-action-hover"
                 >
                   <Search size={17} aria-hidden />
                 </button>
@@ -195,7 +195,7 @@ export default async function AdminPage({
                 <caption className="sr-only">
                   Registered users, with customer account deletion controls
                 </caption>
-                <thead className="bg-[#f5f7ef] text-xs font-medium text-[#737d6b]">
+                <thead className="bg-soft text-xs font-medium text-muted">
                   <tr>
                     <th scope="col" className="px-6 py-4 font-medium">
                       Name
@@ -214,27 +214,27 @@ export default async function AdminPage({
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-[#e9ede3]">
+                <tbody className="divide-y divide-line">
                   {users.length ? (
                     users.map((user) => (
                       <tr key={user.id}>
-                        <td className="px-6 py-5 font-medium text-[#293329]">
+                        <td className="px-6 py-5 font-medium text-ink">
                           {user.name}
                           {user.id === admin.id && (
-                            <span className="ml-2 text-xs font-normal text-[#829568]">
+                            <span className="ml-2 text-xs font-normal text-muted">
                               You
                             </span>
                           )}
                         </td>
-                        <td className="px-6 py-5 text-[#737d6b]">
+                        <td className="px-6 py-5 text-muted">
                           {user.email}
                         </td>
                         <td className="px-6 py-5">
-                          <span className="rounded-sm bg-[#edf3df] px-3 py-1 text-xs capitalize text-[#58723d]">
+                          <span className="rounded-sm bg-soft px-3 py-1 text-xs capitalize text-accent">
                             {user.role}
                           </span>
                         </td>
-                        <td className="whitespace-nowrap px-6 py-5 text-xs text-[#737d6b]">
+                        <td className="whitespace-nowrap px-6 py-5 text-xs text-muted">
                           {new Intl.DateTimeFormat("en-PH", {
                             month: "short",
                             day: "numeric",
@@ -246,7 +246,7 @@ export default async function AdminPage({
                           {user.role === "customer" && user.id !== admin.id ? (
                             <DeleteCustomerForm id={user.id} name={user.name} />
                           ) : (
-                            <span className="text-xs text-[#829568]">
+                            <span className="text-xs text-muted">
                               Protected
                             </span>
                           )}
@@ -257,7 +257,7 @@ export default async function AdminPage({
                     <tr>
                       <td
                         colSpan={5}
-                        className="px-6 py-12 text-center text-[#737d6b]"
+                        className="px-6 py-12 text-center text-muted"
                       >
                         {query
                           ? "No users matched that search."
@@ -268,8 +268,8 @@ export default async function AdminPage({
                 </tbody>
               </table>
             </div>
-            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-[#e6eadf] px-6 py-5">
-              <p className="text-xs text-[#737d6b]">
+            <div className="flex flex-wrap items-center justify-between gap-4 border-t border-line px-6 py-5">
+              <p className="text-xs text-muted">
                 {filteredCount
                   ? `${(page - 1) * pageSize + 1}–${Math.min(page * pageSize, filteredCount)} of ${filteredCount}`
                   : "0 users"}
@@ -282,19 +282,19 @@ export default async function AdminPage({
                 {page > 1 && (
                   <Link
                     href={listHref(page - 1, query)}
-                    className="rounded-sm border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
+                    className="rounded-sm border border-line p-2 text-ink hover:bg-soft"
                     aria-label="Previous page"
                   >
                     <ArrowLeft size={15} aria-hidden />
                   </Link>
                 )}
-                <span className="text-xs text-[#737d6b]">
+                <span className="text-xs text-muted">
                   Page {page} of {totalPages}
                 </span>
                 {page < totalPages && (
                   <Link
                     href={listHref(page + 1, query)}
-                    className="rounded-sm border border-[#dce2d2] p-2 text-[#344d31] hover:bg-[#edf3df]"
+                    className="rounded-sm border border-line p-2 text-ink hover:bg-soft"
                     aria-label="Next page"
                   >
                     <ArrowRight size={15} aria-hidden />
@@ -303,7 +303,7 @@ export default async function AdminPage({
               </nav>
             </div>
           </section>
-          <p className="mt-5 max-w-2xl text-xs leading-6 text-[#829077]">
+          <p className="mt-5 max-w-2xl text-xs leading-6 text-muted">
             Administrator accounts are protected. Customer accounts with orders
             are retained to preserve order history. Deleting an eligible account
             permanently removes its sign-in and profile.

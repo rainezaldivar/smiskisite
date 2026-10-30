@@ -28,7 +28,7 @@ export default async function LoginPage({
       {params.error === "confirmation" && (
         <p
           role="alert"
-          className="mb-5 rounded-sm bg-red-50 px-4 py-3 text-sm leading-6 text-red-800"
+          className="mb-5 rounded-sm bg-danger-soft px-4 py-3 text-sm leading-6 text-danger"
         >
           That confirmation link is invalid or expired. Try opening the latest
           link from your inbox, or register again.
@@ -37,7 +37,7 @@ export default async function LoginPage({
       {params.notice === "confirmed" && (
         <p
           role="status"
-          className="mb-5 rounded-sm bg-[#edf4df] px-4 py-3 text-sm text-[#3b592c]"
+          className="mb-5 rounded-sm bg-soft px-4 py-3 text-sm text-accent"
         >
           Email confirmed. You can sign in now.
         </p>
@@ -45,7 +45,7 @@ export default async function LoginPage({
       {params.notice === "signed-out" && (
         <p
           role="status"
-          className="mb-5 rounded-sm bg-[#edf4df] px-4 py-3 text-sm text-[#3b592c]"
+          className="mb-5 rounded-sm bg-soft px-4 py-3 text-sm text-accent"
         >
           You’re signed out. See you again soon.
         </p>

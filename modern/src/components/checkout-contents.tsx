@@ -162,7 +162,7 @@ export function CheckoutContents({
                   .join(", ") || "Add your delivery address in your profile."}
               </p>
               {!deliveryReady && (
-                <p className="mt-3 text-[#9e4d37]">
+                <p className="mt-3 text-danger">
                   Complete your phone number, address, city, and province before
                   placing an order.
                 </p>
@@ -176,7 +176,7 @@ export function CheckoutContents({
         </section>
         <section className="card p-6 sm:p-8">
           <h2 className="text-xl font-bold">Your companions</h2>
-          <div className="mt-5 divide-y divide-[#dfe5d6]">
+          <div className="mt-5 divide-y divide-line">
             {lines.map((line) => {
               const product = byId.get(line.productId);
               return (
@@ -200,7 +200,7 @@ export function CheckoutContents({
                       Quantity: {line.quantity}
                     </p>
                     {(!product || line.quantity > product.stock) && (
-                      <p className="mt-2 text-xs text-[#9e4d37]">
+                      <p className="mt-2 text-xs text-danger">
                         This quantity is no longer available.
                       </p>
                     )}
@@ -225,12 +225,12 @@ export function CheckoutContents({
             <dt className="muted">Shipping</dt>
             <dd>{formatPrice(100)}</dd>
           </div>
-          <div className="flex justify-between border-t border-[#dfe5d6] pt-5 text-lg font-bold">
+          <div className="flex justify-between border-t border-line pt-5 text-lg font-bold">
             <dt>Total</dt>
             <dd>{formatPrice(subtotal + 100)}</dd>
           </div>
         </dl>
-        <div className="mt-6 rounded-sm bg-[#eef2e2] p-4 text-xs leading-6">
+        <div className="mt-6 rounded-sm bg-soft p-4 text-xs leading-6">
           <p className="flex items-center gap-2 font-bold">
             <ShieldCheck size={15} />
             Demo checkout
@@ -242,7 +242,7 @@ export function CheckoutContents({
         </div>
         {error && (
           <p
-            className="mt-5 rounded-sm bg-[#fff0e9] p-3 text-sm text-[#98452f]"
+            className="mt-5 rounded-sm bg-danger-soft p-3 text-sm text-danger"
             role="alert"
           >
             {error}
@@ -257,7 +257,7 @@ export function CheckoutContents({
           {!pending && <ArrowRight size={16} />}
         </button>
         {invalid && (
-          <p className="mt-3 text-xs text-[#98452f]">
+          <p className="mt-3 text-xs text-danger">
             Please update unavailable items in your bag first.
           </p>
         )}

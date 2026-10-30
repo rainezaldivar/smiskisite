@@ -159,7 +159,10 @@ async function getAllAuthUsers(client) {
 }
 
 export async function migrateLegacy(options = {}) {
-  const input = options.input || resolve(root, "../smiski_db.sql");
+  if (!options.input) {
+    throw new Error("Provide --input=PATH to a private SQL or JSON export.");
+  }
+  const input = options.input;
   const plaintext = options.plaintext || "reject";
   const source = await readLegacyExport(input);
   const validated = validateExport(source, plaintext);

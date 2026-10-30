@@ -30,7 +30,7 @@ export default async function SeriesPage({ params }: Props) {
     <div className="container-page py-8 sm:py-12">
       <Link
         href="/catalog"
-        className="mb-8 inline-flex items-center gap-2 font-medium text-[#52664b]"
+        className="mb-8 inline-flex items-center gap-2 font-medium text-muted"
       >
         <ArrowLeft size={18} aria-hidden="true" /> Collections
       </Link>
@@ -128,7 +128,7 @@ export default async function SeriesPage({ params }: Props) {
       )}
       {related.length > 0 && (
         <section
-          className="mt-12 border-t border-[#dce4d5] pt-10 sm:mt-16"
+          className="mt-12 border-t border-line pt-10 sm:mt-16"
           aria-labelledby="more-series-title"
         >
           <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
@@ -146,7 +146,7 @@ export default async function SeriesPage({ params }: Props) {
           </div>
         </section>
       )}
-      <div className="mt-12 flex justify-center border-t border-[#dce4d5] pt-10">
+      <div className="mt-12 flex justify-center border-t border-line pt-10">
         <Link
           href={`/shop?series=${encodeURIComponent(entry.id)}`}
           className="button-primary"

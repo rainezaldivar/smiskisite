@@ -22,7 +22,7 @@ export default async function ForgotPasswordPage({
       {error === "expired" && (
         <p
           role="alert"
-          className="mb-5 rounded-sm bg-red-50 px-4 py-3 text-sm leading-6 text-red-800"
+          className="mb-5 rounded-sm bg-danger-soft px-4 py-3 text-sm leading-6 text-danger"
         >
           That reset link is invalid or expired. Request a new one below.
         </p>

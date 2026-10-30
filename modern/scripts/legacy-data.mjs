@@ -1,6 +1,6 @@
 import { readFile } from "node:fs/promises";
 
-// This parser reads literal SQL/PHP data; it never executes either input.
+// This parser reads literal SQL data; it never executes the input.
 function readQuoted(source, start, sql = false) {
   const quote = source[start];
   let value = "";
@@ -78,67 +78,6 @@ export function parseSqlTable(sql, table) {
     statement.lastIndex = index + 1;
   }
   return rows;
-}
-
-export function parsePhpArray(source, variable) {
-  let index = source.indexOf(`$${variable}`);
-  if (index < 0) throw new Error(`Missing PHP data variable ${variable}.`);
-  index = source.indexOf("=", index) + 1;
-  function skip() {
-    while (index < source.length) {
-      if (/\s/.test(source[index])) index++;
-      else if (source.slice(index, index + 2) === "//") {
-        const end = source.indexOf("\n", index);
-        index = end < 0 ? source.length : end + 1;
-      } else break;
-    }
-  }
-  function value() {
-    skip();
-    if (source[index] === "[") return array();
-    if (source[index] === "'" || source[index] === '"') {
-      const result = readQuoted(source, index);
-      index = result.end;
-      return result.value;
-    }
-    if (source.slice(index, index + 8) === "base_url") {
-      index += 8;
-      skip();
-      if (source[index++] !== "(") throw new Error("Invalid base_url literal.");
-      const path = value();
-      skip();
-      if (source[index++] !== ")")
-        throw new Error("Only literal base_url paths are supported.");
-      return `/${path.replace(/^\/+/, "")}`;
-    }
-    throw new Error(`Unsupported PHP data literal at offset ${index}.`);
-  }
-  function array() {
-    index++;
-    const values = [];
-    const object = {};
-    let keyed = false;
-    while (index < source.length) {
-      skip();
-      if (source[index] === "]") {
-        index++;
-        return keyed ? object : values;
-      }
-      const first = value();
-      skip();
-      if (source.slice(index, index + 2) === "=>") {
-        keyed = true;
-        index += 2;
-        object[first] = value();
-      } else values.push(first);
-      skip();
-      if (source[index] === ",") index++;
-      else if (source[index] !== "]")
-        throw new Error(`Invalid PHP array at offset ${index}.`);
-    }
-    throw new Error("Unterminated PHP array.");
-  }
-  return value();
 }
 
 export async function readLegacyExport(input) {

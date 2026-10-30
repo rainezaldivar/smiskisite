@@ -1,6 +1,6 @@
 # Smiskisite
 
-A simple Smiski collector storefront rebuilt with Next.js App Router, React, TypeScript, Tailwind CSS, and Supabase. The original CodeIgniter application is preserved in the parent directory. Existing public images and the checked-in product/catalog content are included.
+A simple Smiski collector storefront built with Next.js App Router, React, TypeScript, Tailwind CSS, and Supabase. This is the active application; the retired CodeIgniter runtime has been removed. Existing public images and the checked-in product/catalog content are included.
 
 ## Run locally
 
@@ -19,7 +19,7 @@ Without Supabase settings, the home, shop, product pages, collector's catalog, A
 
 Follow **[docs/MIGRATION.md](docs/MIGRATION.md)**. It covers:
 
-1. Backing up the actual live MySQL database and uploaded files. The old committed dump cannot supply missing live profile fields.
+1. Backing up the actual live MySQL database and uploaded files. The archived local dump cannot supply missing live profile fields.
 2. Creating a free Supabase project and applying `supabase/migrations/202610280001_initial.sql`.
 3. Copying `.env.example` to `.env.local`, adding the project settings, and configuring confirmation/recovery email redirects.
 4. Previewing the importer locally, reviewing its report, then deliberately applying it to the new destination.
@@ -82,7 +82,7 @@ src/components/         Shared UI, bag, checkout and account forms
 src/lib/                Typed data access, validation and Supabase clients
 src/data/               Public-only legacy product and collection snapshots
 supabase/migrations/    PostgreSQL tables, policies, storage and checkout transaction
-scripts/                Extraction, reviewed import, asset copy and SQL tests
+scripts/                Reviewed SQL/JSON import, asset copy and SQL tests
 tests/                  Bag and authentication helper tests
 e2e/                    Public desktop/mobile browser checks
 public/uploads/         Existing project artwork and images

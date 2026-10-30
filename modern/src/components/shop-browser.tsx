@@ -82,7 +82,7 @@ export function ShopBrowser({ products }: { products: Product[] }) {
     pages,
   );
   return (
-    <div className="shop-layout mt-8">
+    <div className="shop-layout mt-4">
       <aside className="shop-sidebar" aria-label="Product filters">
         <fieldset>
           <legend className="mb-4 text-lg font-bold">Collections</legend>
@@ -99,7 +99,7 @@ export function ShopBrowser({ products }: { products: Product[] }) {
             </label>
           ))}
         </fieldset>
-        <label className="mt-6 flex items-center gap-3 border-t border-[#dfe5d6] pt-5">
+        <label className="mt-6 flex items-center gap-3 border-t border-line pt-5">
           <input
             type="checkbox"
             checked={stockOnly}
@@ -120,10 +120,10 @@ export function ShopBrowser({ products }: { products: Product[] }) {
         )}
       </aside>
       <div className="min-w-0" aria-busy={pending}>
-        <div className="flex flex-col gap-3 border-b border-[#dfe5d6] pb-5 sm:flex-row sm:items-center">
+        <div className="flex flex-col gap-3 border-b border-line pb-5 sm:flex-row sm:items-center">
           <div className="relative min-w-0 flex-1">
             <Search
-              className="absolute left-3 top-4 text-[#76846b]"
+              className="absolute left-3 top-4 text-muted"
               size={18}
               aria-hidden="true"
             />
@@ -156,7 +156,7 @@ export function ShopBrowser({ products }: { products: Product[] }) {
           to discover
         </p>
         {filtered.length ? (
-          <div className="grid grid-cols-2 gap-4 xl:grid-cols-3">
+          <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4">
             {filtered
               .slice((activePage - 1) * 12, activePage * 12)
               .map((product) => (
@@ -180,7 +180,7 @@ export function ShopBrowser({ products }: { products: Product[] }) {
                   key={number}
                   aria-label={`Page ${number}`}
                   aria-current={activePage === number ? "page" : undefined}
-                  className={`h-11 w-11 border text-base font-bold ${activePage === number ? "border-forest bg-forest text-white" : "border-[#d5dfc7] hover:bg-sage"}`}
+                  className={`h-11 w-11 border text-base font-bold ${activePage === number ? "border-action bg-action text-white" : "border-line hover:bg-sage"}`}
                   onClick={() => {
                     const params = new URLSearchParams(searchParams.toString());
                     params.set("page", String(number));

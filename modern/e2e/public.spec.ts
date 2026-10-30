@@ -585,3 +585,51 @@ test("images resist dragging while product links stay clickable and square", asy
   await card.getByRole("link").click();
   await expect(page).toHaveURL(/\/shop\/\d+$/);
 });
+
+test("About photos fill the screen and its story controls reach every slide", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/about", { waitUntil: "networkidle" });
+  const carousel = page.getByRole("region", { name: "About SMISKI stories" });
+  const track = carousel.locator(".about-story-track");
+  const slides = carousel.locator(".about-story-panel");
+  await expect(slides).toHaveCount(4);
+  await expect(track).toHaveCSS("scroll-snap-type", "x mandatory");
+  await expect(slides.first().locator("img")).toHaveCSS("object-fit", "cover");
+  expect(
+    await slides.locator("img").evaluateAll((images) =>
+      images.map((image) => image.getAttribute("src")),
+    ),
+  ).toEqual([
+    "/uploads/about01.png",
+    "/uploads/about02.png",
+    "/uploads/about03.gif",
+    "/uploads/about04.png",
+  ]);
+  const heights = await page.evaluate(() => ({
+    viewport: window.innerHeight,
+    header: document.querySelector("header")!.getBoundingClientRect().height,
+    slide: document.querySelector(".about-story-panel")!.getBoundingClientRect()
+      .height,
+  }));
+  expect(Math.abs(heights.slide - (heights.viewport - heights.header))).toBeLessThan(2);
+
+  await carousel.getByRole("button", { name: "Next story" }).click();
+  await expect
+    .poll(() => track.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(300);
+  await track.focus();
+  await page.keyboard.press("ArrowRight");
+  await expect
+    .poll(() => track.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(700);
+  await carousel
+    .getByRole("button", { name: "Show Which little personality feels like you?" })
+    .click();
+  await expect
+    .poll(() => track.evaluate((element) => element.scrollLeft))
+    .toBeGreaterThan(1100);
+  await carousel.getByRole("link", { name: "Meet the collections" }).click();
+  await expect(page).toHaveURL(/\/catalog$/);
+});

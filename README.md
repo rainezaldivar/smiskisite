@@ -1,78 +1,41 @@
-# Smiskisite
+﻿# Smiskisite
 
-The revamped Next.js/TypeScript application is in **[modern/](modern/README.md)**. It includes the storefront, collector's catalog, accounts, profile, shopping bag, demo checkout, and admin user management, with Supabase schema and data migration tooling.
+Smiski storefront built with **Next.js, React, TypeScript, Tailwind CSS, and Supabase**, deployed on Vercel.
 
-For local setup and Vercel deployment, start with [modern/README.md](modern/README.md). For preserving the existing MySQL data, follow [the migration guide](modern/docs/MIGRATION.md).
+The application is in **[modern/](modern/README.md)**. The retired CodeIgniter runtime, PHP templates, Composer/PHPUnit setup, old styles, and duplicate uploads have been removed.
 
-The original CodeIgniter/PHP application and its data/assets remain below and in their original locations for reference and rollback.
+## Run locally
 
----
+Use Node.js 24 LTS:
 
-# Original CodeIgniter application
+```powershell
+cd modern
+npm ci
+npm run dev
+```
 
-## What is CodeIgniter?
+Open **http://localhost:3000**. On this Windows workspace, the portable-runtime launcher also works from the repository root:
 
-CodeIgniter is a PHP full-stack web framework that is light, fast, flexible and secure.
-More information can be found at the [official site](https://codeigniter.com).
+```powershell
+powershell -ExecutionPolicy Bypass -File modern/dev.ps1
+```
 
-This repository holds a composer-installable app starter.
-It has been built from the
-[development repository](https://github.com/codeigniter4/CodeIgniter4).
+Without Supabase configuration, public pages use the bundled product and collection snapshots. Accounts, profiles, uploads, saved orders, and demo checkout require the setup in [the application README](modern/README.md) and [the migration guide](modern/docs/MIGRATION.md).
 
-More information about the plans for version 4 can be found in [CodeIgniter 4](https://forum.codeigniter.com/forumdisplay.php?fid=28) on the forums.
+## Project structure
 
-You can read the [user guide](https://codeigniter.com/user_guide/)
-corresponding to the latest version of the framework.
+```text
+modern/src/          Application pages, components, styles, and data
+modern/public/       Website assets, including the verified image library
+modern/supabase/     Database schema, policies, and checkout transaction
+modern/scripts/      SQL/JSON import, asset upload, and database checks
+modern/tests/        Unit tests
+modern/e2e/          Browser tests
+modern/docs/         Setup, data migration, and QA guides
+```
 
-## Installation & updates
+In Vercel, keep **Root Directory** set to `modern`.
 
-`composer create-project codeigniter4/appstarter` then `composer update` whenever
-there is a new release of the framework.
+The old database dump and configuration were preserved locally under `modern/private-exports/codeigniter-20261030/`. This folder is ignored by Git and excluded from deployment; it is not included in fresh clones. The importer requires an explicit `--input` path and does not automatically read a backup. Historical PHP source remains recoverable from Git history.
 
-When updating, check the release notes to see if there are any changes you might need to apply
-to your `app` folder. The affected files can be copied or merged from
-`vendor/codeigniter4/framework/app`.
-
-## Setup
-
-Copy `env` to `.env` and tailor for your app, specifically the baseURL
-and any database settings.
-
-## Important Change with index.php
-
-`index.php` is no longer in the root of the project! It has been moved inside the *public* folder,
-for better security and separation of components.
-
-This means that you should configure your web server to "point" to your project's *public* folder, and
-not to the project root. A better practice would be to configure a virtual host to point there. A poor practice would be to point your web server to the project root and expect to enter *public/...*, as the rest of your logic and the
-framework are exposed.
-
-**Please** read the user guide for a better explanation of how CI4 works!
-
-## Repository Management
-
-We use GitHub issues, in our main repository, to track **BUGS** and to track approved **DEVELOPMENT** work packages.
-We use our [forum](http://forum.codeigniter.com) to provide SUPPORT and to discuss
-FEATURE REQUESTS.
-
-This repository is a "distribution" one, built by our release preparation script.
-Problems with it can be raised on our forum, or as issues in the main repository.
-
-## Server Requirements
-
-PHP version 8.1 or higher is required, with the following extensions installed:
-
-- [intl](http://php.net/manual/en/intl.requirements.php)
-- [mbstring](http://php.net/manual/en/mbstring.installation.php)
-
-> [!WARNING]
-> - The end of life date for PHP 7.4 was November 28, 2022.
-> - The end of life date for PHP 8.0 was November 26, 2023.
-> - If you are still using PHP 7.4 or 8.0, you should upgrade immediately.
-> - The end of life date for PHP 8.1 will be December 31, 2025.
-
-Additionally, make sure that the following extensions are enabled in your PHP:
-
-- json (enabled by default - don't turn it off)
-- [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
-- [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+Existing artwork and product/catalog data are preserved. The root `LICENSE` retains the original attribution; it does not grant rights to third-party SMISKI artwork.

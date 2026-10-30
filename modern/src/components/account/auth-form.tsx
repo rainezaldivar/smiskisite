@@ -7,7 +7,7 @@ import { login, register } from "@/app/actions/auth";
 import { initialFormState } from "./form-state";
 
 const inputClass =
-  "mt-2 w-full rounded-sm border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
+  "mt-2 w-full rounded-sm border border-line bg-surface px-4 py-3 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-glow";
 
 export function AuthForm({
   mode,
@@ -69,7 +69,7 @@ export function AuthForm({
       {state.message && (
         <div
           role={state.status === "error" ? "alert" : "status"}
-          className={`rounded-sm px-4 py-3 text-sm leading-relaxed ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
+          className={`rounded-sm px-4 py-3 text-sm leading-relaxed ${state.status === "success" ? "bg-soft text-accent" : "bg-danger-soft text-danger"}`}
         >
           {state.message}
         </div>
@@ -80,7 +80,7 @@ export function AuthForm({
             <div key={field.name}>
               <label
                 htmlFor={`auth-${field.name}`}
-                className="text-sm font-medium text-[#374333]"
+                className="text-sm font-medium text-ink"
               >
                 {field.label}
               </label>
@@ -104,7 +104,7 @@ export function AuthForm({
                 <p
                   id={`${field.name}-error`}
                   key={error}
-                  className="mt-1.5 text-xs text-red-700"
+                  className="mt-1.5 text-xs text-danger"
                 >
                   {error}
                 </p>
@@ -112,7 +112,7 @@ export function AuthForm({
             </div>
           ))}
           {isRegister && (
-            <p className="text-xs leading-relaxed text-[#737d6b]">
+            <p className="text-xs leading-relaxed text-muted">
               Use at least 8 characters. We’ll send a confirmation link to your
               email.
             </p>
@@ -121,7 +121,7 @@ export function AuthForm({
             <p className="text-right text-xs">
               <Link
                 href="/forgot-password"
-                className="font-medium text-[#58723d] underline underline-offset-4"
+                className="font-medium text-accent underline underline-offset-4"
               >
                 Forgot your password?
               </Link>
@@ -130,7 +130,7 @@ export function AuthForm({
           <button
             type="submit"
             disabled={pending}
-            className="flex w-full items-center justify-center gap-2 rounded-sm bg-[#344d31] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-sm bg-action px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-action-hover disabled:cursor-wait disabled:opacity-60"
           >
             {pending ? (
               <LoaderCircle size={17} className="animate-spin" aria-hidden />
@@ -146,10 +146,10 @@ export function AuthForm({
           </button>
         </>
       )}
-      <p className="pt-1 text-center text-sm text-[#737d6b]">
+      <p className="pt-1 text-center text-sm text-muted">
         {isRegister ? "Already part of the family?" : "New around here?"}{" "}
         <Link
-          className="font-semibold text-[#344d31] underline decoration-[#b6c897] underline-offset-4"
+          className="font-semibold text-ink underline decoration-accent underline-offset-4"
           href={isRegister ? "/login" : "/register"}
         >
           {isRegister ? "Sign in" : "Create an account"}

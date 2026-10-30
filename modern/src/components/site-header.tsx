@@ -4,6 +4,7 @@ import { usePathname } from "next/navigation";
 import { Menu, ShoppingCart, UserRound, X, Sprout } from "lucide-react";
 import { useState } from "react";
 import { useCart } from "@/components/cart-provider";
+import { ThemeToggle } from "@/components/theme-toggle";
 
 export function SiteHeader({
   profile,
@@ -19,8 +20,8 @@ export function SiteHeader({
     { href: "/about", label: "About SMISKI" },
   ];
   return (
-    <header className="sticky top-0 z-40 border-b border-[#dfe5d6] bg-cream/95 backdrop-blur-md">
-      <div className="container-page flex min-h-20 items-center justify-between gap-1 min-[400px]:gap-2">
+    <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur-md">
+      <div className="container-page flex min-h-19 items-center justify-between gap-1 min-[400px]:gap-2">
         <Link
           href="/"
           aria-label="Smiskisite home"
@@ -34,7 +35,7 @@ export function SiteHeader({
             aria-hidden="true"
           />
           <span>
-            smiskisite<span className="text-[#88a652]">.</span>
+            smiskisite<span className="text-accent">.</span>
           </span>
         </Link>
         <nav
@@ -46,7 +47,7 @@ export function SiteHeader({
               key={link.href}
               href={link.href}
               aria-current={path.startsWith(link.href) ? "page" : undefined}
-              className={`text-base font-bold transition-colors hover:text-[#6d8b3a] ${path.startsWith(link.href) ? "text-forest underline decoration-[#a4bd78] decoration-2 underline-offset-8" : "text-[#687564]"}`}
+              className={`text-base font-bold transition-colors hover:text-accent ${path.startsWith(link.href) ? "text-ink underline decoration-accent decoration-2 underline-offset-8" : "text-muted"}`}
             >
               {link.label}
             </Link>
@@ -58,6 +59,7 @@ export function SiteHeader({
               Admin
             </Link>
           )}
+          <ThemeToggle />
           <Link
             href={profile ? "/cart" : "/login?next=%2Fcart"}
             aria-label={`Cart, ${count} ${count === 1 ? "item" : "items"}`}
@@ -66,7 +68,7 @@ export function SiteHeader({
           >
             <ShoppingCart size={23} />
             {count > 0 && (
-              <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-sm bg-lime px-1 text-[9px] font-bold">
+              <span className="absolute -right-1 -top-1 flex h-4 min-w-4 items-center justify-center rounded-sm bg-lime px-1 text-[9px] font-bold text-glow-ink">
                 {count}
               </span>
             )}
@@ -84,7 +86,7 @@ export function SiteHeader({
             <div className="flex items-center gap-1 sm:gap-2">
               <Link
                 href="/register"
-                className="nav-auth"
+                className="nav-auth max-[359px]:hidden"
                 onClick={() => setOpen(false)}
               >
                 Sign Up
@@ -114,8 +116,17 @@ export function SiteHeader({
         <nav
           id="mobile-navigation"
           aria-label="Mobile navigation"
-          className="container-page flex flex-col gap-1 border-t border-[#dfe5d6] py-4 lg:hidden"
+          className="container-page flex flex-col gap-1 border-t border-line py-4 lg:hidden"
         >
+          {!profile && (
+            <Link
+              className="hidden px-3 py-3 text-sm font-bold max-[359px]:block"
+              href="/register"
+              onClick={() => setOpen(false)}
+            >
+              Sign Up
+            </Link>
+          )}
           {links.map((link) => (
             <Link
               className="rounded-sm px-3 py-3 text-sm font-bold hover:bg-sage"
@@ -126,6 +137,7 @@ export function SiteHeader({
               {link.label}
             </Link>
           ))}
+          <ThemeToggle menu />
           {profile?.role === "admin" && (
             <Link
               className="px-3 py-3 text-sm font-bold"

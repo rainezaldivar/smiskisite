@@ -16,7 +16,7 @@ export function CartContents({ products }: { products: Product[] }) {
   if (!items.length)
     return (
       <div className="card mt-10 px-6 py-20 text-center">
-        <ShoppingBag size={36} className="mx-auto text-[#88a16d]" />
+        <ShoppingBag size={36} className="mx-auto text-accent" />
         <h2 className="mt-5 text-2xl font-bold">
           Every collection starts somewhere.
         </h2>
@@ -68,7 +68,7 @@ export function CartContents({ products }: { products: Product[] }) {
             {items.length} {items.length === 1 ? "companion" : "companions"}
           </span>
         </div>
-        <div className="card divide-y divide-[#e0e7d8] overflow-hidden">
+        <div className="card divide-y divide-line overflow-hidden">
           {items.map((item) => {
             const product = byId.get(item.productId);
             return (
@@ -88,7 +88,7 @@ export function CartContents({ products }: { products: Product[] }) {
                 {product ? (
                   <Link
                     href={`/shop/${product.id}`}
-                    className="flex h-24 w-20 shrink-0 items-center rounded-sm bg-[#eef2e5] p-2 sm:w-24"
+                    className="flex h-24 w-20 shrink-0 items-center rounded-sm bg-soft p-2 sm:w-24"
                   >
                     <img
                       draggable={false}
@@ -103,7 +103,7 @@ export function CartContents({ products }: { products: Product[] }) {
                   </div>
                 )}
                 <div className="min-w-0 flex-1">
-                  <p className="text-[9px] font-bold uppercase tracking-wider text-[#76846b]">
+                  <p className="text-[9px] font-bold uppercase tracking-wider text-muted">
                     {product?.category ?? "Unavailable"}
                   </p>
                   <h2 className="mt-1 text-sm font-bold leading-6">
@@ -117,7 +117,7 @@ export function CartContents({ products }: { products: Product[] }) {
                     {product ? formatPrice(product.price) : "—"}
                   </p>
                   <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <div className="inline-flex items-center rounded-sm border border-[#d0dac4]">
+                    <div className="inline-flex items-center rounded-sm border border-line">
                       <button
                         className="p-2"
                         aria-label={`Decrease ${product?.name ?? "item"} quantity`}
@@ -157,7 +157,7 @@ export function CartContents({ products }: { products: Product[] }) {
                       </button>
                     </div>
                     <button
-                      className="p-2 text-[#76846b] hover:text-[#9d4535]"
+                      className="p-2 text-muted hover:text-danger"
                       aria-label={`Remove ${product?.name ?? "item"}`}
                       onClick={() => removeItem(item.productId)}
                     >
@@ -165,7 +165,7 @@ export function CartContents({ products }: { products: Product[] }) {
                     </button>
                   </div>
                   {product && item.quantity > product.stock && (
-                    <p className="mt-2 text-xs text-[#a24432]">
+                    <p className="mt-2 text-xs text-danger">
                       {product.stock > 0
                         ? `Only ${product.stock} available. Please reduce the quantity.`
                         : "Currently sold out. Remove this item or leave it unselected."}
@@ -202,7 +202,7 @@ export function CartContents({ products }: { products: Product[] }) {
           <br />
           This is a portfolio demo. No real payment is collected.
         </p>
-        <div className="my-6 border-t border-[#dfe5d6]" />
+        <div className="my-6 border-t border-line" />
         <div className="flex justify-between font-bold">
           <span>Subtotal</span>
           <span>{formatPrice(subtotal)}</span>

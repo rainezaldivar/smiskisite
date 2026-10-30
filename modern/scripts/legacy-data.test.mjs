@@ -3,8 +3,12 @@ import assert from "node:assert/strict";
 import { readFile, access } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { resolve, join } from "node:path";
-import { parseSqlTable, parsePhpArray, publicProduct } from "./legacy-data.mjs";
-import { classifyPassword, validateExport } from "./migrate-legacy.mjs";
+import { parseSqlTable, publicProduct } from "./legacy-data.mjs";
+import {
+  classifyPassword,
+  validateExport,
+  migrateLegacy,
+} from "./migrate-legacy.mjs";
 
 test("SQL parser preserves quoted separators, apostrophes, NULL, and multiple INSERT statements", () => {
   const source =
@@ -17,19 +21,8 @@ test("SQL parser preserves quoted separators, apostrophes, NULL, and multiple IN
   ]);
 });
 
-test("PHP extraction supports nested arrays, escaped apostrophes and literal base_url only", () => {
-  const source =
-    "$items = [ // comment\n 'living' => ['name'=>'Can\\'t hide', 'variations'=>[['img'=>base_url('uploads/living.png')]]]];";
-  assert.deepEqual(parsePhpArray(source, "items"), {
-    living: {
-      name: "Can't hide",
-      variations: [{ img: "/uploads/living.png" }],
-    },
-  });
-  assert.throws(
-    () => parsePhpArray("$items = [system('anything')];", "items"),
-    /Unsupported/,
-  );
+test("migration requires an explicit private export instead of using a retired root dump", async () => {
+  await assert.rejects(migrateLegacy(), /Provide --input=PATH/);
 });
 
 test("public product projection cannot include private user fields", () => {
@@ -102,7 +95,7 @@ test("migration requires explicit treatment of plaintext and rejects unknown has
   );
 });
 
-test("extracted public datasets preserve all entries and reference actual local images", async () => {
+test("bundled public datasets preserve all entries and reference actual local images", async () => {
   const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
   const products = JSON.parse(
     await readFile(join(root, "src/data/products.json"), "utf8"),

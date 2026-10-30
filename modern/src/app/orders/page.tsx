@@ -44,13 +44,13 @@ export default async function OrdersPage() {
                   <img
                     draggable={false}
                     key={item.product_id}
-                    className="h-20 w-20 rounded-sm bg-[#edf1e4] object-contain p-2"
+                    className="h-20 w-20 rounded-sm bg-soft object-contain p-2"
                     src={imageUrl(item.image)}
                     alt={`${item.product_name}, quantity ${item.quantity}`}
                   />
                 ))}
               </div>
-              <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-[#dfe5d6] pt-5">
+              <div className="mt-5 flex flex-wrap items-center justify-between gap-4 border-t border-line pt-5">
                 <p className="text-sm font-bold">
                   {formatPrice(order.total)}
                   <span className="muted ml-2 font-normal">
@@ -74,7 +74,7 @@ export default async function OrdersPage() {
         </div>
       ) : (
         <div className="card mt-10 p-12 text-center">
-          <Package size={34} className="mx-auto text-[#8ca16f]" />
+          <Package size={34} className="mx-auto text-accent" />
           <h2 className="mt-5 text-xl font-bold">
             Your collection’s next chapter.
           </h2>

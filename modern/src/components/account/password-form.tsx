@@ -7,7 +7,7 @@ import { requestPasswordReset, resetPassword } from "@/app/actions/auth";
 import { initialFormState } from "./form-state";
 
 const inputClass =
-  "mt-2 w-full rounded-sm border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
+  "mt-2 w-full rounded-sm border border-line bg-surface px-4 py-3 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-glow";
 
 export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
   const isReset = mode === "reset";
@@ -55,7 +55,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
       {state.message && (
         <p
           role={state.status === "error" ? "alert" : "status"}
-          className={`rounded-sm px-4 py-3 text-sm leading-6 ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
+          className={`rounded-sm px-4 py-3 text-sm leading-6 ${state.status === "success" ? "bg-soft text-accent" : "bg-danger-soft text-danger"}`}
         >
           {state.message}
         </p>
@@ -66,7 +66,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
             <div key={field.name}>
               <label
                 htmlFor={`recovery-${field.name}`}
-                className="text-sm font-medium text-[#374333]"
+                className="text-sm font-medium text-ink"
               >
                 {field.label}
               </label>
@@ -89,7 +89,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
               {state.errors?.[field.name]?.length ? (
                 <p
                   id={`${field.name}-error`}
-                  className="mt-1.5 text-xs text-red-700"
+                  className="mt-1.5 text-xs text-danger"
                 >
                   {state.errors[field.name]?.[0]}
                 </p>
@@ -97,7 +97,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
             </div>
           ))}
           {isReset && (
-            <p className="text-xs leading-6 text-[#737d6b]">
+            <p className="text-xs leading-6 text-muted">
               Use at least 8 characters. Emoji and accented characters count
               toward the 72-byte password limit.
             </p>
@@ -105,7 +105,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
           <button
             type="submit"
             disabled={pending}
-            className="flex w-full items-center justify-center gap-2 rounded-sm bg-[#344d31] px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-sm bg-action px-5 py-3.5 text-sm font-semibold text-white transition hover:bg-action-hover disabled:cursor-wait disabled:opacity-60"
           >
             {pending ? (
               <LoaderCircle size={17} className="animate-spin" aria-hidden />
@@ -125,7 +125,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
       <p className="text-center text-sm">
         <Link
           href={isReset && state.status === "success" ? "/profile" : "/login"}
-          className="font-semibold text-[#344d31] underline decoration-[#b6c897] underline-offset-4"
+          className="font-semibold text-ink underline decoration-accent underline-offset-4"
         >
           {isReset && state.status === "success"
             ? "Back to my account"
@@ -136,7 +136,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
         <p className="text-center text-xs">
           <Link
             href="/forgot-password"
-            className="text-[#737d6b] underline underline-offset-4"
+            className="text-muted underline underline-offset-4"
           >
             Request a fresh reset link
           </Link>

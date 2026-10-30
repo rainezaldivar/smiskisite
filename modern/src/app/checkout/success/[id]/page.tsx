@@ -22,7 +22,7 @@ export default async function OrderSuccessPage({
   return (
     <section className="container-page max-w-3xl py-14 sm:py-20">
       <div className="text-center">
-        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-lime">
+        <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-sm bg-lime text-glow-ink">
           <Check size={30} />
         </div>
         <p className="eyebrow mt-6">A little joy, saved</p>
@@ -37,7 +37,7 @@ export default async function OrderSuccessPage({
       </div>
       <div className="card mt-10 p-6 sm:p-8">
         <h2 className="text-lg font-bold">Your little companions</h2>
-        <div className="mt-5 divide-y divide-[#dfe5d6]">
+        <div className="mt-5 divide-y divide-line">
           {order.order_items.map((item) => (
             <div className="flex items-center gap-4 py-4" key={item.product_id}>
               <img
@@ -58,7 +58,7 @@ export default async function OrderSuccessPage({
             </div>
           ))}
         </div>
-        <dl className="mt-5 space-y-3 border-t border-[#dfe5d6] pt-5 text-sm">
+        <dl className="mt-5 space-y-3 border-t border-line pt-5 text-sm">
           <div className="flex justify-between">
             <dt className="muted">Subtotal</dt>
             <dd>{formatPrice(order.subtotal)}</dd>
@@ -72,7 +72,7 @@ export default async function OrderSuccessPage({
             <dd>{formatPrice(order.total)}</dd>
           </div>
         </dl>
-        <div className="mt-6 border-t border-[#dfe5d6] pt-6">
+        <div className="mt-6 border-t border-line pt-6">
           <h3 className="text-xs font-bold">Saved delivery details</h3>
           <p className="muted mt-2 text-sm leading-7">
             {order.delivery_name}

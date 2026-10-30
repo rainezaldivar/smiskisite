@@ -8,7 +8,7 @@ import { updateProfile, uploadAvatar } from "@/app/actions/profile";
 import { initialFormState } from "./form-state";
 
 const inputClass =
-  "mt-2 w-full rounded-sm border border-[#dce2d2] bg-white px-4 py-3 text-sm text-[#293329] outline-none transition focus:border-[#728c57] focus:ring-2 focus:ring-[#dce9c9]";
+  "mt-2 w-full rounded-sm border border-line bg-surface px-4 py-3 text-sm text-ink outline-none transition focus:border-accent focus:ring-2 focus:ring-glow";
 
 export function ProfileDetailsForm({ profile }: { profile: Profile }) {
   const [state, action, pending] = useActionState(
@@ -68,7 +68,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
   ];
   const error = (name: string) =>
     state.errors?.[name]?.length ? (
-      <p id={`${name}-error`} className="mt-1.5 text-xs text-red-700">
+      <p id={`${name}-error`} className="mt-1.5 text-xs text-danger">
         {state.errors[name]?.[0]}
       </p>
     ) : null;
@@ -78,14 +78,14 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
       {state.message && (
         <p
           role={state.status === "error" ? "alert" : "status"}
-          className={`rounded-sm px-4 py-3 text-sm ${state.status === "success" ? "bg-[#edf4df] text-[#3b592c]" : "bg-red-50 text-red-800"}`}
+          className={`rounded-sm px-4 py-3 text-sm ${state.status === "success" ? "bg-soft text-accent" : "bg-danger-soft text-danger"}`}
         >
           {state.message}
         </p>
       )}
       <section>
-        <h2 className="text-xl font-semibold text-[#293329]">The basics</h2>
-        <p className="mt-1 text-sm text-[#737d6b]">
+        <h2 className="text-xl font-semibold text-ink">The basics</h2>
+        <p className="mt-1 text-sm text-muted">
           A few details to make this space yours.
         </p>
         <div className="mt-5 grid gap-5 sm:grid-cols-2">
@@ -93,7 +93,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
             <div key={field.name}>
               <label
                 htmlFor={field.name}
-                className="text-sm font-medium text-[#374333]"
+                className="text-sm font-medium text-ink"
               >
                 {field.label}
               </label>
@@ -121,10 +121,10 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
           <div>
             <label
               htmlFor="gender"
-              className="text-sm font-medium text-[#374333]"
+              className="text-sm font-medium text-ink"
             >
               Gender{" "}
-              <span className="font-normal text-[#737d6b]">(optional)</span>
+              <span className="font-normal text-muted">(optional)</span>
             </label>
             <select
               id="gender"
@@ -146,11 +146,11 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
           </div>
         </div>
       </section>
-      <section className="border-t border-[#e6eadf] pt-7">
-        <h2 className="text-xl font-semibold text-[#293329]">
+      <section className="border-t border-line pt-7">
+        <h2 className="text-xl font-semibold text-ink">
           Delivery details
         </h2>
-        <p className="mt-1 text-sm leading-6 text-[#737d6b]">
+        <p className="mt-1 text-sm leading-6 text-muted">
           Used for the project’s simulated checkout. No purchases or payments
           are processed.
         </p>
@@ -162,7 +162,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
             >
               <label
                 htmlFor={field.name}
-                className="text-sm font-medium text-[#374333]"
+                className="text-sm font-medium text-ink"
               >
                 {field.label}
               </label>
@@ -189,7 +189,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
       <button
         disabled={pending}
         type="submit"
-        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-[#344d31] px-7 py-3.5 text-sm font-semibold text-white hover:bg-[#243c22] disabled:cursor-wait disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-action px-7 py-3.5 text-sm font-semibold text-white hover:bg-action-hover disabled:cursor-wait disabled:opacity-60 sm:w-auto"
       >
         {pending ? (
           <LoaderCircle size={16} className="animate-spin" aria-hidden />
@@ -217,7 +217,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
   const source = pictureSource(profile.profile_picture);
   return (
     <div>
-      <div className="mx-auto mb-5 flex size-28 items-center justify-center overflow-hidden rounded-sm bg-[#e6eed7] text-3xl font-semibold text-[#58723d]">
+      <div className="mx-auto mb-5 flex size-28 items-center justify-center overflow-hidden rounded-sm bg-soft text-3xl font-semibold text-accent">
         {failedSource === source ? (
           profile.name.slice(0, 2).toUpperCase()
         ) : (
@@ -234,20 +234,20 @@ export function AvatarForm({ profile }: { profile: Profile }) {
           />
         )}
       </div>
-      <h2 className="break-words text-xl font-semibold text-[#293329]">
+      <h2 className="break-words text-xl font-semibold text-ink">
         {profile.name}
       </h2>
-      <p className="mt-1 break-all text-sm text-[#737d6b]">{profile.email}</p>
-      <span className="mt-3 inline-block rounded-sm bg-[#edf3df] px-3 py-1 text-xs font-medium capitalize text-[#58723d]">
+      <p className="mt-1 break-all text-sm text-muted">{profile.email}</p>
+      <span className="mt-3 inline-block rounded-sm bg-soft px-3 py-1 text-xs font-medium capitalize text-accent">
         {profile.role === "admin" ? "Administrator" : "Smiski family"}
       </span>
       <form
         action={action}
-        className="mt-7 border-t border-[#e6eadf] pt-6 text-left"
+        className="mt-7 border-t border-line pt-6 text-left"
       >
         <label
           htmlFor="avatar"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#374333]"
+          className="inline-flex items-center gap-2 text-sm font-medium text-ink"
         >
           <Camera size={16} aria-hidden /> Profile photo
         </label>
@@ -257,22 +257,22 @@ export function AvatarForm({ profile }: { profile: Profile }) {
           type="file"
           accept="image/jpeg,image/png,image/webp"
           required
-          className="mt-3 block w-full text-xs text-[#737d6b] file:mr-2 file:rounded-sm file:border-0 file:bg-[#edf3df] file:px-3 file:py-2 file:text-xs file:font-medium file:text-[#3d5631]"
+          className="mt-3 block w-full text-xs text-muted file:mr-2 file:rounded-sm file:border-0 file:bg-soft file:px-3 file:py-2 file:text-xs file:font-medium file:text-ink"
         />
-        <p className="mt-2 text-xs text-[#737d6b]">
+        <p className="mt-2 text-xs text-muted">
           JPG, PNG, or WebP. Up to 5 MB.
         </p>
         <button
           disabled={pending}
           type="submit"
-          className="mt-4 w-full rounded-sm border border-[#cedcbb] px-4 py-2.5 text-xs font-semibold text-[#344d31] hover:bg-[#edf3df] disabled:opacity-60"
+          className="mt-4 w-full rounded-sm border border-line px-4 py-2.5 text-xs font-semibold text-ink hover:bg-soft disabled:opacity-60"
         >
           {pending ? "Uploading…" : "Update photo"}
         </button>
         {state.message && (
           <p
             role={state.status === "error" ? "alert" : "status"}
-            className={`mt-3 text-xs leading-5 ${state.status === "error" ? "text-red-700" : "text-[#3b592c]"}`}
+            className={`mt-3 text-xs leading-5 ${state.status === "error" ? "text-danger" : "text-accent"}`}
           >
             {state.message}
           </p>

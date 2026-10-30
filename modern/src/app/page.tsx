@@ -13,7 +13,7 @@ export default function HomePage() {
         className="container-page home-section news-section"
         aria-labelledby="news-title"
       >
-        <h1 id="news-title" className="page-title mb-6">
+        <h1 id="news-title" className="sr-only">
           Latest News
         </h1>
         <div
@@ -83,8 +83,9 @@ export default function HomePage() {
         aria-labelledby="products-title"
       >
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 id="products-title" className="section-heading">
+          <h2 id="products-title" className="section-heading heading-inhabitant">
             Shop
+            <img src="/uploads/profile.png" alt="" aria-hidden="true" draggable={false} loading="lazy" />
           </h2>
           <Link href="/shop" className="font-semibold">
             View all products
@@ -102,7 +103,7 @@ export default function HomePage() {
 async function HomeShop() {
   const products = await getProducts();
   return (
-    <div className="grid grid-cols-2 gap-4 md:grid-cols-3 xl:grid-cols-4 lg:gap-6">
+    <div className="grid grid-cols-2 gap-3 md:grid-cols-4 lg:gap-4">
       {products.slice(0, 8).map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
