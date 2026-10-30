@@ -1,5 +1,6 @@
 import "server-only";
 
+import { cache } from "react";
 import snapshot from "@/data/products.json";
 import { createClient } from "@/lib/supabase/server";
 import type { Product } from "@/lib/types";
@@ -59,7 +60,7 @@ export async function getProducts(): Promise<Product[]> {
   return (data || []).map((row) => toProduct(row));
 }
 
-export async function getProduct(id: number): Promise<Product | null> {
+export const getProduct = cache(async (id: number): Promise<Product | null> => {
   if (!Number.isSafeInteger(id) || id < 1) return null;
   if (!hasDatabaseConfiguration()) {
     const row = snapshot.find((product) => product.id === id);
@@ -76,4 +77,4 @@ export async function getProduct(id: number): Promise<Product | null> {
       "The product could not be loaded from the configured database.",
     );
   return data ? toProduct(data) : null;
-}
+});

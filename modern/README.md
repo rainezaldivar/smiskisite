@@ -66,6 +66,8 @@ See **[docs/QA.md](docs/QA.md)** for the manual QA checklist and connection-depe
 
 Import this repository and set **Root Directory: `modern`** and framework **Next.js**. Use the default `npm run build` build command. Add the environment values from `.env.example` in Vercel; never prefix the service role key with `NEXT_PUBLIC_`. Set `NEXT_PUBLIC_SITE_URL` and Supabase's Site URL/redirect allowlist to your deployment URL. Apply the database schema and run the reviewed import separately. Deployment does not touch the PHP database.
 
+Separate "account does not exist" and "password is incorrect" sign-in messages require `SUPABASE_SERVICE_ROLE_KEY` on the server. Without it, the app shows one combined error. Separate messages reveal whether an email is registered.
+
 Use a personal, non-commercial portfolio within the free plan's quotas. Supabase's free project may pause during inactivity; email delivery needs its own configured SMTP service. Preserve your private database and upload backups.
 
 ## Source map

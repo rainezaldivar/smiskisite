@@ -17,13 +17,13 @@ export function AccountUnavailable({
         </h1>
         <p className="mt-4 text-sm leading-7 text-muted">
           Sign-in and account features will be available once the site’s account
-          service is connected. You can still explore the collection.
+          service is connected. You can still browse the catalog.
         </p>
         <Link
           href="/catalog"
           className="mt-7 inline-flex rounded-sm bg-action px-6 py-3 text-sm font-medium text-white hover:bg-action-hover"
         >
-          Explore the collection
+          Browse collections
         </Link>
       </div>
     </section>

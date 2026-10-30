@@ -22,7 +22,6 @@ export type AboutStory = {
   image: string;
   alt: string;
   background: string;
-  eyebrow?: string;
   actions?: boolean;
 };
 
@@ -164,7 +163,6 @@ export function AboutStoryCarousel({ stories }: { stories: AboutStory[] }) {
               </div>
               <div className="about-story-shade" aria-hidden="true" />
               <div className="about-story-copy container-page">
-                {story.eyebrow && <p className="eyebrow">{story.eyebrow}</p>}
                 <Heading id={`story-${story.id}`}>{story.title}</Heading>
                 <p className="about-story-description">{story.text}</p>
                 {story.actions && (

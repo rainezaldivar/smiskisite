@@ -203,7 +203,7 @@ export function ProfileDetailsForm({ profile }: { profile: Profile }) {
 }
 
 function pictureSource(value: string | null) {
-  if (!value) return "/uploads/profile.png";
+  if (!value) return null;
   if (/^https?:\/\//.test(value) || value.startsWith("/uploads/")) return value;
   return `/uploads/${encodeURIComponent(value)}`;
 }
@@ -218,7 +218,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
   return (
     <div>
       <div className="mx-auto mb-5 flex size-28 items-center justify-center overflow-hidden rounded-sm bg-soft text-3xl font-semibold text-accent">
-        {failedSource === source ? (
+        {!source || failedSource === source ? (
           profile.name.slice(0, 2).toUpperCase()
         ) : (
           <Image
@@ -239,7 +239,7 @@ export function AvatarForm({ profile }: { profile: Profile }) {
       </h2>
       <p className="mt-1 break-all text-sm text-muted">{profile.email}</p>
       <span className="mt-3 inline-block rounded-sm bg-soft px-3 py-1 text-xs font-medium capitalize text-accent">
-        {profile.role === "admin" ? "Administrator" : "Smiski family"}
+        {profile.role === "admin" ? "Administrator" : "Customer"}
       </span>
       <form
         action={action}

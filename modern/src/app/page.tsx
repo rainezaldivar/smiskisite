@@ -83,10 +83,7 @@ export default function HomePage() {
         aria-labelledby="products-title"
       >
         <div className="mb-6 flex items-end justify-between gap-4">
-          <h2 id="products-title" className="section-heading heading-inhabitant">
-            Shop
-            <img src="/uploads/profile.png" alt="" aria-hidden="true" draggable={false} loading="lazy" />
-          </h2>
+          <h2 id="products-title" className="section-heading">Shop</h2>
           <Link href="/shop" className="font-semibold">
             View all products
           </Link>

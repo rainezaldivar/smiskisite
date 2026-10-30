@@ -98,8 +98,8 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
           ))}
           {isReset && (
             <p className="text-xs leading-6 text-muted">
-              Use at least 8 characters. Emoji and accented characters count
-              toward the 72-byte password limit.
+              Use at least 8 characters, including a number and a symbol. Emoji
+              and accented characters count toward the 72-byte limit.
             </p>
           )}
           <button
@@ -129,7 +129,7 @@ export function PasswordForm({ mode }: { mode: "request" | "reset" }) {
         >
           {isReset && state.status === "success"
             ? "Back to my account"
-            : "Back to sign in"}
+            : "Back to log in"}
         </Link>
       </p>
       {isReset && state.status !== "success" && (

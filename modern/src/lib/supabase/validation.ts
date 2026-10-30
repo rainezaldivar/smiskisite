@@ -1,10 +1,7 @@
 import { z } from "zod";
+import { getNewPasswordError } from "./password-rules.mjs";
 
-export const newPasswordSchema = z
-  .string()
-  .min(8, "Use at least 8 characters.")
-  .max(72, "Use no more than 72 characters.")
-  .refine(
-    (value) => new TextEncoder().encode(value).length <= 72,
-    "Your password is too long. Use no more than 72 bytes, including any emoji or accented characters.",
-  );
+export const newPasswordSchema = z.string().superRefine((value, context) => {
+  const message = getNewPasswordError(value);
+  if (message) context.addIssue({ code: "custom", message });
+});

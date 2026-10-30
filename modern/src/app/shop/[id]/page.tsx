@@ -23,9 +23,12 @@ export default async function ProductPage({
 }) {
   const { id } = await params;
   if (!/^\d+$/.test(id)) notFound();
-  const product = await getProduct(Number(id));
+  const [product, products] = await Promise.all([
+    getProduct(Number(id)),
+    getProducts(),
+  ]);
   if (!product) notFound();
-  const related = (await getProducts())
+  const related = products
     .filter((item) => item.id !== product.id)
     .sort(
       (a, b) =>

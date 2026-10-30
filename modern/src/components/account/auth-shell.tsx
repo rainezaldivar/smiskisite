@@ -1,52 +1,70 @@
 import type { ReactNode } from "react";
 import Image from "next/image";
-import { Sparkles } from "lucide-react";
 
 export function AuthShell({
   title,
   description,
   children,
+  split = false,
 }: {
   title: string;
   description: string;
   children: ReactNode;
+  split?: boolean;
 }) {
-  return (
-    <div className="container-page grid gap-10 py-12 lg:grid-cols-[0.9fr_1fr] lg:items-center lg:gap-20 lg:py-20">
-      <div className="hidden text-ink lg:block">
-        <span className="inline-flex items-center gap-2 rounded-sm border border-line bg-soft px-4 py-2 text-xs font-medium text-accent">
-          <Sparkles size={14} aria-hidden /> A little corner of your own
-        </span>
-        <h2 className="mt-6 text-5xl font-semibold leading-[1.12] tracking-tight">
-          Small friends.
-          <br />
-          Happy discoveries.
-        </h2>
-        <p className="mt-5 max-w-sm text-sm leading-7 text-muted">
-          Make yourself at home. Keep your details together and find a little
-          joy in the collection.
-        </p>
-        <div className="mt-9 flex h-56 items-end justify-center rounded-sm bg-soft px-8 pt-7">
+  const content = (
+    <>
+      <h1
+        className={
+          split
+            ? "text-[clamp(1.5rem,3vw,2.25rem)] font-semibold leading-tight tracking-tight text-ink"
+            : "text-3xl font-semibold tracking-tight text-ink sm:text-4xl"
+        }
+      >
+        {title}
+      </h1>
+      <p
+        className={
+          split
+            ? "mb-5 mt-2 text-xs leading-5 text-muted sm:mb-4 sm:text-sm"
+            : "mb-8 mt-3 text-sm leading-6 text-muted"
+        }
+      >
+        {description}
+      </p>
+      {children}
+    </>
+  );
+
+  if (split) {
+    return (
+      <div className="auth-split grid sm:grid-cols-[55.5%_44.5%]">
+        <div
+          className="relative min-h-40 overflow-hidden sm:min-h-full"
+          aria-hidden="true"
+        >
           <Image
-            src="/uploads/smiski5.png"
-            width={220}
-            height={210}
-            alt="A little Smiski friend"
-            className="h-full w-auto object-contain"
+            src="/uploads/authbg.jpg"
+            alt=""
+            fill
+            sizes="(min-width: 640px) 55.5vw, 100vw"
+            loading="eager"
+            className="-scale-x-100 object-cover object-right"
           />
         </div>
+        <section className="auth-panel flex items-start px-6 py-8 sm:items-center sm:px-8 sm:py-6 sm:pb-3 lg:px-[48px]">
+          <div className="mx-auto w-full max-w-[436px]">
+            {content}
+          </div>
+        </section>
       </div>
+    );
+  }
+
+  return (
+    <div className="container-page mx-auto max-w-2xl py-12 lg:py-20">
       <section className="rounded-sm border border-line bg-surface/85 p-7 sm:p-10">
-        <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-          Smiski family
-        </p>
-        <h1 className="mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-          {title}
-        </h1>
-        <p className="mb-8 mt-3 text-sm leading-6 text-muted">
-          {description}
-        </p>
-        {children}
+        {content}
       </section>
     </div>
   );

@@ -21,29 +21,21 @@ export default async function ProfilePage({
   const returnPath = safeNextPath(params.next);
   return (
     <div className="container-page py-10 sm:py-14">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">
-        My account
-      </p>
-      <div className="mb-9 mt-3 flex flex-wrap items-end justify-between gap-4">
-        <div>
-          <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
-            Your little corner.
-          </h1>
-          <p className="mt-3 text-sm text-muted">
-            Keep the essentials together, and get back to discovering.
-          </p>
-        </div>
-        <Link
-          href={returnPath === "/profile" ? "/catalog" : returnPath}
-          className="inline-flex items-center gap-2 text-sm font-medium text-ink"
-        >
-          {returnPath.startsWith("/checkout")
-            ? "Back to checkout"
-            : returnPath === "/profile"
-              ? "Explore the collection"
+      <div className="mb-9 flex flex-wrap items-end justify-between gap-4">
+        <h1 className="text-3xl font-semibold tracking-tight text-ink sm:text-4xl">
+          My account
+        </h1>
+        {returnPath !== "/profile" && (
+          <Link
+            href={returnPath}
+            className="inline-flex items-center gap-2 text-sm font-medium text-ink"
+          >
+            {returnPath.startsWith("/checkout")
+              ? "Back to checkout"
               : "Return to previous page"}{" "}
-          <ArrowUpRight size={16} aria-hidden />
-        </Link>
+            <ArrowUpRight size={16} aria-hidden />
+          </Link>
+        )}
       </div>
       {params.notice === "admin-only" && (
         <p

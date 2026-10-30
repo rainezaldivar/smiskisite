@@ -17,16 +17,44 @@ test("auth redirects preserve local destinations", () => {
   assert.equal(safeNextPath("/"), "/");
 });
 
-test("new passwords enforce bcrypt's UTF-8 byte boundary", () => {
+test("new passwords require length, a number, and a symbol", () => {
   assert.equal(newPasswordSchema.safeParse("short").success, false);
+  const missingBoth = newPasswordSchema.safeParse("passwordonly");
+  assert.equal(missingBoth.success, false);
+  if (!missingBoth.success)
+    assert.deepEqual(
+      missingBoth.error.issues.map((issue) => issue.message),
+      ["Include a number and a symbol."],
+    );
+  assert.equal(newPasswordSchema.safeParse("abcdefg!").success, false);
+  assert.equal(newPasswordSchema.safeParse("abcdefg1").success, false);
+  assert.equal(newPasswordSchema.safeParse("abcde1!").success, false);
+  assert.equal(newPasswordSchema.safeParse("abcdef1!").success, true);
+  assert.equal(newPasswordSchema.safeParse("abcdef1?").success, true);
+});
+
+test("new passwords enforce bcrypt's UTF-8 byte boundary", () => {
   assert.equal(
-    newPasswordSchema.safeParse("long-enough-password").success,
+    newPasswordSchema.safeParse("long-enough-password1!").success,
     true,
   );
-  assert.equal(newPasswordSchema.safeParse("a".repeat(72)).success, true);
-  assert.equal(newPasswordSchema.safeParse("a".repeat(73)).success, false);
-  assert.equal(newPasswordSchema.safeParse("🌱".repeat(18)).success, true);
-  assert.equal(newPasswordSchema.safeParse("🌱".repeat(19)).success, false);
+  assert.equal(
+    newPasswordSchema.safeParse(`${"a".repeat(70)}1!`).success,
+    true,
+  );
+  assert.equal(
+    newPasswordSchema.safeParse(`${"a".repeat(71)}1!`).success,
+    false,
+  );
+  const emoji = String.fromCodePoint(0x1f331);
+  assert.equal(
+    newPasswordSchema.safeParse(`${emoji.repeat(17)}1!`).success,
+    true,
+  );
+  assert.equal(
+    newPasswordSchema.safeParse(`${emoji.repeat(18)}1!`).success,
+    false,
+  );
 });
 
 test("auth redirects reject external origins, protocol-relative paths and parser escapes", () => {

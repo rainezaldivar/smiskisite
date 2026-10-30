@@ -12,6 +12,7 @@ export function SiteHeader({
   profile: { name: string; role: string } | null;
 }) {
   const path = usePathname();
+  const isAuthPage = path === "/login" || path === "/register";
   const [open, setOpen] = useState(false);
   const { count } = useCart();
   const links = [
@@ -19,25 +20,39 @@ export function SiteHeader({
     { href: "/catalog", label: "Collections" },
     { href: "/about", label: "About SMISKI" },
   ];
+  const brand = (
+    <Link
+      href="/"
+      aria-label="Smiskisite home"
+      onClick={() => setOpen(false)}
+      className="flex shrink-0 items-center gap-1 text-xl font-extrabold tracking-[-.07em] sm:gap-2 sm:text-2xl"
+    >
+      <Sprout
+        size={24}
+        strokeWidth={2.5}
+        className="hidden min-[400px]:block"
+        aria-hidden="true"
+      />
+      <span>
+        smiskisite<span className="text-accent">.</span>
+      </span>
+    </Link>
+  );
+
+  if (isAuthPage) {
+    return (
+      <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur-md">
+        <div className="container-page flex min-h-19 items-center">
+          {brand}
+        </div>
+      </header>
+    );
+  }
+
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-cream/95 backdrop-blur-md">
       <div className="container-page flex min-h-19 items-center justify-between gap-1 min-[400px]:gap-2">
-        <Link
-          href="/"
-          aria-label="Smiskisite home"
-          onClick={() => setOpen(false)}
-          className="flex shrink-0 items-center gap-1 text-xl font-extrabold tracking-[-.07em] sm:gap-2 sm:text-2xl"
-        >
-          <Sprout
-            size={24}
-            strokeWidth={2.5}
-            className="hidden min-[400px]:block"
-            aria-hidden="true"
-          />
-          <span>
-            smiskisite<span className="text-accent">.</span>
-          </span>
-        </Link>
+        {brand}
         <nav
           aria-label="Main navigation"
           className="hidden items-center gap-6 lg:flex"

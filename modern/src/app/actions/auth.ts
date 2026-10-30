@@ -5,6 +5,10 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
+import {
+  createAdminClient,
+  isAdminServiceConfigured,
+} from "@/lib/supabase/admin";
 import { getSupabaseConfig, isSupabaseConfigured } from "@/lib/supabase/config";
 import { safeNextPath } from "@/lib/supabase/redirect";
 import { newPasswordSchema } from "@/lib/supabase/validation";
@@ -18,7 +22,8 @@ const credentialsSchema = z.object({
 
 const registerSchema = z
   .object({
-    name: z.string().trim().min(2, "Use at least 2 characters.").max(80),
+    firstName: z.string().trim().min(1, "Enter your first name.").max(80),
+    surname: z.string().trim().min(1, "Enter your surname.").max(80),
     email: z.string().trim().email("Enter a valid email address.").max(254),
     password: newPasswordSchema,
     confirmPassword: z.string(),
@@ -48,6 +53,45 @@ function siteUrl() {
   }
 }
 
+async function invalidCredentialsState(email: string): Promise<FormState> {
+  const fallback: FormState = {
+    status: "error",
+    message: "The email or password is incorrect.",
+  };
+  if (!isAdminServiceConfigured()) return fallback;
+
+  try {
+    // ILIKE is case-insensitive; escape pattern characters in the supplied email.
+    const exactEmail = email.replace(
+      /[\\%_]/g,
+      (character) => `\\${character}`,
+    );
+    const { data, error } = await createAdminClient()
+      .from("profiles")
+      .select("email")
+      .ilike("email", exactEmail)
+      .limit(10);
+    if (error || !data) return fallback;
+    const accountExists = data.some(
+      (profile) => profile.email.toLowerCase() === email.toLowerCase(),
+    );
+    if (!accountExists && data.length === 10) return fallback;
+    return accountExists
+      ? {
+          status: "error",
+          message: "",
+          errors: { password: ["Your password is incorrect."] },
+        }
+      : {
+          status: "error",
+          message: "",
+          errors: { email: ["This account does not exist."] },
+        };
+  } catch {
+    return fallback;
+  }
+}
+
 export async function login(
   _previous: FormState,
   formData: FormData,
@@ -66,14 +110,17 @@ export async function login(
   try {
     const supabase = await createClient();
     const { data, error } = await supabase.auth.signInWithPassword(parsed.data);
-    if (error)
+    if (error) {
+      if (error.code === "invalid_credentials")
+        return await invalidCredentialsState(parsed.data.email);
       return {
         status: "error",
         message:
           error.code === "email_not_confirmed"
-            ? "Confirm your email using the link in your inbox, then sign in."
-            : "We could not sign you in. Check your email and password, then try again.",
+            ? "Confirm your email using the link in your inbox, then log in."
+            : "We could not sign you in. Try again shortly.",
       };
+    }
     const { data: profile, error: profileError } = await supabase
       .from("profiles")
       .select("id")
@@ -117,7 +164,11 @@ export async function register(
       email: parsed.data.email,
       password: parsed.data.password,
       options: {
-        data: { name: parsed.data.name },
+        data: {
+          name: `${parsed.data.firstName} ${parsed.data.surname}`,
+          first_name: parsed.data.firstName,
+          surname: parsed.data.surname,
+        },
         emailRedirectTo: `${siteUrl()}/auth/callback?next=/profile`,
       },
     });
@@ -125,7 +176,7 @@ export async function register(
       return {
         status: "error",
         message:
-          "We could not create your account. Try again shortly, or sign in if you already have an account.",
+          "We could not create your account. Try again shortly, or log in if you already have an account.",
       };
     signedIn = Boolean(data.session);
   } catch {
@@ -139,7 +190,7 @@ export async function register(
     return {
       status: "success",
       message:
-        "Check your inbox for a confirmation link. If this address already has an account, you can sign in instead.",
+        "Check your inbox for a confirmation link. If this address already has an account, you can log in instead.",
     };
   revalidatePath("/", "layout");
   redirect("/profile");

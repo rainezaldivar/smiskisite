@@ -3,7 +3,6 @@ import { ArrowUpRight, Sprout } from "lucide-react";
 export function SiteFooter() {
   return (
     <footer className="relative mt-10 border-t border-line bg-soft">
-      <img className="footer-inhabitant" src="/uploads/profile.png" alt="" aria-hidden="true" draggable={false} loading="lazy" />
       <div className="container-page grid gap-12 py-13 md:grid-cols-[1.5fr_1fr_1fr]">
         <div>
           <Link
@@ -28,7 +27,7 @@ export function SiteFooter() {
           </div>
         </div>
         <div>
-          <p className="eyebrow mb-5">Your little corner</p>
+          <p className="eyebrow mb-5">Account</p>
           <div className="flex flex-col gap-3 text-sm">
             <Link href="/profile">My profile</Link>
             <Link href="/cart">Shopping bag</Link>

@@ -15,6 +15,7 @@ export default async function RegisterPage() {
     <AuthShell
       title="Find your people."
       description="Join the family and start your own little collection."
+      split
     >
       <AuthForm mode="register" />
     </AuthShell>

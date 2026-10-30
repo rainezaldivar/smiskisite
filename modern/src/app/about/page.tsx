@@ -42,7 +42,6 @@ const stories: AboutStory[] = [
     image: "about04.png",
     alt: "Smiski characters with different little personalities",
     background: "#eba014",
-    eyebrow: "SAME LITTLE GLOW, DIFFERENT LITTLE WORLDS",
     actions: true,
   },
 ];
