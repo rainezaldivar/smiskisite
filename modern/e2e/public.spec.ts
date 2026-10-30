@@ -586,7 +586,7 @@ test("images resist dragging while product links stay clickable and square", asy
   await expect(page).toHaveURL(/\/shop\/\d+$/);
 });
 
-test("About photos fill the screen and its story controls reach every slide", async ({
+test("About photos fit within colored slides and its story controls reach every slide", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -596,7 +596,10 @@ test("About photos fill the screen and its story controls reach every slide", as
   const slides = carousel.locator(".about-story-panel");
   await expect(slides).toHaveCount(4);
   await expect(track).toHaveCSS("scroll-snap-type", "x mandatory");
-  await expect(slides.first().locator("img")).toHaveCSS("object-fit", "cover");
+  await expect(slides.first().locator("img")).toHaveCSS("object-fit", "contain");
+  await expect(slides.first()).toHaveCSS("background-color", "rgb(246, 232, 3)");
+  await expect(slides.nth(1)).toHaveCSS("background-color", "rgb(87, 163, 4)");
+  await expect(slides.nth(3)).toHaveCSS("background-color", "rgb(235, 160, 20)");
   expect(
     await slides.locator("img").evaluateAll((images) =>
       images.map((image) => image.getAttribute("src")),

@@ -679,35 +679,69 @@
     overflow: hidden;
     scroll-snap-align: start;
     scroll-snap-stop: always;
-    background: var(--story-color);
+    background-color: var(--story-color);
+    transition: background-color 0.35s ease;
   }
-  .about-story-image,
+  .about-story-panel[data-night="true"] {
+    background-color: #000;
+  }
+  .about-story-visual {
+    position: absolute;
+    top: 6%;
+    left: 0;
+    display: grid;
+    width: 100%;
+    height: 65%;
+    place-items: start center;
+    pointer-events: none;
+  }
+  .about-story-image {
+    display: block;
+    width: min(70vw, 850px);
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    user-select: none;
+    -webkit-user-drag: none;
+  }
+  .about-story-panel:not(.about-story-finale) .about-story-image {
+    mask-image: radial-gradient(
+      ellipse 88% 88% at center,
+      #000 74%,
+      transparent 100%
+    );
+  }
   .about-story-shade {
     position: absolute;
     inset: 0;
     width: 100%;
     height: 100%;
   }
-  .about-story-image {
-    object-fit: cover;
-    object-position: var(--story-position);
-  }
   .about-story-shade {
     pointer-events: none;
     background: linear-gradient(
       to bottom,
-      transparent 32%,
-      rgb(27 42 33 / 80%) 65%,
+      transparent 30%,
+      rgb(27 42 33 / 24%) 46%,
+      rgb(27 42 33 / 78%) 72%,
       #1b2a21 100%
     );
   }
   .about-story-finale .about-story-shade {
     background: linear-gradient(
       to bottom,
-      transparent 16%,
-      rgb(27 42 33 / 80%) 48%,
+      transparent 24%,
+      rgb(27 42 33 / 72%) 58%,
       #1b2a21 100%
     );
+  }
+  .about-story-panel[data-active="true"] .about-story-visual {
+    animation: about-photo-enter 0.5s ease-out both;
+  }
+  .about-story-panel[data-active="true"] .about-story-shade {
+    animation: about-shade-enter 0.7s ease-out both;
   }
   .about-story-copy {
     position: absolute;
@@ -716,6 +750,9 @@
     left: 50%;
     transform: translateX(-50%);
     color: #f7f8f1;
+    & > * {
+      opacity: 0;
+    }
     & h1,
     & h2 {
       max-width: 42rem;
@@ -733,6 +770,49 @@
     & .eyebrow {
       margin-bottom: 0.75rem;
       color: #d7ed96;
+    }
+  }
+  .about-story-panel[data-active="true"] .about-story-copy > * {
+    animation: about-copy-enter 0.55s ease-out both;
+  }
+  .about-story-panel[data-active="true"] .about-story-copy > :first-child {
+    animation-delay: 0.22s;
+  }
+  .about-story-panel[data-active="true"] .about-story-copy > :nth-child(2) {
+    animation-delay: 0.32s;
+  }
+  .about-story-panel[data-active="true"] .about-story-copy > :nth-child(3) {
+    animation-delay: 0.42s;
+  }
+  .about-story-panel[data-active="true"] .about-story-actions {
+    animation-delay: 0.54s;
+  }
+  @keyframes about-photo-enter {
+    from {
+      opacity: 0.4;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes about-shade-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes about-copy-enter {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
   .about-story-actions {
@@ -775,9 +855,6 @@
     &:focus-visible {
       background: #1b2a21;
     }
-    &:disabled {
-      opacity: 0.45;
-    }
   }
   .about-story-previous {
     left: clamp(1rem, 3vw, 3rem);
@@ -801,17 +878,33 @@
       height: 44px;
       border: 0;
       background: transparent;
-      &::after {
-        content: "";
-        width: 14px;
-        height: 14px;
-        border: 1px solid #f7f8f1;
-        border-radius: 50%;
+      &:hover .about-story-progress {
+        box-shadow: 0 0 0 3px rgb(247 248 241 / 25%);
       }
-      &:hover::after,
-      &[aria-current="true"]::after {
-        background: #f7f8f1;
-      }
+    }
+  }
+  .about-story-progress {
+    position: relative;
+    display: block;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+    border: 1px solid #f7f8f1;
+    border-radius: 50%;
+    &::after {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: var(--story-progress, 0%);
+      background: #f7f8f1;
+      content: "";
+    }
+  }
+  @media (min-width: 768px) and (max-width: 1100px) {
+    .about-story-finale .about-story-visual {
+      top: 2%;
+    }
+    .about-story-finale .about-story-image {
+      width: 58vw;
     }
   }
   @media (max-width: 900px) {
@@ -821,8 +914,12 @@
     }
   }
   @media (max-width: 767px) {
+    .about-story-visual {
+      top: 8%;
+      height: 54%;
+    }
     .about-story-image {
-      object-position: var(--story-position-mobile);
+      width: min(100%, 560px);
     }
     .about-story-copy {
       bottom: 5.5rem;
@@ -847,6 +944,13 @@
   @media (max-width: 767px) and (max-height: 650px) {
     .about-story-track {
       height: max(calc(100svh - var(--site-header-height)), 28rem);
+    }
+    .about-story-visual {
+      top: 2%;
+      height: 45%;
+    }
+    .about-story-finale .about-story-image {
+      width: min(88%, 330px);
     }
     .about-story-shade {
       background: linear-gradient(
@@ -879,6 +983,13 @@
     .about-story-finale .eyebrow {
       display: none;
     }
+    .about-story-finale .about-story-copy h2 {
+      font-size: 1.45rem;
+    }
+    .about-story-finale .about-story-copy > .about-story-description {
+      font-size: 0.78rem;
+      line-height: 1.35;
+    }
     .about-story-actions {
       gap: 0.4rem;
       margin-top: 0.7rem;
@@ -886,6 +997,11 @@
     .about-story-action {
       padding: 0.4rem 0.7rem;
       font-size: 0.9rem;
+    }
+    .about-story-finale .about-story-action {
+      min-height: 36px;
+      padding: 0.3rem 0.55rem;
+      font-size: 0.8rem;
     }
   }
   @media (max-width: 640px) {
@@ -947,6 +1063,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .about-story-panel[data-active="true"] .about-story-copy > * {
+    animation: none;
+    opacity: 1;
+  }
+  .about-story-panel[data-active="true"] .about-story-shade,
+  .about-story-panel[data-active="true"] .about-story-visual {
+    animation: none;
+  }
   html,
   .collections-carousel,
   .news-carousel,
